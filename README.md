@@ -108,4 +108,3 @@ Pynterest is a clone of Pinterest (who would've known). The app will allow users
 ## Screenshots
 
 <img src="https://i1.sndcdn.com/avatars-000198787410-02xwfu-t500x500.jpg" style="width: 600px;"/>
->>>>>>> 8a633ddef5fed946db17231d8347d820020cbe80
