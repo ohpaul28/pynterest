@@ -64,7 +64,7 @@ Pynterest is a clone of Pinterest (who would've known). The app will allow users
 <p float="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" style="width:75px;" />
   &nbsp;
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg" style="width:75px;" />
+  <img src="https://user-images.githubusercontent.com/90789014/162850802-69d3cdfb-bb0f-41b6-b5b8-366a216430ac.png" style="width:75px;" />
   &nbsp;
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" style="width:75px;" />
   &nbsp;
@@ -87,8 +87,6 @@ Pynterest is a clone of Pinterest (who would've known). The app will allow users
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/xd/xd-line.svg" style="width:75px;" />
   &nbsp;
     
-   ![flask-removebg-preview](https://user-images.githubusercontent.com/90789014/162850802-69d3cdfb-bb0f-41b6-b5b8-366a216430ac.png)
-
 </p>
 
 
