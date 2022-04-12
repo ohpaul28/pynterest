@@ -12,7 +12,7 @@ def seed_users():
       email='demo@aa.io',
       password='password')
 
-    for i in range(1, 100):
+    for i in range(1, 50):
       users = User(
         first_name=fake.first_name(),
         last_name=fake.last_name(),
