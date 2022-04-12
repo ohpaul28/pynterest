@@ -8,6 +8,8 @@ class Pyn(db.Model):
   board_id = db.Column(db.Integer, nullable=False)
   title = db.Column(db.String(30), nullable=False)
   img_url = db.Column(db.String(2048), nullable=False)
+  created_at = db.Column(db.DateTime, default=db.func.now()) # FORMAT: 2022-04-02 13:27:25.457314
+  updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
 
   user = db.relationship('User', back_populates='pyns')

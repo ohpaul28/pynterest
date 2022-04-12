@@ -11,6 +11,8 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(40), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    created_at = db.Column(db.DateTime, default=db.func.now()) # FORMAT: 2022-04-02 13:27:25.457314
+    updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
 
     pyn = db.relationship('Pyns', back_populates='users', cascade='all, delete-orphan')
     board = db.relationship('Boards', back_populates='users')
