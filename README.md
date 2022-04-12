@@ -17,7 +17,7 @@
 
 ## About it!
 
-Pynterest is a clone of Pinterest (who would've known). The app will allow users to post, update, or delete photos, explore photos that they may have interest in or photos of similarity via "Pyns". They should also be shown a profile page that will host photos they have added to their 'Saved' category and photos they themselves have posted. The profile page should also contain the "Pyns" they have attached to their own profile.
+Pynterest is a clone of Pinterest (who would've known) made using a Javascript frontend with React-Redux and a Python backend with Flask, SQLAlchemy, and PSQL. The app will allow users to post, update, or delete photos, explore photos that they may have interest in or photos of similarity via "Pyns". They should also be shown a profile page that will host photos they have added to their 'Saved' category and photos they themselves have posted. The profile page should also contain the "Pyns" they have attached to their own profile.
 
 ## Try it out!
 1. Clone this repository
