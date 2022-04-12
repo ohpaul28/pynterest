@@ -12,7 +12,7 @@ def seed_pyns():
       img_url=fake.image_url()
     )
     db.session.add(pyns)
-    db.session.commit()
+  db.session.commit()
 
 
 def undo_reviews():
