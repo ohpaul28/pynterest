@@ -17,7 +17,7 @@ const Root = () => {
     dispatch(setModalMount(modalMountRef.current))
   },[dispatch])
 
-
+  
   return (
     <div className='entire-page-container'>
       <App />
