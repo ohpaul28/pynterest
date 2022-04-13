@@ -7,9 +7,16 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
+    first_name = db.Column(db.String(50), nullable=False)
+    last_name = db.Column(db.String(50), nullable=False)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
+
+    pyns = db.relationship('Pyn', back_populates='users', cascade='all, delete-orphan')
+    boards = db.relationship('Board', back_populates='users', cascade='all, delete-orphan')
+    comments = db.relationship('Comment', back_populates='users', cascade='all, delete-orphan')
 
     @property
     def password(self):
