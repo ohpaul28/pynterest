@@ -4,17 +4,17 @@ from random import randint
 fake = Faker()
 
 def seed_pyns():
-  for i in range(1, 450):
+  for i in range(1, 451):
     pyns = Pyn(
       user_id=randint(1, 50),
       board_id=randint(1, 150),
-      title=fake.sentence(5),
+      title=fake.sentence(3),
       img_url=fake.image_url()
     )
     db.session.add(pyns)
   db.session.commit()
 
 
-def undo_reviews():
+def undo_pyns():
   db.session.execute('TRUNCATE pyns RESTART IDENTITY CASCADE;')
   db.session.commit()

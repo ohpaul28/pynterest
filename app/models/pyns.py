@@ -4,16 +4,17 @@ class Pyn(db.Model):
   __tablename__ = 'pyns'
 
   id = db.Column(db.Integer, primary_key=True)
-  user_id = db.Column(db.Integer, nullable=False)
-  board_id = db.Column(db.Integer, nullable=False)
-  title = db.Column(db.String(30), nullable=False)
+  user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+  board_id = db.Column(db.Integer, db.ForeignKey('boards.id'))
+  title = db.Column(db.String(50), nullable=False)
   img_url = db.Column(db.String(2048), nullable=False)
-  created_at = db.Column(db.DateTime, default=db.func.now()) # FORMAT: 2022-04-02 13:27:25.457314
-  updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.now())
+  created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+  updated_at = db.Column(db.DateTime, default=db.func.now(), onupdate=db.func.current_timestamp())
 
 
-  user = db.relationship('User', back_populates='pyns')
-  board = db.relationship('Board', back_populates='pyns', cascade='all, delete-orphan')
+  users = db.relationship('User', back_populates='pyns')
+  boards = db.relationship('Board', back_populates='pyns')
+  comments = db.relationship('Comment', back_populates='pyns', cascade='all, delete-orphan')
 
 
   def to_dict(self):
