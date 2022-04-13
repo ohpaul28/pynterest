@@ -11,6 +11,7 @@ def seed_users():
       last_name='Mo',
       email='demo@aa.io',
       password='password')
+    db.session.add(demo)
 
     for i in range(1, 50):
       users = User(
@@ -21,7 +22,6 @@ def seed_users():
       )
       db.session.add(users)
 
-    db.session.add(demo)
 
     db.session.commit()
 

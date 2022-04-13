@@ -9,6 +9,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import Modal from './components/Modal'
+import {PynForm} from './components/Forms/PynsForm'
 
 import { authenticate } from './store/session';
 
@@ -46,6 +47,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
+        </ProtectedRoute>
+        <ProtectedRoute path='/pyns' exact={true}>
+          <PynForm />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
