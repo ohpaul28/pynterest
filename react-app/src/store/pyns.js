@@ -90,8 +90,8 @@ async dispatch => {
 }
 
 
-// export default function reducer(state = {}, action) {
-//   switch (action.type) {
-//     case
-//   }
-// }
+export default function reducer(state = {}, action) {
+  switch (action.type) {
+    case
+  }
+}
