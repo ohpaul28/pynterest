@@ -14,15 +14,17 @@ export const PynForm = () => {
   const sessionUser = useSelector(state => state.session.user)
 
 
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    // let myForm = document.getElementById('myForm');
     const formData = new FormData();
     formData.append('image', image)
     formData.append('user_id', sessionUser.id)
     formData.append('board_id', 1)
+    // console.log(image)
+    console.log(formData.entries())
 
-    const newPyn = dispatch(creatingPyns(formData))
+    const newPyn = await dispatch(creatingPyns(formData))
 
     if (newPyn.errors) {
       setErrors([...newPyn.errors])
@@ -41,12 +43,12 @@ export const PynForm = () => {
 
   return (
     <>
-    <div className={styles.errors}>
+    {/* <div className={styles.errors}>
       {errors && errors.map(error => (
         <div>{error}</div>
       ))}
-    </div>
-    <form >
+    </div> */}
+    <form id="myForm">
       <input type='file'
               accept='image/*'
               onChange={updateImage} />

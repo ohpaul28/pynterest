@@ -38,7 +38,8 @@ const deletePyn = (payload) => {
 //thunks for pyns
 export const creatingPyns = (data) =>
 async dispatch => {
-  const res = await fetch('/api/pyns', {
+  // console.log(data)
+  const res = await fetch('/api/pyns/', {
     method: 'POST',
     body: data
   });
