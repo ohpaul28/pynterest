@@ -1,5 +1,5 @@
 //actions for pyns
-const CREATED_PYN ='/pyns/createdPyn'
+const CREATED_PYN = '/pyns/createdPyn'
 const READ_ALL_PYNS = '/pyns/readAllPyns'
 const UPDATED_PYN = '/pyns/updatedPyn'
 const DELETED_PYN = '/pyns/deletedPyn'
@@ -38,32 +38,19 @@ const deletePyn = (payload) => {
 //thunks for pyns
 export const creatingPyns = (data) =>
 async dispatch => {
-  // const dataObj = {
-
-  // }
-  // for (let pair of data.entries()) {
-  //   // console.log(`${pair[0]}, ${pair[1]}`);}
-  //   dataObj[pair[0]] = pair[1]
-  // }
-  console.log(JSON.stringify(data))
-  // console.log(dataObj)
-
   const res = await fetch('/api/pyns', {
     method: 'POST',
     body: data
   });
-  // console.log(JSON.stringify({data}))
-
   const newPyn = await res.json()
-  console.log(newPyn)
 
+  if (newPyn.error) {
+    return newPyn.error
+  } else {
+    await dispatch(createPyn(newPyn))
+    return newPyn
+  }
 
-  // if (newPyn.error) {
-  //   return newPyn.error
-  // } else {
-  //   await dispatch(createPyn(newPyn));
-  //   return newPyn
-  // }
 }
 
 export const readingAllPyns = () =>

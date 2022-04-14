@@ -1,0 +1,1 @@
+const CREATED_BOARD = '/'
