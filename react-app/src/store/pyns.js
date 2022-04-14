@@ -90,8 +90,26 @@ async dispatch => {
 }
 
 
-// export default function reducer(state = {}, action) {
-//   switch (action.type) {
-//     case
-//   }
-// }
+export default function reducer(state = {}, action) {
+  const newState = {...state}
+  switch (action.type) {
+    case CREATED_PYN: {
+      newState[action.payload?.id] = action.payload
+      return newState;
+    }
+    case READ_ALL_PYNS: {
+      action.payload.forEach(pyn => newState[pyn.id] = pyn)
+      return newState
+    }
+    case UPDATED_PYN: {
+      newState[action.payload.id] = action.payload
+      return newState
+    }
+    case DELETED_PYN: {
+      delete newState[action.payload]
+      return newState;
+    }
+    default:
+      return state;
+  }
+}

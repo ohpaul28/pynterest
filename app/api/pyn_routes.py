@@ -34,6 +34,7 @@ def pyn(id):
 
 # post a pyn
 @pyn_routes.route('/', methods=['POST'])
+# @login_required
 def upload_pyn():
   # print(request.form['id'])
   if 'image' not in request.files:
@@ -54,7 +55,7 @@ def upload_pyn():
   url = upload['url']
 
   new_pyn = Pyn(
-    user_id = 1,
+    user_id = current_user.id,
     board_id = request.form['board_id'],
     title = request.form['title'],
     img_url = url
@@ -67,6 +68,7 @@ def upload_pyn():
 
 # delete a pyn
 @pyn_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
 def delete_pyn(id):
   pyn = Pyn.query.get(id)
 

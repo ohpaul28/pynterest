@@ -2,12 +2,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import modals from './modal'
-// import pyns from './pyns'
+import boardsReducer from './boards'
+import pynsReducer from './pyns'
 
 const rootReducer = combineReducers({
   session,
   modals,
-  // pyns,
+  boards: boardsReducer,
+  pyns: pynsReducer,
 });
 
 

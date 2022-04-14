@@ -3,7 +3,6 @@ import {useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import { creatingPyns } from '../../../store/pyns'
 import styles from './PynsForm.module.css'
-// import { useEffect } from 'react';
 
 
 export const PynForm = () => {
@@ -12,13 +11,7 @@ export const PynForm = () => {
   const [title, setTitle] = useState('')
   const [image, setImage] = useState(null)
   const [errors, setErrors] = useState([])
-  // const [disabled, setDisabled] = useState(False)
   const sessionUser = useSelector(state => state.session.user)
-  // useEffect(() => {
-
-
-  // }, [title, image])
-
 
 
   const handleSubmit = async (e) => {
@@ -32,16 +25,16 @@ export const PynForm = () => {
     // console.log(formData.entries())
     // for (let pair of formData.entries()) {
     //   console.log(`${pair[0]}, ${pair[1]}`);}
-    if (!title && image) setErrors(['Please provide a title'])
-    if (!image && title) setErrors(['Please select an image'])
-    if (!image && !title) setErrors(['Please provide a title', 'Please select an image'])
 
-    if (errors) {
+    const newPyn = dispatch(creatingPyns(formData))
+
+    if (newPyn.errors) {
+      setErrors([...newPyn.errors])
       return
     } else {
-      dispatch(creatingPyns(formData))
-      history.push('/pyns')
+      history.push('/')
     }
+
   }
 
   const updateImage = e => {
@@ -52,11 +45,11 @@ export const PynForm = () => {
 
   return (
     <>
-    <div className={styles.errors}>
+    {/* <div className={styles.errors}>
       {errors && errors.map(error => (
         <div>{error}</div>
       ))}
-    </div>
+    </div> */}
     <form id="myForm">
       <input type='file'
               accept='image/*'
