@@ -18,11 +18,14 @@ export const PynForm = () => {
     e.preventDefault();
     // let myForm = document.getElementById('myForm');
     const formData = new FormData();
+    formData.append('title', title)
     formData.append('image', image)
     formData.append('user_id', sessionUser.id)
     formData.append('board_id', 1)
     // console.log(image)
-    console.log(formData.entries())
+    // console.log(formData.entries())
+    // for (let pair of formData.entries()) {
+    //   console.log(`${pair[0]}, ${pair[1]}`);}
 
     const newPyn = await dispatch(creatingPyns(formData))
 

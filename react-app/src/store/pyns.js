@@ -38,11 +38,17 @@ const deletePyn = (payload) => {
 //thunks for pyns
 export const creatingPyns = (data) =>
 async dispatch => {
-  // console.log(data)
-  const res = await fetch('/api/pyns/', {
+  // for (let pair of data.entries()) {
+  //   console.log(`${pair[0]}, ${pair[1]}`);}
+
+
+  const res = await fetch('/api/pyns', {
     method: 'POST',
-    body: data
+    body: JSON.stringify({
+      data
+    })
   });
+  // console.log(JSON.stringify({data}))
 
   const newPyn = await res.json()
 
@@ -89,3 +95,10 @@ async dispatch => {
   dispatch(deletePyn(removedPyn));
   return removedPyn
 }
+
+
+// export default function reducer(state = {}, action) {
+//   switch (action.type) {
+//     case
+//   }
+// }

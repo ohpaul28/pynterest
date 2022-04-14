@@ -4,6 +4,7 @@ from app.models import Pyn, db
 from app.awsS3 import upload_file_to_s3, allowed_file, get_unique_filename
 from app.forms.pyn_form import PynForm
 
+
 pyn_routes = Blueprint('pyns', __name__)
 
 
@@ -34,6 +35,12 @@ def pyn(id):
 # post a pyn
 @pyn_routes.route('/', methods=['POST'])
 def upload_pyn():
+  # new_image = request.json
+  # print('\n\n\n\n\n\n',repr(request),'\n\n\n\n\n\n')
+  print(request.files['file'])
+  # please = request.files['file']
+  # print('\n\n\n\n\n\n',request.form.files,'\n\n\n\n\n\n')
+  # print('\n\n\n\n\n\n',new_image_obj["image"],'\n\n\n\n\n\n')
   if 'image' not in request.files:
     return {'errors': 'image required'}, 400
 
@@ -53,8 +60,8 @@ def upload_pyn():
 
   new_pyn = Pyn(
     user_id = current_user.id,
-    board_id = request.board_id,
-    title = request.title,
+    board_id = request.form['board_id'],
+    title = request.form['title'],
     img_url = url
   )
 
