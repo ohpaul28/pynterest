@@ -38,26 +38,32 @@ const deletePyn = (payload) => {
 //thunks for pyns
 export const creatingPyns = (data) =>
 async dispatch => {
-  // for (let pair of data.entries()) {
-  //   console.log(`${pair[0]}, ${pair[1]}`);}
+  // const dataObj = {
 
+  // }
+  // for (let pair of data.entries()) {
+  //   // console.log(`${pair[0]}, ${pair[1]}`);}
+  //   dataObj[pair[0]] = pair[1]
+  // }
+  console.log(JSON.stringify(data))
+  // console.log(dataObj)
 
   const res = await fetch('/api/pyns', {
     method: 'POST',
-    body: JSON.stringify({
-      data
-    })
+    body: data
   });
   // console.log(JSON.stringify({data}))
 
   const newPyn = await res.json()
+  console.log(newPyn)
 
-  if (newPyn.error) {
-    return newPyn.error
-  } else {
-    await dispatch(createPyn(newPyn));
-    return newPyn
-  }
+
+  // if (newPyn.error) {
+  //   return newPyn.error
+  // } else {
+  //   await dispatch(createPyn(newPyn));
+  //   return newPyn
+  // }
 }
 
 export const readingAllPyns = () =>

@@ -16,7 +16,6 @@ export const PynForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // let myForm = document.getElementById('myForm');
     const formData = new FormData();
     formData.append('title', title)
     formData.append('image', image)
@@ -27,7 +26,7 @@ export const PynForm = () => {
     // for (let pair of formData.entries()) {
     //   console.log(`${pair[0]}, ${pair[1]}`);}
 
-    const newPyn = await dispatch(creatingPyns(formData))
+    const newPyn = dispatch(creatingPyns(formData))
 
     if (newPyn.errors) {
       setErrors([...newPyn.errors])

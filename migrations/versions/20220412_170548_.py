@@ -1,7 +1,7 @@
-"""empty message
+c"""empty message
 
 Revision ID: bb2ad87383f9
-Revises: 
+Revises:
 Create Date: 2022-04-12 17:05:48.561193
 
 """
