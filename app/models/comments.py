@@ -12,3 +12,12 @@ class Comment(db.Model):
 
   users = db.relationship('User', back_populates='comments')
   pyns = db.relationship('Pyn', back_populates='comments',)
+
+
+def to_dict(self):
+  return {
+    'id': self.id,
+    'user_id': self.user_id,
+    'content': self.content,
+    'created_at': self.created_at
+  }

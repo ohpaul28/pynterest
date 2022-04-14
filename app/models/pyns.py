@@ -23,11 +23,13 @@ class Pyn(db.Model):
       'user_id': self.user_id,
       'board_id': self.board_id,
       'title': self.title,
-      'img_url': self.img_url
+      'img_url': self.img_url,
+      'comments': {comment.id:comment.to_dict() for comment in self.comments}
     }
 
   def home_to_dict(self):
     return {
       'id': self.id,
-      'img_url': self.img_url
+      'img_url': self.img_url,
+      'comments': len(self.comments)
     }

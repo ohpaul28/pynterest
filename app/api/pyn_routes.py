@@ -22,7 +22,7 @@ def pyns():
   pyns = Pyn.query.all()
   return {
     'pyns': [pyn.home_to_dict() for pyn in pyns]
-  }
+}
 
 
 # get one pyn

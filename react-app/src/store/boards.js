@@ -52,7 +52,7 @@ async dispatch => {
 
 export const readingBoards = () =>
 async dispatch => {
-  const res = await fetch('/api/boards')
+  const res = await fetch('/api/boards/')
   if (res.ok) {
     const boards = await res.json();
     dispatch(readAllBoards(boards))
@@ -93,7 +93,7 @@ export default function boardReducer(state = {}, action) {
       return newState;
     }
     case READ_ALL_BOARDS: {
-      action.payload.forEach(board => newState[board.id] = board)
+      action.payload.boards.forEach(board => newState[`${board.id}`] = board)
       return newState;
     }
     case UPDATED_BOARD: {

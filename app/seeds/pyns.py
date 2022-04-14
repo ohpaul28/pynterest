@@ -4,12 +4,12 @@ from random import randint
 fake = Faker()
 
 def seed_pyns():
-  for i in range(1, 451):
+  for i in range(1, 101):
     pyns = Pyn(
       user_id=randint(1, 50),
       board_id=randint(1, 150),
       title=fake.sentence(3),
-      img_url=fake.image_url()
+      img_url=fake.image_url(500, 500)
     )
     db.session.add(pyns)
   db.session.commit()

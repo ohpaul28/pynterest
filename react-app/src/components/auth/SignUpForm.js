@@ -24,8 +24,6 @@ const SignUpForm = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-    // console.log('\n\n\n\n\n\nPASSWORD',password,'PASSWORD\n\n\n\n\n\n\n')
-    // console.log('\n\n\n\n\n\nCONFIRMPASSWORD',confirmPassword,'CONFIRMPASSWORD\n\n\n\n\n\n\n')
     if (password === confirmPassword) {
       const data = dispatch(signUp(firstName, lastName, email, password, confirmPassword));
       if (data) {
