@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 
-import LogoutButton from '../auth/LogoutButton'
 import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
 import styles from './NavBar.module.css'
@@ -12,6 +11,7 @@ import { Boards } from '../HomepageLI/tabs/Boards';
 import UsersList from '../UsersList';
 
 import { showModal, setCurrentModal } from '../../store/modal';
+import { ProfileDropdown } from '../ProfileDropdown';
 
 
 const NavBar = ({ setSelected }) => {
@@ -81,7 +81,7 @@ const NavBar = ({ setSelected }) => {
           </div>
         </div>
         <div className={styles.nav_right}>
-
+          <ProfileDropdown setSelected={setSelected}/>
         </div>
       </nav>
     )
