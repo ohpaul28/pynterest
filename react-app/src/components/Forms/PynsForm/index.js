@@ -34,8 +34,6 @@ export const PynForm = () => {
 
 
     dispatch(creatingPyns(formData))
-    history.push('/pyns')
-
   }
 
   const updateImage = e => {

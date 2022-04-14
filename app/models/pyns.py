@@ -33,3 +33,5 @@ class Pyn(db.Model):
       'img_url': self.img_url,
       'comments': len(self.comments)
     }
+
+  

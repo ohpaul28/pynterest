@@ -81,16 +81,32 @@ def delete_pyn(id):
 # update a pyn
 @pyn_routes.route('/<int:id>', methods=['PUT'])
 def update_pyn(id):
+
+  if 'image' not in request.files:
+    return {'errors': 'image required'}, 400
+
+  image = request.files['image']
+
+  if not allowed_file(image.filename):
+    return {'errors': 'file type not permitted'}, 400
+
+  image.filename = get_unique_filename(image.filename)
+
+  upload = upload_file_to_s3(image)
+
+  if 'url' not in upload:
+    return upload, 400
+
+  url = upload['url']
+
   form = PynForm()
   form['csrf_token'].data = request.cookies['csrf_token']
   if form.validate_on_submit():
     pyn = Pyn.query.get(id)
-    pyn.user_id = request.json['user_id']
+    pyn.user_id = current_user.id
     pyn.board_id = request.json['user_id']
-    # pyn.title = form.data['title']
-    # pyn.img_url = form.data['img_url']
     pyn.title = request.json['title']
-    pyn.img_url = request.json['img_url']
+    pyn.img_url = url
 
     db.session.commit()
 
