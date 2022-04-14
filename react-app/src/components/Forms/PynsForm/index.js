@@ -12,12 +12,8 @@ export const PynForm = () => {
   const [title, setTitle] = useState('')
   const [image, setImage] = useState(null)
   const [errors, setErrors] = useState([])
-  // const [disabled, setDisabled] = useState(False)
   const sessionUser = useSelector(state => state.session.user)
-  // useEffect(() => {
 
-
-  // }, [title, image])
 
 
 
@@ -32,16 +28,14 @@ export const PynForm = () => {
     // console.log(formData.entries())
     // for (let pair of formData.entries()) {
     //   console.log(`${pair[0]}, ${pair[1]}`);}
-    if (!title && image) setErrors(['Please provide a title'])
-    if (!image && title) setErrors(['Please select an image'])
-    if (!image && !title) setErrors(['Please provide a title', 'Please select an image'])
+    if (!title && image) return setErrors(['Please provide a title'])
+    if (!image && title) return setErrors(['Please select an image'])
+    if (!image && !title) return setErrors(['Please provide a title', 'Please select an image'])
 
-    if (errors) {
-      return
-    } else {
-      dispatch(creatingPyns(formData))
-      history.push('/pyns')
-    }
+
+    dispatch(creatingPyns(formData))
+    history.push('/pyns')
+
   }
 
   const updateImage = e => {
