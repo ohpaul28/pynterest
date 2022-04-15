@@ -31,7 +31,7 @@ class Board(db.Model):
       'id': self.id,
       'user_id': self.user_id,
       'title': self.title,
-      'pyns': self.pyns,
+      'pyns': {pyn.id:pyn.id for pyn in self.pyns},
       'pynslength': len(self.pyns),
       'created_at': self.created_at
     }

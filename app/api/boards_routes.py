@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import Board, db
+from app.models import Board, db, Pyn
 
 
 board_routes= Blueprint('boards', __name__)
@@ -35,6 +35,19 @@ def updateBoard(id):
   return {
     'updatedBoard': board.id
   }
+
+@board_routes.route('/<int:id>/addToBoard', methods=['PUT'])
+def addToBoard(id):
+  addedPyn = request.json['pynId']
+  board = Board.query.get(id)
+  pyn = Pyn.query.get(int(addedPyn))
+  board.pyns.append(pyn)
+  db.session.commit()
+
+  return {
+    'updatedBoard': board.to_dict_full()
+  }
+
 
 
 @board_routes.route('/<int:id>', methods=['DELETE'])

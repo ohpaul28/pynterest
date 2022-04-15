@@ -113,3 +113,6 @@ def update_pyn(id):
     return pyn.to_dict()
 
   return {'errors': error_generator(form.errors)}
+
+
+@pyn_routes.route('/<int:id>/')

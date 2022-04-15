@@ -56,7 +56,7 @@ const NavBar = ({ setSelected }) => {
           <div className={styles.login} onClick={showLoginForm}>
             Log in
           </div>
-          <div clasName={styles.signup} onClick={showSignUpForm}>
+          <div className={styles.signup} onClick={showSignUpForm}>
             Sign up
           </div>
         </div>

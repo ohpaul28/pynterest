@@ -22,7 +22,7 @@ class Pyn(db.Model):
     return {
       'id': self.id,
       'user_id': self.user_id,
-      'board_id': self.board_id,
+      'board': {board.id:board.id for board in self.boards},
       'title': self.title,
       'img_url': self.img_url,
       'comments': {comment.id:comment.to_dict() for comment in self.comments}
