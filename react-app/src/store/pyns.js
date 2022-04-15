@@ -38,7 +38,7 @@ const deletePyn = (payload) => {
 //thunks for pyns
 export const creatingPyns = (data) =>
 async dispatch => {
-  const res = await fetch('/api/pyns', {
+  const res = await fetch('/api/pyns/', {
     method: 'POST',
     body: data
   });
@@ -55,7 +55,7 @@ async dispatch => {
 
 export const readingAllPyns = () =>
 async dispatch => {
-  const res = await fetch('/api/pyns')
+  const res = await fetch('/api/pyns/')
   if (res.ok) {
     const pyns = await res.json();
     dispatch(readAllPynsHome(pyns))
@@ -65,7 +65,7 @@ async dispatch => {
 
 export const updatingPyn = (formData) =>
 async dispatch => {
-  const res = await fetch(`/api/pyns/${formData.id}`, {
+  const res = await fetch(`/api/pyns/${formData.id}/`, {
     method: 'PUT',
     body: JSON.stringify(formData)
   })
@@ -81,7 +81,7 @@ async dispatch => {
 
 export const deletingPyn = (id) =>
 async dispatch => {
-  const res = await fetch(`/api/pyns/${id}`, {
+  const res = await fetch(`/api/pyns/${id}/`, {
     method: 'DELETE'
   })
   const removedPyn = await res.json();
