@@ -54,7 +54,7 @@ def upload_pyn():
   url = upload['url']
 
   new_pyn = Pyn(
-    user_id = current_user.id,
+    user_id = request.form['user_id'],
     board_id = request.form['board_id'],
     title = request.form['title'],
     img_url = url
