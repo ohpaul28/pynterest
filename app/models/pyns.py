@@ -1,4 +1,5 @@
 from .db import db
+from .boards import pyn_board
 
 class Pyn(db.Model):
   __tablename__ = 'pyns'
@@ -13,7 +14,7 @@ class Pyn(db.Model):
 
 
   users = db.relationship('User', back_populates='pyns')
-  boards = db.relationship('Board', back_populates='pyns')
+  boards = db.relationship('Board', secondary=pyn_board, back_populates='pyns')
   comments = db.relationship('Comment', back_populates='pyns', cascade='all, delete-orphan')
 
 
@@ -33,5 +34,3 @@ class Pyn(db.Model):
       'img_url': self.img_url,
       'comments': len(self.comments)
     }
-
-  
