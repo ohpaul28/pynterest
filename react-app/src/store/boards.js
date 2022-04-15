@@ -38,7 +38,7 @@ const deleteBoard = (payload) => {
 
 export const creatingBoard = (data) =>
 async dispatch => {
-  const res = await fetch('/api/boards', {
+  const res = await fetch('/api/boards/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -62,7 +62,7 @@ async dispatch => {
 
 export const updatingBoard = (data) =>
 async dispatch => {
-  const res = await fetch(`/api/boards/${data.id}`, {
+  const res = await fetch(`/api/boards/${data.id}/`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -75,7 +75,7 @@ async dispatch => {
 
 export const deletingBoard = (data) =>
 async dispatch => {
-  const res = await fetch(`/api/boards/${data}`, {
+  const res = await fetch(`/api/boards/${data}/`, {
     method: 'DELETE'
   })
   const removedBoard = await res.json();
