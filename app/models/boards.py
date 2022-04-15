@@ -19,3 +19,12 @@ class Board(db.Model):
       'user_id': self.user_id,
       'title': self.title,
     }
+
+  def to_dict_full(self):
+    return {
+      'id': self.id,
+      'user_id': self.user_id,
+      'title': self.title,
+      'pynslength': len(self.pyns),
+      'created_at': self.created_at
+    }

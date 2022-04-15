@@ -1,37 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
 
-function User() {
-  const [user, setUser] = useState({});
-  const { userId }  = useParams();
 
-  useEffect(() => {
-    if (!userId) {
-      return;
-    }
-    (async () => {
-      const response = await fetch(`/api/users/${userId}`);
-      const user = await response.json();
-      setUser(user);
-    })();
-  }, [userId]);
-
-  if (!user) {
-    return null;
-  }
-
+export const User = ({ user }) => {
   return (
-    <ul>
-      <li>
-        <strong>User Id</strong> {userId}
-      </li>
-      <li>
-        <strong>Username</strong> {user.username}
-      </li>
-      <li>
-        <strong>Email</strong> {user.email}
-      </li>
-    </ul>
+    <div>
+      <div>
+        <strong>User Id</strong> {user?.id}
+      </div>
+      <div>
+        <strong>First Name</strong> {user?.first_name}
+      </div>
+      <div>
+        <strong>Last Name</strong> {user?.last_name}
+      </div>
+      <div>
+        <strong>Email</strong> {user?.email}
+      </div>
+    </div>
   );
 }
-export default User;

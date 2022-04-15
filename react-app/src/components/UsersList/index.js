@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { User } from '../User'
 
-function UsersList() {
+function UsersList({ setSelected }) {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -15,9 +15,9 @@ function UsersList() {
 
   const userComponents = users.map((user) => {
     return (
-      <li key={user.id}>
-        <NavLink to={`/users/${user.id}`}>{user.username}</NavLink>
-      </li>
+      <div onClick={() => setSelected(<User user={user}/>)}>
+        {user.first_name}{user.last_name}
+      </div>
     );
   });
 
