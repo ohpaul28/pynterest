@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
-import {useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import { creatingPyns } from '../../../store/pyns'
 import styles from './PynsForm.module.css'
-// import { useEffect } from 'react';
 
 
 export const PynForm = () => {
-  const history = useHistory();
   const dispatch = useDispatch();
   const [title, setTitle] = useState('')
   const [image, setImage] = useState(null)

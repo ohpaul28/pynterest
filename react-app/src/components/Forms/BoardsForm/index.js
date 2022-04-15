@@ -1,6 +1,6 @@
-import React from 'react';
-import {useDispatch} from 'react-redux';
-import {creatingBoard} from '../../../store/boards'
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { creatingBoard } from '../../../store/boards'
 import styles from './BoardsForm.module.css'
 
 
@@ -26,7 +26,7 @@ export const BoardForm = () => {
   return (
     <>
       <h2>Create board</h2>
-      <form>
+      <form className={styles.form}>
         <input
         type='text'
         value={title}

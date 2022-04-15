@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import styles from "./ProfileDropdown.module.css";
 import LogoutButton from "../auth/LogoutButton"
@@ -20,7 +20,7 @@ export const ProfileDropdown = ({ setSelected }) => {
 	});
 
 	const goToProfile = () => {
-    setSelected(<User />)
+    setSelected(<User user={sessionUser}/>)
 		setShowBox(false);
 		return;
 	};
@@ -33,20 +33,20 @@ export const ProfileDropdown = ({ setSelected }) => {
 			<div className={styles.profileIconContainer} onClick={openBox}>
         <i className="fa fa-angle-down"></i>
 			</div>
-			{showBox && (
-				<div id="profile_dropdown" className={styles.dropdown} onClick={(e) => e.stopPropagation()}>
-					<div>
-            Currently in
+        {showBox && (
+          <div id="profile_dropdown" className={styles.dropdown} onClick={(e) => e.stopPropagation()}>
+            <div>
+              Currently in
+            </div>
+            <div>
+              {sessionUser.last_name[0].toUpperCase()}
+            </div>
+            <div>
+              {sessionUser.last_name}{sessionUser.first_name}
+            </div>
+            <LogoutButton />
           </div>
-          <div>
-            {sessionUser.last_name[0].toUpperCase()}
-          </div>
-          <div>
-            {sessionUser.last_name}{sessionUser.first_name}
-          </div>
-					<LogoutButton />
-				</div>
-			)}
+        )}
 		</div>
 	);
 };

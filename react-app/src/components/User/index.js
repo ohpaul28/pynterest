@@ -5,16 +5,16 @@ export const User = ({ user }) => {
   return (
     <div>
       <div>
-        <strong>User Id</strong> {user.id}
+        <strong>User Id</strong> {user?.id}
       </div>
       <div>
-        <strong>First Name</strong> {user.first_name}
+        <strong>First Name</strong> {user?.first_name}
       </div>
       <div>
-        <strong>Last Name</strong> {user.last_name}
+        <strong>Last Name</strong> {user?.last_name}
       </div>
       <div>
-        <strong>Email</strong> {user.email}
+        <strong>Email</strong> {user?.email}
       </div>
     </div>
   );

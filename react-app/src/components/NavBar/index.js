@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 
 import LoginForm from '../auth/LoginForm';
@@ -67,12 +66,12 @@ const NavBar = ({ setSelected }) => {
     return (
       <nav>
         <div className={styles.nav_left}>
-          <NavLink to='/'
-          exact={true}
+          <div
+          onClick={() => pynsTab()}
           className={styles.home}>
             {logo}
             Pynterest
-          </NavLink>
+          </div>
           <div>
             Explore:
             <div onClick={() => pynsTab()}>Pyns</div>
