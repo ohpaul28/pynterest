@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import SelectedContext from '../context/selectedContext';
 import { User } from '../User'
 
-function UsersList({ setSelected }) {
+function UsersList() {
   const [users, setUsers] = useState([]);
+  const { setSelected } = useContext(SelectedContext)
 
   useEffect(() => {
     async function fetchData() {
@@ -24,7 +26,7 @@ function UsersList({ setSelected }) {
   return (
     <>
       <h1>User List: </h1>
-      <ul>{userComponents}</ul>
+      <div>{userComponents}</div>
     </>
   );
 }

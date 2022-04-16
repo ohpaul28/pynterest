@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { readingBoards } from '../../store/boards';
 import styles from './HomepageLI.module.css';
 import { showModal, setCurrentModal } from '../../store/modal';
 import { BoardForm } from '../Forms/BoardsForm';
 import { PynForm } from '../Forms/PynsForm';
+import SelectedContext from '../context/selectedContext';
 
 
 
-export const HomepageLI = ({ selected }) => {
+export const HomepageLI = () => {
   const dispatch = useDispatch();
   const [showBox, setShowBox] = useState(false);
-  dispatch(readingBoards())
+  const { selected } = useContext(SelectedContext)
 
   const openBox = () => setShowBox(!showBox)
 

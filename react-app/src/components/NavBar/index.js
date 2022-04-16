@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
 import styles from './NavBar.module.css'
+import SelectedContext from '../context/selectedContext';
 
 import { Pyns } from '../HomepageLI/tabs/Pyns';
 import { Boards } from '../HomepageLI/tabs/Boards';
@@ -13,14 +14,15 @@ import { showModal, setCurrentModal } from '../../store/modal';
 import { ProfileDropdown } from '../ProfileDropdown';
 
 
-const NavBar = ({ setSelected }) => {
+const NavBar = () => {
   const sessionUser = useSelector(state => state.session.user)
   const logo = "LOGO"
+  const { setSelected } = useContext(SelectedContext)
 
   const dispatch = useDispatch()
 
   const pynsTab = () => {
-    setSelected(<Pyns setSelected={setSelected}/>)
+    setSelected(<Pyns />)
   }
 
   const boardsTab = () => {
@@ -28,7 +30,7 @@ const NavBar = ({ setSelected }) => {
   }
 
   const usersTab = () => {
-    setSelected(<UsersList setSelected={setSelected}/>)
+    setSelected(<UsersList />)
   }
 
 

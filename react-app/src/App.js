@@ -12,6 +12,8 @@ import { Pyns } from './components/HomepageLI/tabs/Pyns';
 
 import { authenticate } from './store/session';
 import { readingAllPyns } from './store/pyns'
+import { readingBoards } from './store/boards';
+import { SelectedProvider } from './components/context/selectedContext';
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
     (async() => {
       await dispatch(authenticate());
       await dispatch(readingAllPyns());
+      await dispatch(readingBoards())
       setLoaded(true);
     })();
   }, [dispatch]);
@@ -33,16 +36,18 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar setSelected={setSelected}/>
-      <Modal />
-      <Switch>
-        <ProtectedRoute path='/' exact={true}>
-          <HomepageLI selected={selected}/>
-        </ProtectedRoute>
-        <Route path='/' exact={true}>
-          <h1>Splash</h1>
-        </Route>
-      </Switch>
+      <SelectedProvider value={{'selected': selected, 'setSelected': setSelected}}>
+        <NavBar />
+        <Modal />
+        <Switch>
+          <ProtectedRoute path='/' exact={true}>
+            <HomepageLI selected={selected}/>
+          </ProtectedRoute>
+          <Route path='/' exact={true}>
+            <h1>Splash</h1>
+          </Route>
+        </Switch>
+      </SelectedProvider>
     </BrowserRouter>
   );
 }
