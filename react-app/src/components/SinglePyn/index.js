@@ -3,7 +3,8 @@ import styles from './SinglePyn.module.css'
 
 
 
-export const SinglePyn = () => {
+export const SinglePyn = ({ pyn }) => {
+
 
 
   return (
@@ -15,13 +16,21 @@ export const SinglePyn = () => {
         <div className={styles.image}>
           Image goes here
         </div>
+        <div className={styles.top_right}>
+          <div>
+            {pyn.title}
+          </div>
+          <div>
+            Add to Board <span><i className="fa fa-angle-down"></i></span>
+          </div>
+        </div>
         <div className={styles.interactions}>
           <a href={pyn.img_url} download={`${pyn.title}.jpg`}>
             <i className="fa fa-download"></i>
           </a>
-          <i className="fa fa-share"></i>
-          
+          <i className="fa fa-link"></i>
         </div>
+
       </div>
     </div>
   )

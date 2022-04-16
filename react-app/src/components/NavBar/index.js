@@ -20,7 +20,7 @@ const NavBar = ({ setSelected }) => {
   const dispatch = useDispatch()
 
   const pynsTab = () => {
-    setSelected(<Pyns />)
+    setSelected(<Pyns setSelected={setSelected}/>)
   }
 
   const boardsTab = () => {

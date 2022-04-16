@@ -85,3 +85,29 @@ async dispatch => {
     return deleted.id
   }
 }
+
+
+export default function commentReducer(state = {}, action) {
+  const newState= {...state}
+
+  switch (action.type) {
+    case CREATED_COMMENT: {
+      newState[action.payload?.id] = action.payload
+      return newState
+    }
+    case READ_PYN_COMMENTS: {
+      action.payload?.comments.forEach((comment) => newState[comment.id] = comment)
+      return newState
+    }
+    case UPDATED_COMMENT: {
+      newState[action.payload?.id] = action.payload
+      return newState
+    }
+    case DELETED_COMMENT: {
+      delete newState[action.payload]
+      return newState
+    }
+    default:
+      return state
+  }
+}

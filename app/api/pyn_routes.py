@@ -2,7 +2,6 @@ from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import Pyn, db
 from app.awsS3 import upload_file_to_s3, allowed_file, get_unique_filename
-from app.forms.pyn_form import PynForm
 
 
 pyn_routes = Blueprint('pyns', __name__)
@@ -21,8 +20,16 @@ def error_generator(validation_errors):
 def pyns():
   pyns = Pyn.query.all()
   return {
-    'pyns': [pyn.to_dict() for pyn in pyns]
+    'pyns': [pyn.home_to_dict() for pyn in pyns]
 }
+
+#get all full pyns
+@pyn_routes.route('/fullpyns')
+def allPyns():
+  pyns = Pyn.query.all()
+  return {
+    'pyns': [pyn.to_dict() for pyn in pyns]
+  }
 
 
 # get one pyn

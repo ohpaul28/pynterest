@@ -1,18 +1,25 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
+import { SinglePyn } from '../../SinglePyn';
 
 
 
-export const Pyns = () => {
+export const Pyns = ({ setSelected }) => {
   const pyns = Object.values(useSelector(state => state.pyns))
-  // console.log(pyns[0].comments)
-  
+  const onClick = async (pynId) => {
+    const res = await fetch(`/api/pyns/${pynId}`)
+    if (res.ok) {
+      const pyn = await res.json()
+      setSelected(<SinglePyn pyn={pyn}/>)
+    }
+  }
+
 
   return (
     <>
     <div>
       {pyns.map(pyn => (
-        <div>
+        <div onClick={onClick(pyn.id)}>
           <img src={pyn.img_url} alt=""/>
         </div>
       ))}
