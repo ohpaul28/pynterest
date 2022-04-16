@@ -15,7 +15,7 @@ class Pyn(db.Model):
 
   users = db.relationship('User', back_populates='pyns')
   boards = db.relationship('Board', secondary=pyn_board, back_populates='pyns')
-  comments = db.relationship('Comment', back_populates='pyns', cascade='all, delete-orphan')
+  comments = db.relationship('Comment', backref='pyns', cascade='all, delete-orphan')
 
 
   def to_dict(self):
@@ -25,11 +25,9 @@ class Pyn(db.Model):
       'title': self.title,
       'img_url': self.img_url,
       'description': self.description,
-      'boards': [b.to_id() for b in self.boards]
+      'boards': [b.to_id() for b in self.boards],
+      'comments': [c.to_id() for c in self.comments]
     }
-
-
-
 
   def home_to_dict(self):
     return {

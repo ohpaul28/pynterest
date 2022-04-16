@@ -84,3 +84,6 @@ def update_pyn(id):
   pyn = Pyn.query.get(id)
   pyn.title = request.json['title']
   pyn.description = request.json['description']
+  db.session.commit()
+
+  return pyn.to_dict()
