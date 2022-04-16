@@ -10,7 +10,7 @@ export const Pyns = ({ setSelected }) => {
     const res = await fetch(`/api/pyns/${pynId}`)
     if (res.ok) {
       const pyn = await res.json()
-      setSelected(<SinglePyn pyn={pyn}/>)
+      // setSelected(<SinglePyn pyn={pyn}/>)
     }
   }
 
