@@ -2,6 +2,8 @@ const CREATED_BOARD = '/boards/createdBoard'
 const READ_ALL_BOARDS = '/boards/readAllBoards'
 const UPDATED_BOARD = '/boards/updatedBoard'
 const DELETED_BOARD = '/boards/deletedBoard'
+const UNPYNNED_BOARD = '/boards/unpynnedBoard'
+const PYNNED_TO_BOARD = '/boards/pynnedToBoard'
 
 
 //action creators for pyns
@@ -29,6 +31,20 @@ const updateBoard = (payload) => {
 const deleteBoard = (payload) => {
   return {
     type: DELETED_BOARD,
+    payload
+  }
+}
+
+const unpynBoard = (payload) => {
+  return {
+    type: UNPYNNED_BOARD,
+    payload
+  }
+}
+
+const pynToBoard = (payload) => {
+  return {
+    type: PYNNED_TO_BOARD,
     payload
   }
 }
@@ -83,6 +99,30 @@ async dispatch => {
   return removedBoard
 }
 
+export const unpynningFromBoard = (id) =>
+async dispatch => {
+  const res = await fetch(`/api/boards/${id}/removeFromBoard/`, {
+    method: 'PUT'
+  })
+
+  const updatedBoard = await res.json();
+  dispatch(unpynBoard(updatedBoard));
+  return updatedBoard
+
+}
+
+export const pynningToBoard = (id) =>
+async dispatch => {
+  const res = await fetch(`/api/boards/${id}/addToBoard/`, {
+    method: 'PUT'
+  })
+
+  const updatedBoard = await res.json();
+  dispatch(pynToBoard(updatedBoard));
+  return updatedBoard
+
+}
+
 
 export default function boardReducer(state = {}, action) {
   const newState = {...state}
@@ -102,6 +142,14 @@ export default function boardReducer(state = {}, action) {
     }
     case DELETED_BOARD: {
       delete newState[action.payload]
+      return newState;
+    }
+    case PYNNED_TO_BOARD: {
+      newState[action.payload?.id] = action.payload
+      return newState;
+    }
+    case UNPYNNED_BOARD: {
+      newState[action.payload?.id] = action.payload
       return newState;
     }
     default:

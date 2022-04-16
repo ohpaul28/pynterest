@@ -1,9 +1,9 @@
 from .db import db
 
 pyn_board = db.Table(
-  'pyn_board',
-  db.Column('pyn_id', db.ForeignKey('pyns.id'), primary_key=True),
-  db.Column('board_id', db.ForeignKey('boards.id'), primary_key=True)
+  'pyn_board', db.Model.metadata,
+  db.Column('pyn_id', db.Integer, db.ForeignKey('pyns.id'), primary_key=True),
+  db.Column('board_id', db.Integer, db.ForeignKey('boards.id'), primary_key=True)
 )
 
 class Board(db.Model):
@@ -31,7 +31,10 @@ class Board(db.Model):
       'id': self.id,
       'user_id': self.user_id,
       'title': self.title,
-      'pyns': {pyn.id:pyn.id for pyn in self.pyns},
+      'pyns': [pyn.to_id() for pyn in self.pyns],
       'pynslength': len(self.pyns),
       'created_at': self.created_at
     }
+
+  def to_id(self):
+    return self.id

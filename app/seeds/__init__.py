@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .boards import seed_boards, undo_boards
 from .pyns import seed_pyns, undo_pyns
 from .comments import seed_comments, undo_comments
+from .pyn_board import seed_pyn_board, undo_seed_pyn_board
 
 
 # Creates a seed group to hold our commands
@@ -17,6 +18,7 @@ def seed():
     seed_boards()
     seed_pyns()
     seed_comments()
+    seed_pyn_board()
     # Add other seed functions here
 
 
@@ -27,4 +29,5 @@ def undo():
     undo_boards()
     undo_pyns()
     undo_comments()
+    undo_seed_pyn_board()
     # Add other undo functions here
