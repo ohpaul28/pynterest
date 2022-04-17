@@ -27,8 +27,10 @@ export const ProfileDropdown = ({ setSelected }) => {
 
 	return (
 		<div className={styles.profileOuterContainer}>
-      <div className={styles.profile_page_redirect} onClick={goToProfile}>
-        {sessionUser.last_name[0].toUpperCase()}
+      <div className={styles.profileOuter}>
+        <div className={styles.profile_page_redirect} onClick={() => goToProfile()}>
+          {sessionUser.last_name[0].toUpperCase()}
+        </div>
       </div>
 			<div className={styles.profileIconContainer} onClick={openBox}>
         <i className="fa fa-angle-down"></i>

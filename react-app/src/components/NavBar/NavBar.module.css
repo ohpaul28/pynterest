@@ -71,3 +71,54 @@
   width: 8.3rem;
   font-size: 1.5em;
 }
+
+.explore {
+  display: flex;
+  align-items: center;
+  width: 18rem;
+  height: 4.8rem;
+  padding-left: .7rem;
+}
+
+
+.logo_in {
+  height: 3.2rem;
+  width: 3.2rem;
+}
+
+.logo_in:hover {
+  cursor: pointer;
+}
+
+.nav_left_in {
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+}
+
+.pynTab {
+  padding: 1rem;
+  border-radius: 2.2rem;
+}
+
+.boardTab {
+  padding: 1rem;
+  border-radius: 2.2rem;
+}
+
+.userTab{
+  padding: 1rem;
+  border-radius: 2.2rem;
+}
+
+.pynTab:hover {
+  cursor: pointer;
+}
+
+.boardTab:hover {
+  cursor: pointer;
+}
+
+.userTab:hover {
+  cursor: pointer;
+}
