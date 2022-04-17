@@ -17,9 +17,17 @@ Bold: 700
 Default: 24px
 
 */
-
+* {
+}
 
 html {
   /* Convert 1rem to 10px */
   font-size: 62.5%;
+  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+}
+
+body {
+  margin: 0px;
 }

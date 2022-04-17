@@ -14,7 +14,7 @@ export const SinglePyn = ({ pyn }) => {
       </div>
       <div className={styles.container}>
         <div className={styles.image}>
-          Image goes here
+          <img src={`${pyn.img_url}`} alt=""/>
         </div>
         <div className={styles.top_right}>
           <div>
