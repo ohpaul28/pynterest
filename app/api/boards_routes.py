@@ -17,8 +17,8 @@ def boards():
 @board_routes.route('/', methods=['POST'])
 def createBoard():
   new_board = Board(
-    user_id = current_user.id,
-    title = request.form['title'],
+    user_id = request.json['user_id'],
+    title = request.json['title']
   )
 
   db.session.add(new_board)
