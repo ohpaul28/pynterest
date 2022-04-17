@@ -46,15 +46,19 @@ const NavBar = () => {
 
   if (!sessionUser) {
     return (
-      <nav>
+      <nav className={styles.nav_container}>
         <div className={styles.nav_left}>
-          {logo}
-          Pynterest
+          <img className={styles.logo} src="https://i.pinimg.com/originals/d3/d1/75/d3d175e560ae133f1ed5cd4ec173751a.png" alt=""/>
+          <div className={styles.name}>
+            Pynterest
+          </div>
         </div>
         <div className={styles.nav_right}>
-          <div>Github</div>
-          <div>Linkedin</div>
-          <div>Original</div>
+          <div className={styles.profile_links}>
+            <div className={styles.github}>Github</div>
+            <div className={styles.linkedin}>Linkedin</div>
+            <div className={styles.original}>Original</div>
+          </div>
           <div className={styles.login} onClick={showLoginForm}>
             Log in
           </div>
