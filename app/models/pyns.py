@@ -26,7 +26,7 @@ class Pyn(db.Model):
       'img_url': self.img_url,
       'description': self.description,
       'boards': [b.to_id() for b in self.boards],
-      'comments': [c.to_id() for c in self.comments]
+      'comments': [c.to_dict() for c in self.comments]
     }
 
   def home_to_dict(self):

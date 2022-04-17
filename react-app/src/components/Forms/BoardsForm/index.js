@@ -11,15 +11,16 @@ export const BoardForm = () => {
   const [title, setTitle] = useState('');
   const [disabled, setDisabled] = useState(true);
 
-  if (title) setDisabled(false)
+  if (!title) setDisabled(false)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     const formData = new FormData();
     formData.append('title', title)
     formData.append('user_id', sessionUser.id)
+    // console.log(JSON.stringify(formData))
+    console.log('\n\n\n\n\n', 'handling submit', '\n\n\n\n\n')
 
-    dispatch(creatingBoard(formData))
+    await dispatch(creatingBoard(formData))
   }
 
 
@@ -29,10 +30,9 @@ export const BoardForm = () => {
       <form className={styles.form}>
         <input
         type='text'
-        value={title}
         placeholder='Like "Places to go" or "Recipes to Make"'
         onChange={() => setTitle(title)}/>
-        <div disabled={disabled} onClick={handleSubmit}>Create</div>
+        <div disabled={disabled} onClick={() => handleSubmit()}>Create</div>
       </form>
     </>
   )

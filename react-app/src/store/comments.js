@@ -87,7 +87,7 @@ async dispatch => {
 }
 
 
-export default function commentReducer(state = {}, action) {
+export default function commentsReducer(state = {}, action) {
   const newState= {...state}
 
   switch (action.type) {

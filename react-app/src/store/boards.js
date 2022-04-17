@@ -54,6 +54,7 @@ const pynToBoard = (payload) => {
 
 export const creatingBoard = (data) =>
 async dispatch => {
+  // console.log(JSON.stringify(data))
   const res = await fetch('/api/boards/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
