@@ -1,4 +1,4 @@
-.createContainer {
-  /* position: relative; */
-
+.selectedContainer {
+  height: 100vh;
+  width: 100%;
 }
