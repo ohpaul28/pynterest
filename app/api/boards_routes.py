@@ -13,12 +13,18 @@ def boards():
     'boards': [board.to_dict_full() for board in boards]
   }
 
+@board_routes.route('/<int:userId>')
+def userBoards(userId):
+  boards = Board.query.filter(Board.user_id == int(userId))
+  filtered = [b.to_dict() for b in boards]
+  return {'boards': [b for b in filtered]}
+
 
 @board_routes.route('/', methods=['POST'])
 def createBoard():
   new_board = Board(
     user_id = request.json['user_id'],
-    title = request.json['title'],
+    title = request.json['title']
   )
 
   db.session.add(new_board)

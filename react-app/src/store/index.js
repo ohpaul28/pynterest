@@ -4,12 +4,14 @@ import session from './session'
 import modals from './modal'
 import boardsReducer from './boards'
 import pynsReducer from './pyns'
+import commentsReducer from './comments'
 
 const rootReducer = combineReducers({
   session,
   modals,
   boards: boardsReducer,
   pyns: pynsReducer,
+  comments: commentsReducer
 });
 
 
