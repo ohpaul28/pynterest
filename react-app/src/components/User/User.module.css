@@ -97,10 +97,18 @@
   padding-left: .5rem;
 }
 
+.boardsDisplay {
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  padding-top: 40rem;
+}
+
 .singleBoardContainer {
   display: flex;
-  height: 25.2rem;
-  width: 23.6rem;
+  flex-direction: column;
+  height: 23.6rem;
+  width: 26.2rem;
 }
 
 .multipleImageContainer {
@@ -108,21 +116,103 @@
   align-self: flex-start;
   width: 100%;
   border-radius: 25px;
+  overflow: hidden;
 }
 
 #board_card {
   position: absolute;
   height: 15.7rem;
   width: 15.7rem;
-  border: 1px solid black;
+  border-radius: 2.5rem;
 }
 
 .infoContainer {
   display: flex;
-  align-self: flex-end;
   flex-direction: column;
+  width: 100%;
+  margin-top: 15.7rem;
+  margin-left: 1rem;
 }
 
 .lengthAge {
+  display: flex;
+  padding: .5rem;
+  width: fit-content;
+}
 
+.lengthAge div {
+  font-size: 1.2rem;
+  font-weight: 100;
+  margin: 0 .2rem 0 .2rem;
+}
+
+.age {
+  color: gray;
+}
+
+
+.image1 {
+  z-index: 105;
+  position: absolute;
+  height: 15.7rem;
+  width: 15.7rem;
+  border: 1px solid white;
+  overflow: hidden;
+  border-radius: 2.5rem;
+}
+
+.image2 {
+  z-index: 104;
+  margin-left: 2.5rem;
+  position: absolute;
+  height: 15.7rem;
+  width: 15.7rem;
+  border: 1px solid white;
+  overflow: hidden;
+  border-radius: 2.5rem;
+}
+
+.image3 {
+  z-index:103;
+  margin-left: 5rem;
+  position: absolute;
+  height: 15.7rem;
+  width: 15.7rem;
+  border: 1px solid white;
+  overflow: hidden;
+  border-radius: 2.5rem;
+}
+
+.image4 {
+  z-index:102;
+  margin-left: 7.5rem;
+  position: absolute;
+  height: 15.7rem;
+  width: 15.7rem;
+  border: 1px solid white;
+  overflow: hidden;
+  border-radius: 2.5rem;
+}
+
+.image5 {
+  z-index:101;
+  margin-left: 10rem;
+  position: absolute;
+  height: 15.7rem;
+  width: 15.7rem;
+  border: 1px solid white;
+  overflow: hidden;
+  border-radius: 2.5rem;
+}
+
+.title {
+  font-size: 2rem;
+  padding-top: 1rem;
+}
+
+.deleteEdit {
+  height: 2rem;
+  width: 5rem;
+  display: flex;
+  justify-content: space-between;
 }

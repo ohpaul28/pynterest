@@ -6,6 +6,8 @@ import { showModal, setCurrentModal } from '../../store/modal';
 import SelectedContext from '../context/selectedContext';
 import styles from './User.module.css';
 import { convertToDayAge } from './ConversionHelper';
+import { Edit, Delete } from '../Icons'
+import {deletingBoard} from '../../store/boards'
 
 export const User = ({ user }) => {
   const sessionUser = useSelector(state => state.session.user)
@@ -27,6 +29,18 @@ export const User = ({ user }) => {
 		return () => document.removeEventListener("click", closeBox);
 	});
 
+  const onDelete = (boardId) => {
+    let result = window.confirm('Wait! Are you sure you want to delete this board?')
+    if (result) {
+      dispatch(deletingBoard(boardId))
+    }
+  }
+
+  const onEdit = () => {
+    dispatch(setCurrentModal())
+    dispatch(showModal())
+  }
+
   const showPynForm = () => {
     dispatch(setCurrentModal(PynForm))
     dispatch(showModal())
@@ -34,6 +48,11 @@ export const User = ({ user }) => {
 
   const showBoardForm = () => {
     dispatch(setCurrentModal(BoardForm))
+    dispatch(showModal())
+  }
+
+  const selectBoard = () => {
+    dispatch(setCurrentModal())
     dispatch(showModal())
   }
 
@@ -71,6 +90,9 @@ export const User = ({ user }) => {
         </div>
       </div>
       )}
+      <div>
+
+      </div>
       <div className={styles.boardsDisplay}>
         {user.boards.map(board => (
           <div className={styles.singleBoardContainer}>
@@ -85,7 +107,7 @@ export const User = ({ user }) => {
                 </div>
 
                 <div className={styles.image3}>
-                  <img src={pyns[board['pyns'][2]] ? pyns[board['pyns'][0]].img_url: "https://i.imgur.com/qi4yOMV.png"} alt="" id={styles.board_card}/>
+                  <img src={pyns[board['pyns'][2]] ? pyns[board['pyns'][0]].img_url : "https://i.imgur.com/qi4yOMV.png"} alt="" id={styles.board_card}/>
                 </div>
 
                 <div className={styles.image4}>
@@ -98,13 +120,23 @@ export const User = ({ user }) => {
 
             </div>
             <div className={styles.infoContainer}>
-              <div>
+              <div className={styles.title}>
                 {board.title}
               </div>
               <div className={styles.lengthAge}>
                 <div>{board['pyns'].length} Pyns</div>
-                <div>{convertToDayAge(board['created_at'])}</div>
+                <div className={styles.age}>{convertToDayAge(board['created_at'])}</div>
               </div>
+
+              <div className={styles.deleteEdit}>
+                <div onClick={() => onDelete()}>
+                  <Delete />
+                </div>
+                <div onClick={() => onEdit()}>
+                  <Edit />
+                </div>
+              </div>
+
             </div>
           </div>
         ))}

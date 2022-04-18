@@ -84,7 +84,6 @@ export const signUp = (first_name, last_name, email, password, confirmPassword) 
       confirm_password: confirmPassword
     }),
   });
-  // console.log('\n\n\n\n\n\n', response.json(), '\n\n\n\n\n\n')
 
   if (response.ok) {
     const data = await response.json();
