@@ -96,3 +96,33 @@
 .boxTitle {
   padding-left: .5rem;
 }
+
+.singleBoardContainer {
+  display: flex;
+  height: 25.2rem;
+  width: 23.6rem;
+}
+
+.multipleImageContainer {
+  display: flex;
+  align-self: flex-start;
+  width: 100%;
+  border-radius: 25px;
+}
+
+#board_card {
+  position: absolute;
+  height: 15.7rem;
+  width: 15.7rem;
+  border: 1px solid black;
+}
+
+.infoContainer {
+  display: flex;
+  align-self: flex-end;
+  flex-direction: column;
+}
+
+.lengthAge {
+
+}

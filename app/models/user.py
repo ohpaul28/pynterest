@@ -35,5 +35,5 @@ class User(db.Model, UserMixin):
             'first_name': self.first_name,
             'last_name': self.last_name,
             'email': self.email,
-            'boards': [b.to_dict() for b in self.boards]
+            'boards': [b.to_dict_full() for b in self.boards]
         }

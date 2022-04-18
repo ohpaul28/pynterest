@@ -1,18 +1,20 @@
 import React, {useEffect, useState, useContext} from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { BoardForm } from '../Forms/BoardsForm';
 import { PynForm } from '../Forms/PynsForm';
 import { showModal, setCurrentModal } from '../../store/modal';
 import SelectedContext from '../context/selectedContext';
 import styles from './User.module.css';
+import { convertToDayAge } from './ConversionHelper';
 
 export const User = ({ user }) => {
+  const sessionUser = useSelector(state => state.session.user)
+  const pyns = useSelector(state => state.pyns)
+  // const pynIdArr = useSelector(state => state.boards[user.id])
   const dispatch = useDispatch();
   const [showBox, setShowBox] = useState(false);
   const {selected} = useContext(SelectedContext)
-  // const fetchRequest = fetch(`/api/boards/${user.id}`)
-  // const boards = await fetchRequest.json()
-  // console.log(boards)
+
 
   const openBox = () => setShowBox(!showBox);
 
@@ -49,7 +51,8 @@ export const User = ({ user }) => {
           <strong>{user?.email}</strong>
         </div>
       </div>
-      <div className={styles.createContainer}>
+      {sessionUser.id === user.id && (
+        <div className={styles.createContainer}>
         <div onClick={openBox} className={styles.innerCreateContainer}>
           <div className={styles.createBox}>
             +
@@ -67,8 +70,44 @@ export const User = ({ user }) => {
             )}
         </div>
       </div>
+      )}
       <div className={styles.boardsDisplay}>
+        {user.boards.map(board => (
+          <div className={styles.singleBoardContainer}>
+            <div className={styles.multipleImageContainer}>
 
+                <div className={styles.image1}>
+                  <img src={pyns[board['pyns'][0]] ? pyns[board['pyns'][0]].img_url : "https://i.imgur.com/qi4yOMV.png"} alt="" id={styles.board_card}/>
+                </div>
+
+                <div className={styles.image2}>
+                  <img src={pyns[board['pyns'][1]] ? pyns[board['pyns'][0]].img_url : "https://i.imgur.com/qi4yOMV.png"} alt="" id={styles.board_card}/>
+                </div>
+
+                <div className={styles.image3}>
+                  <img src={pyns[board['pyns'][2]] ? pyns[board['pyns'][0]].img_url: "https://i.imgur.com/qi4yOMV.png"} alt="" id={styles.board_card}/>
+                </div>
+
+                <div className={styles.image4}>
+                  <img src={pyns[board['pyns'][3]] ? pyns[board['pyns'][0]].img_url : "https://i.imgur.com/qi4yOMV.png"} alt="" id={styles.board_card}/>
+                </div>
+
+                <div className={styles.image5}>
+                  <img src={pyns[board['pyns'][4]] ? pyns[board['pyns'][4]].img_url : "https://i.imgur.com/qi4yOMV.png"} alt="" id={styles.board_card}/>
+                </div>
+
+            </div>
+            <div className={styles.infoContainer}>
+              <div>
+                {board.title}
+              </div>
+              <div className={styles.lengthAge}>
+                <div>{board['pyns'].length} Pyns</div>
+                <div>{convertToDayAge(board['created_at'])}</div>
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
