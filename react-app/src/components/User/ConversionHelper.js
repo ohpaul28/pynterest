@@ -11,5 +11,5 @@ export const convertToDayAge = (dateObj) => {
   if (month > 0) return `${month}m`
   if (day > 0) return `${day}d`
   if (hour > 0) return `${hour}h`
-  if (minute > 0) return `${minute}m}`
+  if (minute > 0) return `${minute}m`
 }
