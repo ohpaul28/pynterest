@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../store/session";
 import { setCurrentModal, hideModal } from "../../store/modal";
@@ -13,6 +13,7 @@ const SignUpForm = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
+  const [disabled, setDisabled] = useState(true)
 	const dispatch = useDispatch();
 
 	const loginDemo = async (e) => {
@@ -22,14 +23,34 @@ const SignUpForm = () => {
 		dispatch(hideModal());
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
+  useEffect(() => {
+    if (!firstName) {
+      errors.push('First name is required')
+    }
+    if (!lastName) {
+      errors.push('Last name is required')
+    }
+    if (!email) {
+      errors.push('Email is required')
+    }
+    if (password !== confirmPassword) {
+      errors.push('Password must match')
+    }
+    else {
+      setErrors([])
+      setDisabled(false)
+    }
+  }, [firstName, lastName, email, password, confirmPassword])
+
+
+	const handleSubmit = () => {
+    // if (password === confirmPassword ? )
     if (password === confirmPassword) {
       const data = dispatch(signUp(firstName, lastName, email, password, confirmPassword));
+      dispatch(hideModal());
       if (data) {
         return setErrors(data);
       }
-      dispatch(hideModal());
     }
 	};
 
@@ -100,6 +121,7 @@ const SignUpForm = () => {
 				<div
 					className={styles.div_button}
 					onClick={handleSubmit}
+          disabled={disabled}
 				>
 					Sign Up
 				</div>
