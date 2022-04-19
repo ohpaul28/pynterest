@@ -14,7 +14,7 @@ const removeUser = () => ({
 const initialState = { user: null };
 
 export const authenticate = () => async (dispatch) => {
-  console.log('\n\n\n\n\n\n', 'hitting authenticate thunk', '\n\n\n\n\n\n')
+
   const response = await fetch('/api/auth/', {
     headers: {
       'Content-Type': 'application/json'
