@@ -21,7 +21,7 @@ class Comment(db.Model):
       'pyn_id': self.pyn_id,
       'content': self.content,
       'created_at': self.created_at,
-      'user': self.users.to_dict(),
+      'user': self.users.to_comment_dict(),
     }
 
   def to_id(self):

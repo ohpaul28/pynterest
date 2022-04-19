@@ -14,6 +14,7 @@ import { authenticate } from './store/session';
 import { readingAllPyns } from './store/pyns'
 import { readingBoards } from './store/boards';
 import { SelectedProvider } from './components/context/selectedContext';
+import { gettingUsers } from './store/users';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
       await dispatch(authenticate());
       await dispatch(readingAllPyns());
       await dispatch(readingBoards())
+      await dispatch(gettingUsers())
       setLoaded(true);
     })();
   }, [dispatch]);

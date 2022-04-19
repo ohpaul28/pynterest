@@ -16,7 +16,7 @@
 
 .pageContainer {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(5, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -40,7 +40,7 @@
 .top_right {
   display: flex;
   justify-content: flex-end;
-  width: 23rem;
+  width: 15rem;
 }
 
 .left {
@@ -53,7 +53,9 @@
 
 .interactions {
   display: flex;
-  width: 8rem;
+  width: 6rem;
+  height: fit-content;
+  justify-content: space-between;
 }
 
 .download {
@@ -71,4 +73,22 @@
   height: 3.6rem;
   width: 3.6rem;
   padding-top: -.5rem;
+}
+
+.deletebtn {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.editbtn {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.editForm {
+  position: absolute;
+  z-index: 130;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
 }

@@ -75,7 +75,7 @@ async dispatch => {
 
 export const readingBoards = () =>
 async dispatch => {
-  const res = await fetch('/api/boards/')
+  const res = await fetch('/api/boards')
   if (res.ok) {
     const boards = await res.json();
     dispatch(readAllBoards(boards))

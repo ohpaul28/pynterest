@@ -109,6 +109,8 @@
   flex-direction: column;
   height: 23.6rem;
   width: 26.2rem;
+  margin-right: 1rem;
+  /* border: 1px solid black; */
 }
 
 .multipleImageContainer {
@@ -132,6 +134,7 @@
   width: 100%;
   margin-top: 15.7rem;
   margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 
 .lengthAge {

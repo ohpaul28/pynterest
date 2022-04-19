@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {useSelector, useDispatch} from 'react-redux';
 import styles from './SinglePyn.module.css'
-import { useState, useEffect } from 'react';
+import deleteIcon from '../Icons/delete.svg';
+import editIcon from '../Icons/edit.svg';
+import { deletingPyn, updatingPyn } from '../../store/pyns';
+import { EditPynForm } from '../Forms/EditPynForm';
 
 
 
 export const SinglePyn = ({ pyn }) => {
   const [users, setUsers] = useState([]);
+  const sessionUser = useSelector(state => state.session.user)
+  const dispatch = useDispatch()
   // const { setSelected } = useContext(SelectedContext)
 
   useEffect(() => {
@@ -16,6 +22,17 @@ export const SinglePyn = ({ pyn }) => {
     }
     fetchData();
   }, []);
+
+  const onDelete = (pynId) => {
+    let result = window.confirm('Wait! Are you sure you want to delete this Pyn?')
+    if (result) {
+      dispatch(deletingPyn(pynId))
+    }
+  }
+
+  const onEdit = () => {
+
+  }
 
 
   return (
@@ -30,14 +47,16 @@ export const SinglePyn = ({ pyn }) => {
         <div className={styles.right}>
           <div className={styles.top}>
             <div className={styles.interactions}>
-              <div className={styles.options}>
-                ...
-              </div>
-              <div className={styles.download}>
-                <a href={pyn.img_url} download={`${pyn.title}.jpg`}>
-                  <i className="fa fa-download"></i>
-                </a>
-              </div>
+              {/* {pyn.user_id === sessionUser.id && */}
+              <>
+                <div onClick={() => onDelete(pyn.id)}>
+                  <img className={styles.deletebtn} src={deleteIcon} alt=""/>
+                </div>
+                <div onClick={() => onEdit(pyn.id)}>
+                  <img className={styles.editbtn} src={editIcon} alt=""/>
+                </div>
+              </>
+               {/* } */}
             </div>
             <div className={styles.top_right}>
               Add to Board <span><i className="fa fa-angle-down"></i></span>
@@ -72,6 +91,10 @@ export const SinglePyn = ({ pyn }) => {
               ))}
             </div>
           </div>
+        </div>
+        <div className={styles.editForm}>
+          <h2>Edit This Pyn</h2>
+            <EditPynForm pyn={pyn}/>
         </div>
       </div>
     </div>

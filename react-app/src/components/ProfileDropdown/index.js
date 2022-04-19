@@ -20,7 +20,7 @@ export const ProfileDropdown = ({ setSelected }) => {
 	});
 
 	const goToProfile = () => {
-    setSelected(<User user={sessionUser}/>)
+    setSelected(<User userId={sessionUser.id}/>)
 		setShowBox(false);
 		return;
 	};

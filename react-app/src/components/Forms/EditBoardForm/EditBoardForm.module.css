@@ -1,0 +1,11 @@
+.confirmEdit {
+  height: 2.4rem;
+  width: 2.4rem;
+  border: 1px solid black;
+  border-left: none;
+}
+
+.form {
+  display: flex;
+
+}

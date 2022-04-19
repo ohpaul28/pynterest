@@ -36,4 +36,10 @@ class Pyn(db.Model):
     }
 
   def to_id(self):
-    return self.id
+    return {
+    'id': self.id,
+    'img_url': self.img_url,
+    'title': self.title,
+    'comments': [c.to_dict() for c in self.comments],
+    'user_id': self.user_id,
+    }

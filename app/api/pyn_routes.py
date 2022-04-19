@@ -24,12 +24,12 @@ def pyns():
 }
 
 #get all full pyns
-@pyn_routes.route('/fullpyns')
-def allPyns():
-  pyns = Pyn.query.all()
-  return {
-    'pyns': [pyn.to_dict() for pyn in pyns]
-  }
+# @pyn_routes.route('/boardpyns/<int:boardId>')
+# def allPyns(boardId):
+#   pyns = Pyn.query.filter(boardId in Pyn.boards)
+#   return {
+#     'pyns': [pyn.to_dict() for pyn in pyns]
+#   }
 
 
 # get one pyn
@@ -89,6 +89,7 @@ def delete_pyn(id):
 @pyn_routes.route('/<int:id>', methods=['PUT'])
 def update_pyn(id):
   pyn = Pyn.query.get(id)
+  print(request.json)
   pyn.title = request.json['title']
   pyn.description = request.json['description']
   db.session.commit()
