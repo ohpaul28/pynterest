@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import styles from './SinglePyn.module.css'
 import deleteIcon from '../Icons/delete.svg';
 import editIcon from '../Icons/edit.svg';
-import { deletingPyn, updatingPyn } from '../../store/pyns';
+import { deletingPyn} from '../../store/pyns';
 import { EditPynForm } from '../Forms/EditPynForm';
 
 
 
 export const SinglePyn = ({ pyn }) => {
-  const [users, setUsers] = useState([]);
+  // const [users, setUsers] = useState([]);
   const sessionUser = useSelector(state => state.session.user)
   const dispatch = useDispatch()
   // const { setSelected } = useContext(SelectedContext)
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('/api/users/');
-      const responseData = await response.json();
-      setUsers(responseData.users);
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch('/api/users/');
+  //     const responseData = await response.json();
+  //     setUsers(responseData.users);
+  //   }
+  //   fetchData();
+  // }, []);
 
   const onDelete = (pynId) => {
     let result = window.confirm('Wait! Are you sure you want to delete this Pyn?')
@@ -92,10 +92,12 @@ export const SinglePyn = ({ pyn }) => {
             </div>
           </div>
         </div>
+        {sessionUser.id === pyn.user_id &&
         <div className={styles.editForm}>
           <h2>Edit This Pyn</h2>
             <EditPynForm pyn={pyn}/>
         </div>
+        }
       </div>
     </div>
   )

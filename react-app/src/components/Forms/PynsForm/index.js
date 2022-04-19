@@ -48,8 +48,13 @@ export const PynForm = () => {
         <div>{error}</div>
       ))}
     </div>
-    <select>
-      <option></option>
+    <select
+    value={boardId}
+    onChange={e => setBoardId(e.target.value)}
+    required>
+      {sessionUser.boards.forEach(board => (
+        <option value={board.id}>{board.title}</option>
+      ))}
     </select>
     <form id="myForm">
       <input type='file'

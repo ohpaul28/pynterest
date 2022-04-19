@@ -46,10 +46,6 @@ export const User = ({ userId }) => {
     setSelectedBoard(id)
   }
 
-  const onEdit = (board) => {
-    setSelected(<EditBoardForm board={board}/>)
-  }
-
   const showPynForm = () => {
     dispatch(setCurrentModal(PynForm))
     dispatch(showModal())

@@ -1,6 +1,6 @@
 const CREATED_BOARD = '/boards/createdBoard'
 const READ_ALL_BOARDS = '/boards/readAllBoards'
-const READ_USER_BOARDS = '/boards/readUserBoards'
+// const READ_USER_BOARDS = '/boards/readUserBoards'
 const UPDATED_BOARD = '/boards/updatedBoard'
 const DELETED_BOARD = '/boards/deletedBoard'
 const UNPYNNED_BOARD = '/boards/unpynnedBoard'
@@ -22,12 +22,12 @@ const readAllBoards = (payload) => {
   }
 }
 
-const readUserBoards = (payload) => {
-  return {
-    type: READ_USER_BOARDS,
-    payload
-  }
-}
+// const readUserBoards = (payload) => {
+//   return {
+//     type: READ_USER_BOARDS,
+//     payload
+//   }
+// }
 
 const updateBoard = (payload) => {
   return {

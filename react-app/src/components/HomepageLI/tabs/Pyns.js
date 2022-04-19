@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import {useSelector} from 'react-redux';
 import { SinglePyn } from '../../SinglePyn';
 import SelectedContext from '../../context/selectedContext';
-import {readingPynComments} from '../../../store/comments';
+// import {readingPynComments} from '../../../store/comments';
 
 
 
@@ -10,7 +10,7 @@ import {readingPynComments} from '../../../store/comments';
 export const Pyns = () => {
   const pyns = Object.values(useSelector(state => state.pyns))
   const { setSelected } = useContext(SelectedContext)
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
 
   const onClick = async (pynId) => {
