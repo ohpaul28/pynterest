@@ -14,13 +14,15 @@ const removeUser = () => ({
 const initialState = { user: null };
 
 export const authenticate = () => async (dispatch) => {
-  const response = await fetch('/api/auth', {
+
+  const response = await fetch('/api/auth/', {
     headers: {
       'Content-Type': 'application/json'
     }
   });
   if (response.ok) {
     const data = await response.json();
+    console.log('\n\n\n\n\n\n', data.errors, '\n\n\n\n\n\n')
     if (data.errors) {
       return;
     }
@@ -77,18 +79,18 @@ export const signUp = (first_name, last_name, email, password, confirmPassword) 
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      first_name,
-      last_name,
-      email,
-      password,
+      first_name: first_name,
+      last_name: last_name,
+      email: email,
+      password: password,
       confirm_password: confirmPassword
     }),
   });
-  // console.log('\n\n\n\n\n\n', response.json(), '\n\n\n\n\n\n')
 
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
+    console.log('\n\n\n\n\n', 'hitting signUp thunk')
     return null;
   } else if (response.status < 500) {
     const data = await response.json();
@@ -103,6 +105,7 @@ export const signUp = (first_name, last_name, email, password, confirmPassword) 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
+      console.log('\n\n\n\n\n\n\n\n',action.payload,'SESSION REDUCER')
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }

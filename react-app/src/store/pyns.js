@@ -65,8 +65,9 @@ async dispatch => {
 
 export const updatingPyn = (formData) =>
 async dispatch => {
-  const res = await fetch(`/api/pyns/${formData.id}/`, {
+  const res = await fetch(`/api/pyns/${formData.id}`, {
     method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData)
   })
   const update = await res.json()
@@ -81,11 +82,11 @@ async dispatch => {
 
 export const deletingPyn = (id) =>
 async dispatch => {
-  const res = await fetch(`/api/pyns/${id}/`, {
+  const res = await fetch(`/api/pyns/${id}`, {
     method: 'DELETE'
   })
   const removedPyn = await res.json();
-  dispatch(deletePyn(removedPyn));
+  dispatch(deletePyn(id));
   return removedPyn
 }
 
@@ -99,7 +100,6 @@ export default function reducer(state = {}, action) {
     }
     case READ_ALL_PYNS_HOME: {
       action.payload.pyns.forEach(pyn => newState[`${pyn.id}`] = pyn)
-      // newState['test'] = action.payload
       return newState
     }
     case UPDATED_PYN: {

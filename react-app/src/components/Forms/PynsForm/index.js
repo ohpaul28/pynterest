@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { creatingPyns } from '../../../store/pyns'
+import { pynningToBoard } from '../../../store/boards';
 import styles from './PynsForm.module.css'
 
 
@@ -8,6 +9,7 @@ export const PynForm = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('')
   const [image, setImage] = useState(null)
+  const [boardId, setBoardId] = useState('')
   const [errors, setErrors] = useState([])
   const sessionUser = useSelector(state => state.session.user)
 
@@ -20,7 +22,6 @@ export const PynForm = () => {
     formData.append('title', title)
     formData.append('image', image)
     formData.append('user_id', sessionUser.id)
-    formData.append('board_id', 1)
     // console.log(image)
     // console.log(formData.entries())
     // for (let pair of formData.entries()) {
@@ -31,6 +32,7 @@ export const PynForm = () => {
 
 
     dispatch(creatingPyns(formData))
+    dispatch(pynningToBoard(boardId))
   }
 
   const updateImage = e => {
@@ -46,6 +48,9 @@ export const PynForm = () => {
         <div>{error}</div>
       ))}
     </div>
+    <select>
+      <option></option>
+    </select>
     <form id="myForm">
       <input type='file'
               accept='image/*'

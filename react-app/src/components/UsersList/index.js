@@ -1,21 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { useSelector } from 'react-redux';
+import SelectedContext from '../context/selectedContext';
 import { User } from '../User'
 
-function UsersList({ setSelected }) {
-  const [users, setUsers] = useState([]);
+function UsersList() {
+  // const [users, setUsers] = useState([]);
+  const users = Object.values(useSelector(state => state.users))
+  const { setSelected } = useContext(SelectedContext)
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch('/api/users/');
-      const responseData = await response.json();
-      setUsers(responseData.users);
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch('/api/users/');
+  //     const responseData = await response.json();
+  //     setUsers(responseData.users);
+  //   }
+  //   fetchData();
+  // }, []);
 
   const userComponents = users.map((user) => {
     return (
-      <div onClick={() => setSelected(<User user={user}/>)}>
+      <div onClick={() => setSelected(<User userId={user.id}/>)}>
         {user.first_name}{user.last_name}
       </div>
     );
@@ -24,7 +28,7 @@ function UsersList({ setSelected }) {
   return (
     <>
       <h1>User List: </h1>
-      <ul>{userComponents}</ul>
+      <div>{userComponents}</div>
     </>
   );
 }

@@ -1,18 +1,33 @@
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, { useContext } from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import { SinglePyn } from '../../SinglePyn';
+import SelectedContext from '../../context/selectedContext';
+import {readingPynComments} from '../../../store/comments';
+
 
 
 
 export const Pyns = () => {
   const pyns = Object.values(useSelector(state => state.pyns))
-  // console.log(pyns[0].comments)
-  
+  const { setSelected } = useContext(SelectedContext)
+  const dispatch = useDispatch();
+
+
+  const onClick = async (pynId) => {
+    const res = await fetch(`/api/pyns/${pynId}`)
+
+    if (res.ok) {
+      const pyn = await res.json()
+      setSelected(<SinglePyn pyn={pyn}/>)
+    }
+  }
+
 
   return (
     <>
     <div>
       {pyns.map(pyn => (
-        <div>
+        <div onClick={() => onClick(pyn.id)}>
           <img src={pyn.img_url} alt=""/>
         </div>
       ))}

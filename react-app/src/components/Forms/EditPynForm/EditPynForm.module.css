@@ -1,0 +1,4 @@
+.editPynForm {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,49 @@
+.profileOuterContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7.2rem;
+}
+
+.profile_page_redirect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background-color: #d0d0d0;
+  font-size: .8rem;
+}
+
+.profileOuter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+}
+
+.profileOuter:hover {
+  background-color: #d0d0d0;
+  cursor: pointer;
+}
+
+.dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown:hover {
+  cursor: pointer;
+}
+
+.profileIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+}

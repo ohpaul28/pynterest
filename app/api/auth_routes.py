@@ -63,7 +63,6 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        # print('\n\n\n\n\n\n', 'MADE IT TO API ROUTE', '\n\n\n\n\n\n\n')
         user = User(
             first_name=form.data['first_name'],
             last_name=form.data['last_name'],

@@ -1,0 +1,94 @@
+.container {
+  grid-area: 1 / 2 / 4 / 5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 50rem;
+  width: 90rem;
+  overflow: hidden;
+  border-radius: 26px;
+  box-shadow: 0 0 1.5rem rgb(220, 215, 215);
+}
+
+.backButton {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.pageContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 35rem;
+  padding-left: 2rem;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  height: 4rem;
+  padding-top: 3rem;
+}
+
+.top_right {
+  display: flex;
+  justify-content: flex-end;
+  width: 15rem;
+}
+
+.left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 45rem;
+
+}
+
+.interactions {
+  display: flex;
+  width: 6rem;
+  height: fit-content;
+  justify-content: space-between;
+}
+
+.download {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.6rem;
+  width: 3.6rem;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3.6rem;
+  width: 3.6rem;
+  padding-top: -.5rem;
+}
+
+.deletebtn {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.editbtn {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.editForm {
+  position: absolute;
+  z-index: 130;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
