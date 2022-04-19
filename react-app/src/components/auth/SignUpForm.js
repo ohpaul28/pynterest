@@ -77,14 +77,9 @@ const SignUpForm = () => {
 
 
 	const handleSubmit = () => {
-    // if (password === confirmPassword ? )
-    // if (password === confirmPassword) {
+    if(disabled) return;
       dispatch(signUp(firstName, lastName, email, password, confirmPassword));
       dispatch(hideModal());
-      // if (data) {
-        // return setErrors(data);
-      // }
-    // }
 	};
 
 	const showLoginForm = () => {
@@ -150,7 +145,7 @@ const SignUpForm = () => {
 				</div>
 				<div
 					className={styles.div_button}
-					onClick={disabled && handleSubmit}
+					onClick={handleSubmit}
 				>
 					Sign Up
 				</div>

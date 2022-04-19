@@ -116,7 +116,7 @@
   align-self: flex-start;
   width: 100%;
   border-radius: 25px;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 #board_card {
@@ -157,7 +157,7 @@
   height: 15.7rem;
   width: 15.7rem;
   border: 1px solid white;
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 2.5rem;
 }
 
@@ -168,7 +168,7 @@
   height: 15.7rem;
   width: 15.7rem;
   border: 1px solid white;
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 2.5rem;
 }
 
@@ -179,7 +179,7 @@
   height: 15.7rem;
   width: 15.7rem;
   border: 1px solid white;
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 2.5rem;
 }
 
@@ -190,7 +190,7 @@
   height: 15.7rem;
   width: 15.7rem;
   border: 1px solid white;
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 2.5rem;
 }
 
@@ -201,7 +201,7 @@
   height: 15.7rem;
   width: 15.7rem;
   border: 1px solid white;
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 2.5rem;
 }
 
@@ -215,4 +215,17 @@
   width: 5rem;
   display: flex;
   justify-content: space-between;
+  position: absolute;
+  margin-left: 19rem;
+  margin-top: 4rem;
+}
+
+.deleteContainer {
+  height: 2rem;
+  width: 2rem;
+}
+
+.editContainer {
+  height: 2rem;
+  width: 2rem;
 }

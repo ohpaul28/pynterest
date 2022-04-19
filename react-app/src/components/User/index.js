@@ -6,8 +6,10 @@ import { showModal, setCurrentModal } from '../../store/modal';
 import SelectedContext from '../context/selectedContext';
 import styles from './User.module.css';
 import { convertToDayAge } from './ConversionHelper';
-import { Edit, Delete } from '../Icons'
-import {deletingBoard} from '../../store/boards'
+import {deletingBoard} from '../../store/boards';
+import grayBackground from '../../images/qi4yOMV.png';
+import deleteIcon from '../Icons/delete.svg';
+import editIcon from '../Icons/edit.svg';
 
 export const User = ({ user }) => {
   const sessionUser = useSelector(state => state.session.user)
@@ -99,23 +101,23 @@ export const User = ({ user }) => {
             <div className={styles.multipleImageContainer}>
 
                 <div className={styles.image1}>
-                  <img src={pyns[board['pyns'][0]] ? pyns[board['pyns'][0]].img_url : "https://i.imgur.com/qi4yOMV.png"} alt="" id={styles.board_card}/>
+                  <img src={pyns[board['pyns'][0]] ? pyns[board['pyns'][0]].img_url : grayBackground} alt="" id={styles.board_card}/>
                 </div>
 
                 <div className={styles.image2}>
-                  <img src={pyns[board['pyns'][1]] ? pyns[board['pyns'][0]].img_url : "https://i.imgur.com/qi4yOMV.png"} alt="" id={styles.board_card}/>
+                  <img src={pyns[board['pyns'][1]] ? pyns[board['pyns'][0]].img_url : grayBackground} alt="" id={styles.board_card}/>
                 </div>
 
                 <div className={styles.image3}>
-                  <img src={pyns[board['pyns'][2]] ? pyns[board['pyns'][0]].img_url : "https://i.imgur.com/qi4yOMV.png"} alt="" id={styles.board_card}/>
+                  <img src={pyns[board['pyns'][2]] ? pyns[board['pyns'][0]].img_url : grayBackground} alt="" id={styles.board_card}/>
                 </div>
 
                 <div className={styles.image4}>
-                  <img src={pyns[board['pyns'][3]] ? pyns[board['pyns'][0]].img_url : "https://i.imgur.com/qi4yOMV.png"} alt="" id={styles.board_card}/>
+                  <img src={pyns[board['pyns'][3]] ? pyns[board['pyns'][0]].img_url : grayBackground} alt="" id={styles.board_card}/>
                 </div>
 
                 <div className={styles.image5}>
-                  <img src={pyns[board['pyns'][4]] ? pyns[board['pyns'][4]].img_url : "https://i.imgur.com/qi4yOMV.png"} alt="" id={styles.board_card}/>
+                  <img src={pyns[board['pyns'][4]] ? pyns[board['pyns'][4]].img_url : grayBackground} alt="" id={styles.board_card}/>
                 </div>
 
             </div>
@@ -127,16 +129,16 @@ export const User = ({ user }) => {
                 <div>{board['pyns'].length} Pyns</div>
                 <div className={styles.age}>{convertToDayAge(board['created_at'])}</div>
               </div>
-
-              <div className={styles.deleteEdit}>
-                <div onClick={() => onDelete()}>
-                  <Delete />
+                {board.user_id === sessionUser.id && (
+                <div className={styles.deleteEdit}>
+                  <div className={styles.deleteContainer} onClick={() => onDelete(board.id)}>
+                    <img src={deleteIcon} alt="" />
+                  </div>
+                  <div className={styles.editContainer} onClick={() => onEdit()}>
+                    <img src={editIcon} alt="" />
+                  </div>
                 </div>
-                <div onClick={() => onEdit()}>
-                  <Edit />
-                </div>
-              </div>
-
+                )}
             </div>
           </div>
         ))}
