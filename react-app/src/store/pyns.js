@@ -1,5 +1,6 @@
 //actions for pyns
 const CREATED_PYN = '/pyns/createdPyn'
+const READ_ONE_PYN = '/pyns/readOnePyn'
 const READ_ALL_PYNS_HOME = '/pyns/readAllPyns'
 const UPDATED_PYN = '/pyns/updatedPyn'
 const DELETED_PYN = '/pyns/deletedPyn'
@@ -9,6 +10,13 @@ const DELETED_PYN = '/pyns/deletedPyn'
 const createPyn = (payload) => {
   return {
     type: CREATED_PYN,
+    payload
+  }
+}
+
+const readOnePyn = (payload) => {
+  return {
+    type: READ_ONE_PYN,
     payload
   }
 }
@@ -38,19 +46,29 @@ const deletePyn = (payload) => {
 //thunks for pyns
 export const creatingPyns = (data) =>
 async dispatch => {
-  const res = await fetch('/api/pyns/', {
+  const res = await fetch('/api/pyns', {
     method: 'POST',
     body: data
   });
   const newPyn = await res.json()
-
-  if (newPyn.error) {
-    return newPyn.error
+  if (newPyn.errors) {
+    return Object.values(newPyn.errors)
   } else {
     await dispatch(createPyn(newPyn))
+    // console.log(newPyn)
     return newPyn
   }
 
+}
+
+export const readingOnePyn = (id) =>
+async dispatch => {
+  const res = await fetch(`/api/pyns/${id}`)
+  if (res.ok) {
+    const pyn = await res.json();
+    dispatch(readOnePyn(pyn))
+    return pyn
+  }
 }
 
 export const readingAllPyns = () =>
@@ -102,8 +120,12 @@ export default function reducer(state = {}, action) {
       action.payload.pyns.forEach(pyn => newState[`${pyn.id}`] = pyn)
       return newState
     }
+    case READ_ONE_PYN: {
+      newState[action.payload?.id] = action.payload
+      return newState
+    }
     case UPDATED_PYN: {
-      newState[action.payload.id] = action.payload
+      newState[action.payload?.id] = action.payload
       return newState
     }
     case DELETED_PYN: {

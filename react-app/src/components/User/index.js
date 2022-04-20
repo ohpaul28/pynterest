@@ -16,6 +16,9 @@ import { EditBoardForm } from '../Forms/EditBoardForm';
 export const User = ({ userId }) => {
   const sessionUser = useSelector(state => state.session.user)
   const users = useSelector(state => state.users)
+  const boards = useSelector(state => state.boards)
+  const filteredBoards = Object.values(boards).filter(board => board.user_id === userId)
+
   const dispatch = useDispatch();
   const [showBox, setShowBox] = useState(false);
   const {setSelected} = useContext(SelectedContext)
@@ -70,7 +73,7 @@ export const User = ({ userId }) => {
           <strong>{users[userId]?.email}</strong>
         </div>
       </div>
-      {sessionUser.id === users[userId].id && (
+      {sessionUser?.id === users[userId].id && (
         <div className={styles.createContainer}>
         <div onClick={openBox} className={styles.innerCreateContainer}>
           <div className={styles.createBox}>
@@ -94,28 +97,28 @@ export const User = ({ userId }) => {
 
       </div>
       <div className={styles.boardsDisplay}>
-        {users[userId].boards.map((board, i) => (
+        {filteredBoards?.map((board, i) => (
           <div className={styles.singleBoardContainer}>
             <div className={styles.multipleImageContainer} onClick={() => setSelected(<SingleBoard board={board}/>)}>
 
                 <div className={styles.image1}>
-                  <img src={board['pyns'][0] ? board['pyns'][0].img_url : grayBackground} alt="" id={styles.board_card}/>
+                  <img src={board['pyns'] ? board['pyns'][0] ? board['pyns'][0].img_url : grayBackground : grayBackground} alt="" id={styles.board_card}/>
                 </div>
 
                 <div className={styles.image2}>
-                  <img src={board['pyns'][1] ? board['pyns'][1].img_url : grayBackground} alt="" id={styles.board_card}/>
+                  <img src={board['pyns'] ? board['pyns'][1] ? board['pyns'][1].img_url : grayBackground : grayBackground} alt="" id={styles.board_card}/>
                 </div>
 
                 <div className={styles.image3}>
-                  <img src={board['pyns'][2] ? board['pyns'][2].img_url : grayBackground} alt="" id={styles.board_card}/>
+                  <img src={board['pyns'] ? board['pyns'][2] ? board['pyns'][2].img_url : grayBackground : grayBackground} alt="" id={styles.board_card}/>
                 </div>
 
                 <div className={styles.image4}>
-                  <img src={board['pyns'][3] ? board['pyns'][3].img_url : grayBackground} alt="" id={styles.board_card}/>
+                  <img src={board['pyns'] ? board['pyns'][3] ? board['pyns'][3].img_url : grayBackground : grayBackground} alt="" id={styles.board_card}/>
                 </div>
 
                 <div className={styles.image5}>
-                  <img src={board['pyns'][4] ? board['pyns'][4].img_url : grayBackground} alt="" id={styles.board_card}/>
+                  <img src={board['pyns'] ? board['pyns'][4] ? board['pyns'][4].img_url : grayBackground : grayBackground} alt="" id={styles.board_card}/>
                 </div>
 
             </div>
@@ -124,7 +127,7 @@ export const User = ({ userId }) => {
                 {toggle && (selectedBoard === i) ? <EditBoardForm props={{board, toggle, setToggle}}/> : board.title}
               </div>
               <div className={styles.lengthAge}>
-                <div>{board['pyns'].length} Pyns</div>
+                <div>{board['pyns'] ? board['pyns'].length : 0} Pyns</div>
                 <div className={styles.age}>{convertToDayAge(board['created_at'])}</div>
               </div>
                 {board.user_id === sessionUser.id && (

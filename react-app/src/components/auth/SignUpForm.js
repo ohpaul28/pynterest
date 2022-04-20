@@ -70,14 +70,13 @@ const SignUpForm = () => {
     } else {
       setPasswordError('')
       setDisabled(false)
-      console.log('validations finished')
       return
     }
   }, [firstName, lastName, email, password, confirmPassword])
 
 
 	const handleSubmit = () => {
-    if(disabled) return;
+    if (disabled) return;
       dispatch(signUp(firstName, lastName, email, password, confirmPassword));
       dispatch(hideModal());
 	};

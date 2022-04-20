@@ -4,8 +4,7 @@ import React from 'react';
 
 
 export const SingleBoard = ({ board }) => {
-  // const dispatch = useDispatch();
-  console.log(board.pyns)
+
 
 
   return (

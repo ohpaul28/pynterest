@@ -118,14 +118,15 @@
   align-self: flex-start;
   width: 100%;
   border-radius: 25px;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 #board_card {
-  position: absolute;
+  /* position: absolute; */
   height: 15.7rem;
   width: 15.7rem;
   border-radius: 2.5rem;
+  overflow: hidden;
 }
 
 .infoContainer {
@@ -160,7 +161,7 @@
   height: 15.7rem;
   width: 15.7rem;
   border: 1px solid white;
-  /* overflow: hidden; */
+  overflow: hidden;
   border-radius: 2.5rem;
 }
 
@@ -171,7 +172,7 @@
   height: 15.7rem;
   width: 15.7rem;
   border: 1px solid white;
-  /* overflow: hidden; */
+  overflow: hidden;
   border-radius: 2.5rem;
 }
 
@@ -182,7 +183,7 @@
   height: 15.7rem;
   width: 15.7rem;
   border: 1px solid white;
-  /* overflow: hidden; */
+  overflow: hidden;
   border-radius: 2.5rem;
 }
 
@@ -193,7 +194,7 @@
   height: 15.7rem;
   width: 15.7rem;
   border: 1px solid white;
-  /* overflow: hidden; */
+  overflow: hidden;
   border-radius: 2.5rem;
 }
 
@@ -204,7 +205,7 @@
   height: 15.7rem;
   width: 15.7rem;
   border: 1px solid white;
-  /* overflow: hidden; */
+  overflow: hidden;
   border-radius: 2.5rem;
 }
 

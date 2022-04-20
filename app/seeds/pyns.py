@@ -1,6 +1,6 @@
 from app.models import db, Pyn
 from faker import Faker
-from random import randint
+from random import randint, randrange
 fake = Faker()
 
 def seed_pyns():
@@ -9,7 +9,7 @@ def seed_pyns():
       user_id=randint(1, 50),
       # board_id=randint(1, 150),
       title=fake.sentence(3),
-      img_url='https://picsum.photos/500/600?random',
+      img_url=f'https://picsum.photos/seed/{i}/{randrange(400, 900, 100)}/{randrange(400, 900, 100)}',
       description=fake.sentence(8)
     )
     db.session.add(pyns)
