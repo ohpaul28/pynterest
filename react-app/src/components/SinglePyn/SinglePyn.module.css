@@ -5,10 +5,10 @@
   align-items: flex-start;
   height: 40rem;
   width: 80rem;
-  overflow: hidden;
   border-radius: 26px;
   box-shadow: 0 0 1.5rem rgb(220, 215, 215);
   padding-right: 1rem;
+  overflow: hidden;
 }
 
 .backButtonContainer {
@@ -110,14 +110,20 @@
   width: 40rem;
 }
 
+.comments {
+  height: 22rem;
+  overflow-y: scroll;
+}
+
 .innerComments {
   border-width: 2px;
   border-style: solid;
   border-image: linear-gradient(to right, rgb(241, 202, 202), white) 1;
   border-left: none;
   border-bottom: none;
-  overflow-y: scroll;
   font-size: 1.1rem;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .description {
