@@ -70,7 +70,6 @@ const SignUpForm = () => {
     } else {
       setPasswordError('')
       setDisabled(false)
-      // console.log('validations finished')
       return
     }
   }, [firstName, lastName, email, password, confirmPassword])

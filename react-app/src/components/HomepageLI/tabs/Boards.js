@@ -6,7 +6,6 @@ import styles from './Boards.module.css'
 
 export const Boards = () => {
   const boards = Object.values(useSelector(state => state.boards))
-  // console.log(boards)
 
 
   return (

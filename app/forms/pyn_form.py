@@ -6,7 +6,6 @@ from app.models import Pyn
 
 def image_entered(form, field):
   content = form.data['img_url']
-  # print('\n\nCONTENT ---',content, '\n\n')
   if not content:
     raise ValidationError('Please enter an image URL.')
 

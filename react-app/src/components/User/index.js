@@ -70,7 +70,7 @@ export const User = ({ userId }) => {
           <strong>{users[userId]?.email}</strong>
         </div>
       </div>
-      {sessionUser.id === users[userId].id && (
+      {sessionUser?.id === users[userId].id && (
         <div className={styles.createContainer}>
         <div onClick={openBox} className={styles.innerCreateContainer}>
           <div className={styles.createBox}>

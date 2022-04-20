@@ -42,7 +42,6 @@ def pyn(id):
 # post a pyn
 @pyn_routes.route('/', methods=['POST'])
 def upload_pyn():
-  # print(request.form['id'])
   if 'image' not in request.files:
     return {'errors': 'image required'}, 400
 
@@ -57,9 +56,7 @@ def upload_pyn():
 
   if 'url' not in upload:
     return upload, 400
-
   url = upload['url']
-
   new_pyn = Pyn(
     user_id = request.form['user_id'],
     title = request.form['title'],
@@ -69,7 +66,7 @@ def upload_pyn():
 
   db.session.add(new_pyn)
   db.session.commit()
-  return {'url': url}
+  return new_pyn.to_dict()
 
 
 # delete a pyn
@@ -89,7 +86,6 @@ def delete_pyn(id):
 @pyn_routes.route('/<int:id>', methods=['PUT'])
 def update_pyn(id):
   pyn = Pyn.query.get(id)
-  print(request.json)
   pyn.title = request.json['title']
   pyn.description = request.json['description']
   db.session.commit()

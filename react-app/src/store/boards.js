@@ -100,10 +100,12 @@ async dispatch => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
   })
-
-  const updated = await res.json()
-  if (res.ok) dispatch(updateBoard(updated))
-  return updated
+  if (res.ok) {
+    const updated = await res.json()
+    // console.log('\n\n\n\n', 'hitting res.ok')
+    dispatch(updateBoard(updated))
+    return updated
+  }
 }
 
 export const deletingBoard = (data) =>
@@ -128,10 +130,12 @@ async dispatch => {
 
 }
 
-export const pynningToBoard = (id) =>
+export const pynningToBoard = (data) =>
 async dispatch => {
-  const res = await fetch(`/api/boards/${id}/addToBoard/`, {
-    method: 'PUT'
+  const res = await fetch(`/api/boards/${data.boardId}/addToBoard`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
   })
 
   const updatedBoard = await res.json();
