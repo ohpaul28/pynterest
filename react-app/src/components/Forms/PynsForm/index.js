@@ -1,14 +1,18 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useContext} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { creatingPyns } from '../../../store/pyns'
 import { pynningToBoard } from '../../../store/boards';
 import styles from './PynsForm.module.css'
+import SelectedContext from '../../context/selectedContext';
+import { Pyns } from '../../HomepageLI/tabs/Pyns';
+import { hideModal } from '../../../store/modal'
 
 
 export const PynForm = () => {
   const sessionUser = useSelector(state => state.session?.user)
   const firstRender = useRef(true)
   const dispatch = useDispatch();
+  const { setSelected } = useContext(SelectedContext)
 
   const [title, setTitle] = useState('')
   const [titleError, setTitleError] = useState('')
@@ -83,21 +87,28 @@ export const PynForm = () => {
     formData.append('description', description)
 
 
-    let res = dispatch(creatingPyns(formData))
-    if (res.ok) {
-      const pynBody = {
-        'pynId': res.id,
-        'boardId': boardId
+    dispatch(creatingPyns(formData)).then((response) => {
+      // console.log(response)
+      if (!Array.isArray(response)) {
+        const pynBody = {
+          'pynId': response.id,
+          'boardId': boardId
+        }
+        dispatch(pynningToBoard(pynBody))
+        dispatch(hideModal())
+        setSelected(<Pyns />)
       }
-      dispatch(pynningToBoard(pynBody))
-    }
+    })
+  }
+
+  const handleCancel = () => {
+    // setSelected(<Pyns/>)
+    dispatch(hideModal())
   }
 
   const updateImage = e => {
     const file = e.target.files[0];
-    console.log(file)
     setImage(file)
-    console.log(image)
   }
 
   return (
@@ -135,6 +146,7 @@ export const PynForm = () => {
       <div>{descriptionError}</div>
 
       <div onClick={handleSubmit}>Submit</div>
+      <div onClick={handleCancel}>Cancel</div>
 
     </form>
     </>

@@ -53,9 +53,9 @@ def deleteBoard(id):
 
 @board_routes.route('/<int:id>/addToBoard', methods=['PUT'])
 def addToBoard(id):
-  addedPyn = request.json['pynId']
+  jsonified = request.json
   board = Board.query.get(id)
-  pyn = Pyn.query.get(int(addedPyn))
+  pyn = Pyn.query.get(int(jsonified['pynId']))
   board.pyns.append(pyn)
   db.session.commit()
 

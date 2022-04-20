@@ -43,10 +43,11 @@ async dispatch => {
     body: data
   });
   const newPyn = await res.json()
-  if (newPyn.error) {
-    return newPyn.error
+  if (newPyn.errors) {
+    return Object.values(newPyn.errors)
   } else {
     await dispatch(createPyn(newPyn))
+    // console.log(newPyn)
     return newPyn
   }
 

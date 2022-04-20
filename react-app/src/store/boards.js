@@ -102,7 +102,6 @@ async dispatch => {
   })
   if (res.ok) {
     const updated = await res.json()
-    // console.log('\n\n\n\n', 'hitting res.ok')
     dispatch(updateBoard(updated))
     return updated
   }
