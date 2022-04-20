@@ -113,7 +113,7 @@ async dispatch => {
     method: 'DELETE'
   })
   const removedBoard = await res.json();
-  dispatch(deleteBoard(removedBoard));
+  dispatch(deleteBoard(removedBoard.id));
   return removedBoard
 }
 

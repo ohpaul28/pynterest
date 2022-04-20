@@ -10,6 +10,12 @@ import { hideModal } from '../../../store/modal'
 
 export const PynForm = () => {
   const sessionUser = useSelector(state => state.session?.user)
+  const boards = Object.values(useSelector(state => state.boards)).filter(board => board.user_id === sessionUser.id)
+  const titles = boards.map(board => ({
+    'title': board.title,
+    'id': board.id
+  }))
+  console.log(titles)
   const firstRender = useRef(true)
   const dispatch = useDispatch();
   const { setSelected } = useContext(SelectedContext)
@@ -20,14 +26,13 @@ export const PynForm = () => {
   const [image, setImage] = useState(null)
   const [imageError, setImageError] = useState('')
 
-  const [boardId, setBoardId] = useState('')
+  const [boardId, setBoardId] = useState(titles[0].id)
   const [boardError, setBoardError] = useState('')
 
   const [description, setDescription] = useState('')
   const [descriptionError, setDescriptionError] = useState('')
 
   const [disabled, setDisabled] = useState(true)
-  // const [errors, setErrors] = useState([])
 
   useEffect(() => {
     if (firstRender.current) {
@@ -88,7 +93,6 @@ export const PynForm = () => {
 
 
     dispatch(creatingPyns(formData)).then((response) => {
-      // console.log(response)
       if (!Array.isArray(response)) {
         const pynBody = {
           'pynId': response.id,
@@ -96,7 +100,7 @@ export const PynForm = () => {
         }
         dispatch(pynningToBoard(pynBody))
         dispatch(hideModal())
-        setSelected(<Pyns />)
+        // setSelected(<Pyns />)
       }
     })
   }
@@ -116,7 +120,7 @@ export const PynForm = () => {
     <select
     value={boardId}
     onChange={e => setBoardId(e.target.value)}>
-      {sessionUser?.boards.map(board => (
+      {titles.map(board => (
         <option value={board.id}>
           {board.title}
         </option>

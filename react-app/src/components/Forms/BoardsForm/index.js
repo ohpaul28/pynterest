@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { creatingBoard } from '../../../store/boards'
 import styles from './BoardsForm.module.css'
+import { hideModal } from '../../../store/modal';
 
 
 export const BoardForm = () => {
@@ -16,6 +17,7 @@ export const BoardForm = () => {
       'title': title
     }
     dispatch(creatingBoard(formData))
+    dispatch(hideModal())
   }
 
 

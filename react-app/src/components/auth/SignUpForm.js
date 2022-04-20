@@ -76,7 +76,7 @@ const SignUpForm = () => {
 
 
 	const handleSubmit = () => {
-    if(disabled) return;
+    if (disabled) return;
       dispatch(signUp(firstName, lastName, email, password, confirmPassword));
       dispatch(hideModal());
 	};
