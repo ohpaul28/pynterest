@@ -1,10 +1,10 @@
-import React, {useState, useEffect, useRef, useContext} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { creatingPyns } from '../../../store/pyns'
 import { pynningToBoard } from '../../../store/boards';
-import styles from './PynsForm.module.css'
-import SelectedContext from '../../context/selectedContext';
-import { Pyns } from '../../HomepageLI/tabs/Pyns';
+// import styles from './PynsForm.module.css'
+// import SelectedContext from '../../context/selectedContext';
+// import { Pyns } from '../../HomepageLI/tabs/Pyns';
 import { hideModal } from '../../../store/modal'
 
 
@@ -18,7 +18,7 @@ export const PynForm = () => {
   console.log(titles)
   const firstRender = useRef(true)
   const dispatch = useDispatch();
-  const { setSelected } = useContext(SelectedContext)
+  // const { setSelected } = useContext(SelectedContext)
 
   const [title, setTitle] = useState('')
   const [titleError, setTitleError] = useState('')
