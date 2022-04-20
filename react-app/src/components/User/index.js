@@ -16,13 +16,14 @@ import { EditBoardForm } from '../Forms/EditBoardForm';
 export const User = ({ userId }) => {
   const sessionUser = useSelector(state => state.session.user)
   const users = useSelector(state => state.users)
-  const userBoards = Object.values(useSelector(state => state.boards)).filter(board => board.user_id === userId)
+  const boards = useSelector(state => state.boards)
+  const filteredBoards = Object.values(boards).filter(board => board.user_id === userId)
+
   const dispatch = useDispatch();
   const [showBox, setShowBox] = useState(false);
   const {setSelected} = useContext(SelectedContext)
   const [toggle, setToggle] = useState(false);
   const [selectedBoard, setSelectedBoard] = useState('')
-  console.log(userBoards)
 
 
   const openBox = () => setShowBox(!showBox);
@@ -96,7 +97,7 @@ export const User = ({ userId }) => {
 
       </div>
       <div className={styles.boardsDisplay}>
-        {userBoards?.map((board, i) => (
+        {filteredBoards?.map((board, i) => (
           <div className={styles.singleBoardContainer}>
             <div className={styles.multipleImageContainer} onClick={() => setSelected(<SingleBoard board={board}/>)}>
 
