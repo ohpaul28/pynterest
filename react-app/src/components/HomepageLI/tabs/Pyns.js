@@ -3,6 +3,8 @@ import {useSelector} from 'react-redux';
 import { SinglePyn } from '../../SinglePyn';
 import SelectedContext from '../../context/selectedContext';
 // import {readingPynComments} from '../../../store/comments';
+import styles from './Pyns.module.css'
+
 
 
 
@@ -25,10 +27,10 @@ export const Pyns = () => {
 
   return (
     <>
-    <div>
+    <div className={styles.allPyns}>
       {pyns.map(pyn => (
-        <div onClick={() => onClick(pyn.id)}>
-          <img src={pyn.img_url} alt=""/>
+        <div className={styles.onePyn} onClick={() => onClick(pyn.id)}>
+          <img id={styles.pynImage} src={pyn.img_url} alt=""/>
         </div>
       ))}
     </div>

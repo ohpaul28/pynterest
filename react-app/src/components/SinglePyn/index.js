@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import styles from './SinglePyn.module.css'
 import deleteIcon from '../Icons/delete.svg';
 import editIcon from '../Icons/edit.svg';
 import { deletingPyn} from '../../store/pyns';
 import { EditPynForm } from '../Forms/EditPynForm';
+import SelectedContext from '../context/selectedContext';
+import { Pyns } from '../HomepageLI/tabs/Pyns';
 
 
 
@@ -12,7 +14,7 @@ export const SinglePyn = ({ pyn }) => {
   // const [users, setUsers] = useState([]);
   const sessionUser = useSelector(state => state.session.user)
   const dispatch = useDispatch()
-  // const { setSelected } = useContext(SelectedContext)
+  const { setSelected } = useContext(SelectedContext)
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -27,6 +29,7 @@ export const SinglePyn = ({ pyn }) => {
     let result = window.confirm('Wait! Are you sure you want to delete this Pyn?')
     if (result) {
       dispatch(deletingPyn(pynId))
+      setSelected(<Pyns/>)
     }
   }
 
@@ -37,12 +40,14 @@ export const SinglePyn = ({ pyn }) => {
 
   return (
     <div className={styles.pageContainer}>
-      <div className={styles.backButton}>
-        <i className="fa fa-arrow-left"></i> Back to Pyns
+      <div className={styles.backButtonContainer}>
+        <div className={styles.backButton} onClick={() => setSelected(<Pyns/>)}>
+          <i className="fa fa-arrow-left"></i> Back to Pyns
+        </div>
       </div>
       <div className={styles.container}>
         <div className={styles.left}>
-          <img src={`${pyn.img_url}`} alt=""/>
+          <img className={styles.pynImage} src={`${pyn.img_url}`} alt=""/>
         </div>
         <div className={styles.right}>
           <div className={styles.top}>
@@ -69,7 +74,7 @@ export const SinglePyn = ({ pyn }) => {
             <h1>
               {pyn.title}
             </h1>
-            <div>
+            <div className={styles.description}>
               {pyn.description}
             </div>
           </div>
@@ -77,17 +82,19 @@ export const SinglePyn = ({ pyn }) => {
             Comments
             <div className={styles.innerComments}>
               {pyn.comments?.map((comment) => (
-                <>
-                <div>
-                  {comment.user?.email[0].toUpperCase()}
+                <div className={styles.singleComment}>
+                  <div className={styles.iconAndName}>
+                    <div className={styles.profileIcon}>
+                      {comment.user?.email[0].toUpperCase()}
+                    </div>
+                    <div>
+                      {comment.user.first_name}
+                    </div>
+                  </div>
+                  <div className={styles.content}>
+                    {comment.content}
+                  </div>
                 </div>
-                <div>
-                  {comment.user.first_name}
-                </div>
-                <div>
-                  {comment.content}
-                </div>
-                </>
               ))}
             </div>
           </div>
