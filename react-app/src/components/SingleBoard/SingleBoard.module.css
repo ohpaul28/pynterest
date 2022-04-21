@@ -14,7 +14,6 @@
   height: 40rem;
   width: 30rem;
   overflow: hidden;
-  /* border: 1px solid #e7e7e7; */
   background-color: white;
   padding: 1rem;
   box-shadow: 0 0 1.5rem rgb(182, 177, 177);
@@ -24,7 +23,6 @@
 .title {
   font-size: 2rem;
   color: #fc6260;
-  /* border-bottom: 1px solid black; */
   width: fit-content;
 }
 
