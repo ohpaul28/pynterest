@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {NavLink} from 'react-router-dom';
 
 import LoginForm from '../auth/LoginForm';
 import SignUpForm from '../auth/SignUpForm';
@@ -91,9 +92,9 @@ const NavBar = () => {
         </div>
         <div className={styles.nav_right}>
           <div className={styles.profile_links}>
-            <div className={styles.github}>Github</div>
-            <div className={styles.linkedin}>Linkedin</div>
-            <div className={styles.original}>Original</div>
+            <NavLink to='https://github.com/ohpaul28' className={styles.github}>Github</NavLink>
+            <NavLink to='https://www.linkedin.com/in/paul-oh-82824117a/' className={styles.linkedin}>Linkedin</NavLink>
+            <NavLink to='https://www.pinterest.com/' className={styles.original}>Original</NavLink>
           </div>
           <div className={styles.login} onClick={showLoginForm}>
             Log in
