@@ -65,7 +65,7 @@ export const SinglePyn = ({ id }) => {
         <div className={styles.right}>
           <div className={styles.top}>
             <div className={styles.interactions}>
-              {singlePyn.user_id === sessionUser.id &&
+              {singlePyn?.user_id === sessionUser.id &&
               <>
                 <div onClick={() => onDelete(singlePyn?.id)}>
                   <img className={styles.deletebtn} src={deleteIcon} alt=""/>
