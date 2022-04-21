@@ -15,7 +15,6 @@ import { EditBoardForm } from '../Forms/EditBoardForm';
 
 export const User = () => {
   const sessionUser = useSelector(state => state.session.user)
-  const users = useSelector(state => state.users)
   const boards = useSelector(state => state.boards)
   const filteredBoards = Object.values(boards).filter(board => board.user_id === sessionUser.id)
 
