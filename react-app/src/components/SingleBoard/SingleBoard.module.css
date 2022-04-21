@@ -13,6 +13,8 @@
 }
 
 .parent > div {
+  display: flex;
+  flex-direction: column;
   height: 40rem;
   width: 30rem;
   overflow: hidden;
@@ -23,6 +25,7 @@
 }
 
 .title {
+  display: flex;
   font-size: 2rem;
   color: #fc6260;
   width: fit-content;
@@ -37,6 +40,29 @@
   object-fit: cover;
   height: 30rem;
   width: 30rem;
+}
+
+.parent > div > img:hover {
+  cursor: pointer;
+}
+
+.unpyn {
+  position:absolute;
+  font-size: 1.6rem;
+  background-color: white;
+  padding: .5rem;
+  border-radius: 3rem;
+  align-self: center;
+  margin-bottom: 1rem;
+}
+
+.unpyn:hover {
+  cursor: pointer;
+  border: .1rem solid black;
+}
+
+.nopyns {
+  font-size: 2.4rem;
 }
 
 .div1 {
