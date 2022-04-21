@@ -77,19 +77,19 @@ def removeFromBoard(id):
   return board.to_dict_full()
 
 
-# @board_routes.route('/removeFromAllBoards', methods=['PUT'])
-# def removeFromAllBoards():
-#   removedPyn = request.json['pynId']
-#   boardIds = request.json['boardIds']
-#   boards = Board.query.filter(Board.id in boardIds).all()
-#   print('\n\n\n\n\n', boards, '\n\n\n\n\n')
+@board_routes.route('/removeFromAllBoards', methods=['PUT'])
+def removeFromAllBoards():
+  removedPyn = request.json['pynId']
+  boardIds = request.json['boardIds']
+  boards = Board.query.filter(Board.id in boardIds)
+  print('\n\n\n\n\n', boards, '\n\n\n\n\n')
 
-#   for board in boards:
-#     board.pyns = [pyn for pyn in board.pyns if pyn != removedPyn]
-#   sql = f"DELETE FROM pyn_board WHERE pyn_id = {removedPyn} AND board_id = {id}"
+  for board in boards:
+    board.pyns = [pyn for pyn in board.pyns if pyn != removedPyn]
+  sql = f"DELETE FROM pyn_board WHERE pyn_id = {removedPyn} AND board_id = {id}"
 
-#   db.session.execute(sql)
+  db.session.execute(sql)
 
-#   db.session.commit()
+  db.session.commit()
 
-#   return board.to_dict_full()
+  return board.to_dict_full()

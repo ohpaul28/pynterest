@@ -38,7 +38,7 @@ export const SinglePyn = ({ id }) => {
       await dispatch(deletingPyn(pynId)).then(() => {
         const unpynBody = {
           'pynId': pynId,
-          'boardIds': pynId
+          'boardId': pynId
         }
         dispatch(unpynningFromBoard(unpynBody))
       })
