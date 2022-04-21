@@ -35,6 +35,12 @@ class Pyn(db.Model):
       'img_url': self.img_url,
     }
 
+  def backend_to_dict(self):
+    return {
+      'id': self.id,
+      'boards': [b.to_dict_full() for b in self.boards],
+    }
+
   def to_id(self):
     return {
     'id': self.id,

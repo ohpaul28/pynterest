@@ -91,3 +91,24 @@ def update_pyn(id):
   db.session.commit()
 
   return pyn.to_dict()
+
+@pyn_routes.route('/removeFromBoards', methods=['PUT'])
+def removeFromBoards():
+
+  removedPyn = request.json['pynId']
+  # print('\n\n\n\n\n',removedPyn, '\n\n\n\n\n')
+  pyn = Pyn.query.get(removedPyn).backend_to_dict()
+  # print('\n\n\n\n\n',pyn, '\n\n\n\n\n')
+  boards_to_dict = []
+
+  for board in pyn['boards']:
+    # print('\n\n\n\n\n', 'PLEASE WORK', board, 'PLEASE WORK', '\n\n\n\n\n')
+    # return
+    sql = f"DELETE FROM pyn_board WHERE pyn_id = {removedPyn} AND board_id = {board['id']}"
+    db.session.execute(sql)
+    db.session.commit()
+    boards_to_dict.append(board)
+
+  return {
+    'boards': boards_to_dict
+  }

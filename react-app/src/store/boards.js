@@ -1,11 +1,10 @@
 const CREATED_BOARD = '/boards/createdBoard'
 const READ_ALL_BOARDS = '/boards/readAllBoards'
-// const READ_USER_BOARDS = '/boards/readUserBoards'
 const UPDATED_BOARD = '/boards/updatedBoard'
 const DELETED_BOARD = '/boards/deletedBoard'
 const UNPYNNED_BOARD = '/boards/unpynnedBoard'
 const PYNNED_TO_BOARD = '/boards/pynnedToBoard'
-
+const REMOVED_PYN_FROM_BOARDS ='/pyns/removedPynFromBoards'
 
 //action creators for pyns
 const createBoard = (payload) => {
@@ -21,13 +20,6 @@ const readAllBoards = (payload) => {
     payload
   }
 }
-
-// const readUserBoards = (payload) => {
-//   return {
-//     type: READ_USER_BOARDS,
-//     payload
-//   }
-// }
 
 const updateBoard = (payload) => {
   return {
@@ -57,9 +49,15 @@ const pynToBoard = (payload) => {
   }
 }
 
+const removePynFromBoards = (payload) => {
+  return {
+    type: REMOVED_PYN_FROM_BOARDS,
+    payload
+  }
+}
+
 
 //thunks for boards
-
 export const creatingBoard = (data) =>
 async dispatch => {
   const res = await fetch('/api/boards/', {
@@ -131,19 +129,20 @@ async dispatch => {
 
 }
 
-// export const unpynningFromAllBoards = (data) =>
-// async dispatch => {
-//   const res = await fetch(`/api/boards/removeFromAllBoards`, {
-//     method: 'PUT',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify(data)
-//   })
+export const removingPynFromBoards = (data) =>
+async dispatch => {
+  const res = await fetch('/api/pyns/removeFromBoards', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
 
-//   const updatedBoard = await res.json();
-//   dispatch(unpynBoard(updatedBoard));
-//   return updatedBoard
+  const boards = await res.json();
+  dispatch(removePynFromBoards(boards.boards))
+  return boards.boards
+}
 
-// }
+
 
 export const pynningToBoard = (data) =>
 async dispatch => {
@@ -186,6 +185,12 @@ export default function boardReducer(state = {}, action) {
     }
     case UNPYNNED_BOARD: {
       newState[action.payload?.id] = action.payload
+      return newState;
+    }
+    case REMOVED_PYN_FROM_BOARDS: {
+      action.payload?.forEach(board => {
+        newState[`${board.id}`] = board
+      })
       return newState;
     }
     default:

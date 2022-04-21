@@ -4,7 +4,7 @@ import styles from './SinglePyn.module.css'
 import deleteIcon from '../Icons/delete.svg';
 import editIcon from '../Icons/edit.svg';
 import { deletingPyn } from '../../store/pyns';
-import { pynningToBoard, unpynningFromBoard } from '../../store/boards';
+import { pynningToBoard, removingPynFromBoards } from '../../store/boards';
 import { EditPynForm } from '../Forms/EditPynForm';
 import SelectedContext from '../context/selectedContext';
 import { Pyns } from '../Homepage/tabs/Pyns';
@@ -35,13 +35,19 @@ export const SinglePyn = ({ id }) => {
   const onDelete = async (pynId) => {
     let result = window.confirm('Wait! Are you sure you want to delete this Pyn?')
     if (result) {
-      await dispatch(deletingPyn(pynId)).then(() => {
-        const unpynBody = {
-          'pynId': pynId,
-          'boardIds': pynId
-        }
-        dispatch(unpynningFromBoard(unpynBody))
-      })
+      // await dispatch(deletingPyn(pynId)).then(() => {
+      //   const unpynBody = {
+      //     'pynId': pynId
+      //   }
+      //   dispatch(removingPynFromBoards(unpynBody))
+      // })
+      const unpynBody = {
+        'pynId': pynId
+      }
+        await dispatch(removingPynFromBoards(unpynBody)).then(() =>
+        dispatch(deletingPyn(pynId)))
+
+
       setSelected(<Pyns/>)
     }
   }
