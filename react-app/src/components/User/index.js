@@ -104,7 +104,7 @@ export const User = ({ userId }) => {
       <div className={styles.boardsDisplay}>
         {filteredBoards?.map((board, i) => (
           <div key={i} className={styles.singleBoardContainer}>
-            <div className={styles.multipleImageContainer} onClick={() => setSelected(<SingleBoard board={board}/>)}>
+            <div className={styles.multipleImageContainer} onClick={() => setSelected(<SingleBoard boardId={board.id}/>)}>
 
                 <div className={styles.image1}>
                   <img src={board['pyns'] ? board['pyns'][0] ? board['pyns'][0].img_url : grayBackground : grayBackground} alt="" id={styles.board_card}/>

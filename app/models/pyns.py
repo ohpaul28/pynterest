@@ -42,4 +42,5 @@ class Pyn(db.Model):
     'title': self.title,
     'comments': [c.to_dict() for c in self.comments],
     'user_id': self.user_id,
+    'description': self.description
     }
