@@ -8,7 +8,7 @@ import SelectedContext from '../context/selectedContext';
 
 import { Pyns } from '../Homepage/tabs/Pyns';
 import { Boards } from '../Homepage/tabs/Boards';
-import UsersList from '../UsersList';
+// import UsersList from '../UsersList';
 
 import { showModal, setCurrentModal } from '../../store/modal';
 import { ProfileDropdown } from '../ProfileDropdown';
@@ -24,7 +24,7 @@ const NavBar = () => {
     setSelected(<Pyns />)
     let pynTab = document?.getElementById('pynTab')
     let boardTab = document?.getElementById('boardTab')
-    let userTab = document?.getElementById('userTab')
+    // let userTab = document?.getElementById('userTab')
 
     pynTab.style.backgroundColor = 'black';
     pynTab.style.color = 'white';
@@ -32,8 +32,8 @@ const NavBar = () => {
     boardTab.style.backgroundColor = 'white';
     boardTab.style.color = 'black';
 
-    userTab.style.backgroundColor = 'white';
-    userTab.style.color = 'black';
+    // userTab.style.backgroundColor = 'white';
+    // userTab.style.color = 'black';
 
   }
 
@@ -41,7 +41,7 @@ const NavBar = () => {
     setSelected(<Boards />)
     let pynTab = document?.getElementById('pynTab')
     let boardTab = document?.getElementById('boardTab')
-    let userTab = document?.getElementById('userTab')
+    // let userTab = document?.getElementById('userTab')
 
     pynTab.style.backgroundColor = 'white';
     pynTab.style.color = 'black';
@@ -49,25 +49,25 @@ const NavBar = () => {
     boardTab.style.backgroundColor = 'black';
     boardTab.style.color = 'white';
 
-    userTab.style.backgroundColor = 'white';
-    userTab.style.color = 'black';
+    // userTab.style.backgroundColor = 'white';
+    // userTab.style.color = 'black';
   }
 
-  const usersTab = () => {
-    setSelected(<UsersList />)
-    let pynTab = document?.getElementById('pynTab')
-    let boardTab = document?.getElementById('boardTab')
-    let userTab = document?.getElementById('userTab')
+  // const usersTab = () => {
+  //   setSelected(<UsersList />)
+  //   let pynTab = document?.getElementById('pynTab')
+  //   let boardTab = document?.getElementById('boardTab')
+  //   let userTab = document?.getElementById('userTab')
 
-    pynTab.style.backgroundColor = 'white';
-    pynTab.style.color = 'black';
+  //   pynTab.style.backgroundColor = 'white';
+  //   pynTab.style.color = 'black';
 
-    boardTab.style.backgroundColor = 'white';
-    boardTab.style.color = 'black';
+  //   boardTab.style.backgroundColor = 'white';
+  //   boardTab.style.color = 'black';
 
-    userTab.style.backgroundColor = 'black';
-    userTab.style.color = 'white';
-  }
+  //   userTab.style.backgroundColor = 'black';
+  //   userTab.style.color = 'white';
+  // }
 
 
   const showLoginForm = () => {
@@ -116,7 +116,7 @@ const NavBar = () => {
           <div className={styles.explore}>
               <div className={styles.pynTab} id="pynTab" onClick={() => pynsTab()}>Pyns</div>
               <div className={styles.boardTab} id="boardTab" onClick={() => boardsTab()}>Boards</div>
-              <div className={styles.userTab} id="userTab" onClick={() => usersTab()}>Users</div>
+              {/* <div className={styles.userTab} id="userTab" onClick={() => usersTab()}>Users</div> */}
           </div>
         </div>
         <div className={styles.nav_right}>

@@ -131,6 +131,20 @@ async dispatch => {
 
 }
 
+// export const unpynningFromAllBoards = (data) =>
+// async dispatch => {
+//   const res = await fetch(`/api/boards/removeFromAllBoards`, {
+//     method: 'PUT',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(data)
+//   })
+
+//   const updatedBoard = await res.json();
+//   dispatch(unpynBoard(updatedBoard));
+//   return updatedBoard
+
+// }
+
 export const pynningToBoard = (data) =>
 async dispatch => {
   const res = await fetch(`/api/boards/${data.boardId}/addToBoard`, {

@@ -3,20 +3,20 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import styles from './SingleBoard.module.css'
 import SelectedContext from '../context/selectedContext';
-import { Pyns } from '../Homepage/tabs/Pyns';
+import { SinglePyn } from '../SinglePyn';
 import { unpynningFromBoard } from '../../store/boards';
+import { readingOnePyn } from '../../store/pyns';
 
 
 
 export const SingleBoard = ({ boardId }) => {
   const {setSelected} = useContext(SelectedContext);
   const displayedBoard = useSelector(state => state.boards)[boardId].pyns
-  // const pyns = useSelector(state => state.pyns)
-  // const displayedBoard = boards[boardId].pyns
   const dispatch = useDispatch();
 
-  const goToPyn = (selectedId) => {
-    setSelected(<Pyns id={selectedId}/>)
+  const goToPyn = async (selectedId) => {
+    await dispatch(readingOnePyn(selectedId)).then(() =>
+    setSelected(<SinglePyn id={selectedId}/>))
   }
 
   const unpynFromBoard = (pynId) => {
@@ -38,6 +38,15 @@ export const SingleBoard = ({ boardId }) => {
           {`:<`}
         </div>
       }
+      {/* {displayedBoard.length > 0 && displayedBoard.map((pyn, i) => (
+          <div className={styles.cont`${i}`}>
+            <div className={styles.unpyn} onClick={() => unpynFromBoard(pyn.id)} >Unpyn</div>
+            <img onClick={() => goToPyn(pyn.id)} className={styles.image} src={pyn.img_url} alt=""/>
+            <div className={styles.title}>{pyn.title}</div>
+            <div className={styles.description}>{pyn.description}</div>
+          </div>
+        ))
+      } */}
 
       {displayedBoard[0] &&
       <div className={styles.div1}>
