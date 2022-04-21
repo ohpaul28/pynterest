@@ -117,10 +117,12 @@ async dispatch => {
   return removedBoard
 }
 
-export const unpynningFromBoard = (id) =>
+export const unpynningFromBoard = (data) =>
 async dispatch => {
-  const res = await fetch(`/api/boards/${id}/removeFromBoard/`, {
-    method: 'PUT'
+  const res = await fetch(`/api/boards/${data.boardId}/removeFromBoard`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
   })
 
   const updatedBoard = await res.json();
