@@ -6,8 +6,8 @@ import { useDispatch } from 'react-redux';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Modal from './components/Modal'
-import {HomepageLI} from './components/HomepageLI';
-import { Pyns } from './components/HomepageLI/tabs/Pyns';
+import {Homepage} from './components/Homepage';
+import { Pyns } from './components/Homepage/tabs/Pyns';
 
 
 import { authenticate } from './store/session';
@@ -43,7 +43,7 @@ function App() {
         <Modal />
         <Switch>
           <ProtectedRoute path='/' exact={true}>
-            <HomepageLI selected={selected}/>
+            <Homepage selected={selected}/>
           </ProtectedRoute>
           <Route path='/' exact={true}>
             <h1>Splash</h1>

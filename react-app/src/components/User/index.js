@@ -73,7 +73,7 @@ export const User = ({ userId }) => {
           <strong>{users[userId]?.email}</strong>
         </div>
       </div>
-      {sessionUser?.id === users[userId].id && (
+      {sessionUser?.id === users[userId]?.id && (
         <div className={styles.createContainer}>
         <div onClick={openBox} className={styles.innerCreateContainer}>
           <div className={styles.createBox}>
@@ -98,7 +98,7 @@ export const User = ({ userId }) => {
       </div>
       <div className={styles.boardsDisplay}>
         {filteredBoards?.map((board, i) => (
-          <div className={styles.singleBoardContainer}>
+          <div key={i} className={styles.singleBoardContainer}>
             <div className={styles.multipleImageContainer} onClick={() => setSelected(<SingleBoard board={board}/>)}>
 
                 <div className={styles.image1}>

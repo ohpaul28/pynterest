@@ -3,8 +3,6 @@ import {useDispatch, useSelector} from 'react-redux';
 import { creatingPyns } from '../../../store/pyns'
 import { pynningToBoard } from '../../../store/boards';
 // import styles from './PynsForm.module.css'
-// import SelectedContext from '../../context/selectedContext';
-// import { Pyns } from '../../HomepageLI/tabs/Pyns';
 import { hideModal } from '../../../store/modal'
 
 
@@ -121,7 +119,7 @@ export const PynForm = () => {
     value={boardId}
     onChange={e => setBoardId(e.target.value)}>
       {titles.map(board => (
-        <option value={board.id}>
+        <option key={board.id} value={board.id}>
           {board.title}
         </option>
       ))}

@@ -1,15 +1,15 @@
 import React, { useContext } from 'react';
-import styles from './HomepageLI.module.css'
+import styles from './Homepage.module.css'
 import SelectedContext from '../context/selectedContext';
 
 
 
-export const HomepageLI = () => {
+export const Homepage = () => {
 
   const {selected} = useContext(SelectedContext)
   return (
     <div className={styles.selectedContainer}>
-    {selected}
+      {selected}
     </div>
   );
 }
