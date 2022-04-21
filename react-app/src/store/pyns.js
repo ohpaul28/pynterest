@@ -55,7 +55,6 @@ async dispatch => {
     return Object.values(newPyn.errors)
   } else {
     await dispatch(createPyn(newPyn))
-    // console.log(newPyn)
     return newPyn
   }
 

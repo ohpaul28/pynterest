@@ -13,7 +13,6 @@ export const PynForm = () => {
     'title': board.title,
     'id': board.id
   }))
-  console.log(titles)
   const firstRender = useRef(true)
   const dispatch = useDispatch();
   // const { setSelected } = useContext(SelectedContext)
