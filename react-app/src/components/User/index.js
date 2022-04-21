@@ -13,11 +13,11 @@ import editIcon from '../Icons/edit.svg';
 import { SingleBoard } from '../SingleBoard';
 import { EditBoardForm } from '../Forms/EditBoardForm';
 
-export const User = ({ userId }) => {
+export const User = () => {
   const sessionUser = useSelector(state => state.session.user)
   const users = useSelector(state => state.users)
   const boards = useSelector(state => state.boards)
-  const filteredBoards = Object.values(boards).filter(board => board.user_id === userId)
+  const filteredBoards = Object.values(boards).filter(board => board.user_id === sessionUser.id)
 
   const dispatch = useDispatch();
   const [showBox, setShowBox] = useState(false);
@@ -63,17 +63,17 @@ export const User = ({ userId }) => {
     <div className={styles.profilePageContainer}>
       <div className={styles.userInfo}>
         <div className={styles.initial}>
-          {users[userId]?.email[0].toUpperCase()}
+          {sessionUser?.email[0].toUpperCase()}
         </div>
         <div>
-          <strong>{users[userId]?.first_name}</strong>
-          <strong>{users[userId]?.last_name}</strong>
+          <strong>{sessionUser?.first_name}</strong>
+          <strong>{sessionUser?.last_name}</strong>
         </div>
         <div>
-          <strong>{users[userId]?.email}</strong>
+          <strong>{sessionUser?.email}</strong>
         </div>
       </div>
-      {sessionUser?.id === users[userId]?.id && (
+      {sessionUser && (
         <div className={styles.createContainer}>
         <div onClick={openBox} className={styles.innerCreateContainer}>
           <div className={styles.createBox}>
