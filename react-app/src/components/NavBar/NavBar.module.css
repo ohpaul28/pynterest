@@ -9,7 +9,7 @@
 .nav_container {
   display: flex;
   justify-content: space-between;
-  height: 6.5rem;
+  height: 8rem;
   top: 0;
   right: 0;
   left: 0;
@@ -17,49 +17,64 @@
 
 .nav_right {
   display: flex;
-  width: 36rem;
+  width: 50rem;
   height: 5.6rem;
   justify-content: flex-end;
   align-self: center;
   align-items: center;
   padding: 0 2rem 0 2rem;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
 }
 
 .profile_links {
   display:flex;
   margin-right: 2.4rem;
+  height: 2.1rem;
 }
 
-.github {
-  width: 6rem;
+.profile_links > * {
+  text-decoration: none;
+  width: 8rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  color: black;
+  font-weight: bold;
 }
-
-.linkedin {
-  width: 6rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.original {
-  width: 6rem;
-  display: flex;
-  justify-content: flex-end;
+.profile_links > *:hover {
+  cursor: pointer;
 }
 
 .login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
   background-color: #e60023;
   border-radius: 2.2rem;
-  padding: .8rem;
+  padding: .6rem 1rem .6rem 1rem;
+  margin: 0 1rem 0 1rem;
+  min-height: 3rem;
+  width: 5.5rem;
+}
+
+.login:hover {
+  cursor:pointer;
 }
 
 .signup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #EFEFEF;
   border-radius: 2.2rem;
-  padding: .8rem;
+  padding: .6rem 1rem .6rem 1rem;
+  margin: 0 1rem 0 1rem;
+  min-height: 3rem;
+  width: 7rem;
+}
+
+.signup:hover {
+  cursor: pointer;
 }
 
 .logo {
@@ -69,7 +84,7 @@
 
 .name {
   width: 8.3rem;
-  font-size: 1.5em;
+  font-size: 2rem;
 }
 
 .explore {
