@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './SinglePyn.module.css'
 import deleteIcon from '../Icons/delete.svg';
 import editIcon from '../Icons/edit.svg';
@@ -8,6 +8,7 @@ import { pynningToBoard } from '../../store/boards';
 import { EditPynForm } from '../Forms/EditPynForm';
 import SelectedContext from '../context/selectedContext';
 import { Pyns } from '../Homepage/tabs/Pyns';
+import { User } from '../User';
 
 
 
@@ -21,13 +22,14 @@ export const SinglePyn = ({ id }) => {
 
   const { setSelected } = useContext(SelectedContext)
 
-  const addToBoard = (boardId) => {
+  const addToBoard = (board_id) => {
     const pynBody = {
       'pynId': id,
-      'boardId': boardId
+      'boardId': board_id
     }
     dispatch(pynningToBoard(pynBody))
     setBoardId(null)
+    setSelected(<User userId={sessionUser.id}/>)
   }
 
   const onDelete = (pynId) => {
@@ -39,7 +41,7 @@ export const SinglePyn = ({ id }) => {
   }
 
   const onEdit = () => {
-
+    
   }
 
 
@@ -81,7 +83,7 @@ export const SinglePyn = ({ id }) => {
                   </option>
                 ))}
               </select>
-              <div className={styles.save} onClick={addToBoard}>
+              <div className={styles.save} onClick={() => addToBoard(boardId)}>
                 Save
               </div>
             </div>
