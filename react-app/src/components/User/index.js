@@ -73,7 +73,7 @@ export const User = ({ userId }) => {
           <strong>{users[userId]?.email}</strong>
         </div>
       </div>
-      {sessionUser?.id === users[userId].id && (
+      {sessionUser?.id === users[userId]?.id && (
         <div className={styles.createContainer}>
         <div onClick={openBox} className={styles.innerCreateContainer}>
           <div className={styles.createBox}>
@@ -81,7 +81,7 @@ export const User = ({ userId }) => {
           </div>
             {showBox && (
               <div className={styles.dropdown} onClick={(e) => e.stopPropagation()}>
-                <div className={styles.boxTitle} >Create</div>
+                <div className={styles.boxTitle}>Create</div>
                 <div className={styles.pynbtn} onClick={showPynForm}>
                   Pyn
                 </div>
@@ -93,13 +93,18 @@ export const User = ({ userId }) => {
         </div>
       </div>
       )}
-      <div>
-
+      <div className={styles.myTabs}>
+        <div>
+          My Boards
+        </div>
+        <div>
+          My Pyns
+        </div>
       </div>
       <div className={styles.boardsDisplay}>
         {filteredBoards?.map((board, i) => (
-          <div className={styles.singleBoardContainer}>
-            <div className={styles.multipleImageContainer} onClick={() => setSelected(<SingleBoard board={board}/>)}>
+          <div key={i} className={styles.singleBoardContainer}>
+            <div className={styles.multipleImageContainer} onClick={() => setSelected(<SingleBoard boardId={board.id}/>)}>
 
                 <div className={styles.image1}>
                   <img src={board['pyns'] ? board['pyns'][0] ? board['pyns'][0].img_url : grayBackground : grayBackground} alt="" id={styles.board_card}/>

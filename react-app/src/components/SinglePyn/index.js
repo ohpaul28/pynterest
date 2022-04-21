@@ -1,21 +1,36 @@
-import React, { useContext } from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useContext, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import styles from './SinglePyn.module.css'
 import deleteIcon from '../Icons/delete.svg';
 import editIcon from '../Icons/edit.svg';
 import { deletingPyn } from '../../store/pyns';
+import { pynningToBoard } from '../../store/boards';
 import { EditPynForm } from '../Forms/EditPynForm';
 import SelectedContext from '../context/selectedContext';
-import { Pyns } from '../HomepageLI/tabs/Pyns';
+import { Pyns } from '../Homepage/tabs/Pyns';
+import { User } from '../User';
 
 
 
 export const SinglePyn = ({ id }) => {
   const sessionUser = useSelector(state => state.session.user)
   const singlePyn = useSelector(state => state.pyns)[id]
+  const allBoards = useSelector(state => state.boards)
+  const filtered = Object.values(allBoards).filter(board => board.user_id === sessionUser.id)
+  const [boardId, setBoardId] = useState(null)
   const dispatch = useDispatch();
 
   const { setSelected } = useContext(SelectedContext)
+
+  const addToBoard = (board_id) => {
+    const pynBody = {
+      'pynId': id,
+      'boardId': board_id
+    }
+    dispatch(pynningToBoard(pynBody))
+    setBoardId(null)
+    setSelected(<User userId={sessionUser.id}/>)
+  }
 
   const onDelete = (pynId) => {
     let result = window.confirm('Wait! Are you sure you want to delete this Pyn?')
@@ -26,7 +41,7 @@ export const SinglePyn = ({ id }) => {
   }
 
   const onEdit = () => {
-
+    
   }
 
 
@@ -56,8 +71,19 @@ export const SinglePyn = ({ id }) => {
               }
             </div>
             <div className={styles.top_right}>
-              Add to Board <span><i className="fa fa-angle-down"></i></span>
-              <div>
+              <select
+              value={boardId}
+              onChange={e => setBoardId(e.target.value)}>
+                <option value={null}>
+                  Add to Board
+                </option>
+                {filtered.map(board => (
+                  <option key={board.id} value={board.id}>
+                    {board.title}
+                  </option>
+                ))}
+              </select>
+              <div className={styles.save} onClick={() => addToBoard(boardId)}>
                 Save
               </div>
             </div>
@@ -74,7 +100,7 @@ export const SinglePyn = ({ id }) => {
             Comments
             <div className={styles.innerComments}>
               {singlePyn?.comments?.map((comment) => (
-                <div className={styles.singleComment}>
+                <div key={comment.id} className={styles.singleComment}>
                   <div className={styles.iconAndName}>
                     <div className={styles.profileIcon}>
                       {comment.user?.email[0].toUpperCase()}

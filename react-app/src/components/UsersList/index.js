@@ -19,7 +19,7 @@ function UsersList() {
 
   const userComponents = users.map((user) => {
     return (
-      <div onClick={() => setSelected(<User userId={user.id}/>)}>
+      <div key={user.id} onClick={() => setSelected(<User userId={user.id}/>)}>
         {user.first_name}{user.last_name}
       </div>
     );

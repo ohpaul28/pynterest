@@ -26,7 +26,7 @@ export const Pyns = () => {
     <>
     <div className={styles.allPyns}>
       {pyns?.map(pyn => (
-        <div className={styles.onePyn} onClick={() => onClick(pyn.id)}>
+        <div key={pyn.id} className={styles.onePyn} onClick={() => onClick(pyn.id)}>
           <img id={styles.pynImage} src={pyn.img_url} alt=""/>
         </div>
       ))}

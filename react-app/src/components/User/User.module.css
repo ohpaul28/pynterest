@@ -23,6 +23,16 @@
   flex-direction: column;
 }
 
+.myTabs {
+  display: flex;
+  justify-content: center;
+}
+
+.myTabs > div {
+  font-size: 1.6rem;
+  margin: 2rem;
+}
+
 .userInfo {
   display: flex;
   flex-direction: column;

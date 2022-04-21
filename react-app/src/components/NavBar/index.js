@@ -6,8 +6,8 @@ import SignUpForm from '../auth/SignUpForm';
 import styles from './NavBar.module.css'
 import SelectedContext from '../context/selectedContext';
 
-import { Pyns } from '../HomepageLI/tabs/Pyns';
-import { Boards } from '../HomepageLI/tabs/Boards';
+import { Pyns } from '../Homepage/tabs/Pyns';
+import { Boards } from '../Homepage/tabs/Boards';
 import UsersList from '../UsersList';
 
 import { showModal, setCurrentModal } from '../../store/modal';

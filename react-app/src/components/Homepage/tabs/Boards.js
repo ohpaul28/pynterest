@@ -12,7 +12,7 @@ export const Boards = () => {
     <>
     <div>
       {boards.map(board => (
-        <div className={styles.container}>
+        <div key={board.title} className={styles.container}>
           {board.title}
         </div>
       ))}
