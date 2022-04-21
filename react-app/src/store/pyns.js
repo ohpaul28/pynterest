@@ -5,7 +5,6 @@ const READ_ALL_PYNS_HOME = '/pyns/readAllPyns'
 const UPDATED_PYN = '/pyns/updatedPyn'
 const DELETED_PYN = '/pyns/deletedPyn'
 
-
 //action creators for pyns
 const createPyn = (payload) => {
   return {
@@ -106,6 +105,7 @@ async dispatch => {
   dispatch(deletePyn(id));
   return removedPyn
 }
+
 
 
 export default function reducer(state = {}, action) {
