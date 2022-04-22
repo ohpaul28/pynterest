@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 
-import LoginForm from '../auth/LoginForm';
-import SignUpForm from '../auth/SignUpForm';
+import {LoginForm} from '../Forms/LoginForm'
+import {SignUpForm} from '../Forms/SignUpForm'
 import styles from './NavBar.module.css'
 import SelectedContext from '../context/selectedContext';
 

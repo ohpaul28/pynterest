@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { login } from '../../store/session';
-import { hideModal } from '../../store/modal';
+import { login } from '../../../store/session';
+import { hideModal } from '../../../store/modal'
+// import styles from './LoginForm.module.css'
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -63,5 +64,3 @@ const LoginForm = () => {
     </form>
   );
 };
-
-export default LoginForm;

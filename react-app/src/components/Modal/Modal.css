@@ -22,4 +22,5 @@
   align-items: center;
   opacity: 1;
   z-index: 110;
+  border-radius: 2.5rem;
 }
