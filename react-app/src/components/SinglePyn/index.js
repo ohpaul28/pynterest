@@ -15,8 +15,7 @@ import { User } from '../User';
 export const SinglePyn = ({ id }) => {
   const sessionUser = useSelector(state => state.session.user)
   const singlePyn = useSelector(state => state.pyns)[id]
-  const allBoards = useSelector(state => state.boards)
-  const filtered = Object.values(allBoards).filter(board => board.user_id === sessionUser.id)
+  const filtered = Object.values(useSelector(state => state.boards)).filter(board => board.user_id === sessionUser.id)
   const [boardId, setBoardId] = useState(null)
   const dispatch = useDispatch();
 
@@ -35,20 +34,14 @@ export const SinglePyn = ({ id }) => {
   const onDelete = async (pynId) => {
     let result = window.confirm('Wait! Are you sure you want to delete this Pyn?')
     if (result) {
-      // await dispatch(deletingPyn(pynId)).then(() => {
-      //   const unpynBody = {
-      //     'pynId': pynId
-      //   }
-      //   dispatch(removingPynFromBoards(unpynBody))
-      // })
       const unpynBody = {
         'pynId': pynId
       }
-        await dispatch(removingPynFromBoards(unpynBody)).then(() =>
+      await dispatch(removingPynFromBoards(unpynBody)).then(() =>
         dispatch(deletingPyn(pynId)))
 
 
-      setSelected(<Pyns/>)
+      setSelected(<User />)
     }
   }
 
