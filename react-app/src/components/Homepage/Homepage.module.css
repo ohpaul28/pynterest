@@ -2,3 +2,139 @@
   height: 100vh;
   width: 100%;
 }
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 115rem;
+  overflow-y: hidden;
+}
+
+.gridParent {
+  display: grid;
+  grid-template-columns: repeat(7, 23.6rem);
+  grid-template-rows: 18rem repeat(3, 350px);
+  grid-column-gap: 1.5rem;
+  grid-row-gap: 1.5rem;
+}
+
+
+/*this selector is for every image on home page*/
+.image:nth-child(1n) {
+  /* background-color: black; */
+  height: 35rem;
+}
+
+.homeh2 {
+  grid-area: 1 / 3 / 2 / 6;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-size: 6rem;
+  z-index: 101;
+}
+
+.image {
+  overflow: hidden;
+  border-radius: 2.5rem;
+}
+
+.image:nth-child(2) {
+  grid-area: 2 / 1 / 3 / 2;
+  margin-top: -15rem;
+}
+
+.image:nth-child(3) {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.image:nth-child(4) {
+  grid-area: 2 / 3 / 3 / 4;
+  margin-top: 15rem;
+}
+
+.image:nth-child(5) {
+  grid-area: 2 / 4 / 3 / 5;
+  margin-top: 30rem;
+}
+
+.image:nth-child(6) {
+  grid-area: 2 / 5 / 3 / 6;
+  margin-top: 15rem;
+}
+
+.image:nth-child(7) {
+  grid-area: 2 / 6 / 3 / 7;
+}
+
+.image:nth-child(8) {
+  grid-area: 2 / 7 / 3 / 8;
+  margin-top: -15rem;
+}
+
+.image:nth-child(9) {
+  grid-area: 3 / 1 / 4 / 2;
+  margin-top: -15rem;
+}
+
+.image:nth-child(10) {
+  grid-area: 3 / 2 / 4 / 3;
+}
+
+.image:nth-child(11) {
+  grid-area: 3 / 3 / 4 / 4;
+  margin-top: 15rem;
+}
+
+.image:nth-child(12) {
+  grid-area: 3 / 4 / 4 / 5;
+  margin-top: 30rem;
+}
+
+.image:nth-child(13) {
+  grid-area: 3 / 5 / 4 / 6;
+  margin-top: 15rem;
+}
+
+.image:nth-child(14) {
+  grid-area: 3 / 6 / 4 / 7;
+}
+
+.image:nth-child(15) {
+  grid-area: 3 / 7 / 4 / 8;
+  margin-top: -15rem;
+}
+
+.image:nth-child(16) {
+  grid-area: 4 / 1 / 5 / 2;
+  margin-top: -15rem;
+}
+
+.image:nth-child(17) {
+  grid-area: 4 / 2 / 5 / 3;
+}
+
+.image:nth-child(18) {
+  grid-area: 4 / 3 / 5 / 4;
+  margin-top: 15rem;
+}
+
+.image:nth-child(19) {
+  grid-area: 4 / 4 / 5 / 5;
+  margin-top: 30rem;
+}
+
+.image:nth-child(20) {
+  grid-area: 4 / 5 / 5 / 6;
+  margin-top: 15rem;
+}
+
+.image:nth-child(21) {
+  grid-area: 4 / 6 / 5 / 7;
+}
+
+.image:nth-child(22) {
+  grid-area: 4 / 7 / 5 / 8;
+  margin-top: -15rem;
+}
