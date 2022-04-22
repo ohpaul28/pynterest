@@ -80,10 +80,11 @@ export const SignUpForm = () => {
       setDisabled(false)
       return
     }
-  }, [firstName, lastName, email, password, confirmPassword])
+  }, [firstName, lastName, email, password, confirmPassword, emailError])
 
 
-	const handleSubmit = () => {
+	const handleSubmit = async (e) => {
+    e.preventDefault()
     if (disabled) {
       if (firstName.length < 1) setFirstNameError("Don't forget to tell us who you are!")
       if (lastName.length < 1) setLastNameError("Don't forget to tell us your last name!")
@@ -92,7 +93,12 @@ export const SignUpForm = () => {
       if (password !== confirmPassword) setConfirmPasswordError("Make sure your passwords match!")
       return
     }
-      dispatch(signUp(firstName, lastName, email, password, confirmPassword));
+      const data = await dispatch(signUp(firstName, lastName, email, password, confirmPassword));
+
+      if (data) {
+        console.log(data)
+        return setEmailError(data[0].email)
+      }
       dispatch(hideModal());
 	};
 
