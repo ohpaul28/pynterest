@@ -15,8 +15,7 @@ import { EditBoardForm } from '../Forms/EditBoardForm';
 
 export const User = () => {
   const sessionUser = useSelector(state => state.session.user)
-  const boards = useSelector(state => state.boards)
-  const filteredBoards = Object.values(boards).filter(board => board.user_id === sessionUser.id)
+  const filteredBoards = Object.values(useSelector(state => state.boards)).filter(board => board.user_id === sessionUser.id)
 
   const dispatch = useDispatch();
   const [showBox, setShowBox] = useState(false);

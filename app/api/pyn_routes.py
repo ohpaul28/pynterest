@@ -102,6 +102,8 @@ def removeFromBoards():
   for board in pyn['boards']:
     sql = f"DELETE FROM pyn_board WHERE pyn_id = {removedPyn} AND board_id = {board['id']}"
     db.session.execute(sql)
+    # print('\n\n\n\n\n',board['pyns'], '\n\n\n\n\n')
+    board['pyns'] = [pyn for pyn in board['pyns'] if pyn['id'] is not removedPyn]
     db.session.commit()
     boards_to_dict.append(board)
 

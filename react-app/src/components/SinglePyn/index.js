@@ -15,8 +15,7 @@ import { User } from '../User';
 export const SinglePyn = ({ id }) => {
   const sessionUser = useSelector(state => state.session.user)
   const singlePyn = useSelector(state => state.pyns)[id]
-  const allBoards = useSelector(state => state.boards)
-  const filtered = Object.values(allBoards).filter(board => board.user_id === sessionUser.id)
+  const filtered = Object.values(useSelector(state => state.boards)).filter(board => board.user_id === sessionUser.id)
   const [boardId, setBoardId] = useState(null)
   const dispatch = useDispatch();
 
