@@ -35,20 +35,14 @@ export const SinglePyn = ({ id }) => {
   const onDelete = async (pynId) => {
     let result = window.confirm('Wait! Are you sure you want to delete this Pyn?')
     if (result) {
-      // await dispatch(deletingPyn(pynId)).then(() => {
-      //   const unpynBody = {
-      //     'pynId': pynId
-      //   }
-      //   dispatch(removingPynFromBoards(unpynBody))
-      // })
       const unpynBody = {
         'pynId': pynId
       }
-        await dispatch(removingPynFromBoards(unpynBody)).then(() =>
+      await dispatch(removingPynFromBoards(unpynBody)).then(() =>
         dispatch(deletingPyn(pynId)))
 
 
-      setSelected(<Pyns/>)
+      setSelected(<User />)
     }
   }
 
