@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../../store/session";
 import { setCurrentModal, hideModal } from "../../../store/modal";
@@ -6,10 +6,9 @@ import { login } from "../../../store/session";
 import { LoginForm } from "../LoginForm";
 import styles from './SignUpForm.module.css'
 import logo from '../../Icons/pinterest.svg'
-import { emailValidate } from "./emailValidation";
+import cross from '../../Icons/x.svg';
 
 export const SignUpForm = () => {
-  const firstRender = useRef(true)
 
 	const [firstName, setFirstName] = useState("");
   const [firstNameError, setFirstNameError] = useState("")
@@ -26,7 +25,6 @@ export const SignUpForm = () => {
 	const [confirmPassword, setConfirmPassword] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
 
-  const [disabled, setDisabled] = useState(true)
 	const dispatch = useDispatch();
 
 	const loginDemo = async (e) => {
@@ -35,80 +33,112 @@ export const SignUpForm = () => {
 		dispatch(hideModal());
 	};
 
-  useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false
-      return
-    }
+  // useEffect(() => {
+  //   if (firstRender.current) {
+  //     firstRender.current = false
+  //     return
+  //   }
 
-    if (firstName.length < 1) {
-      setFirstNameError("Don't forget to tell us who you are!")
-      setDisabled(true)
-      return
-    } else {
-      setFirstNameError('')
-    }
+  //   // if (firstName.length < 1) {
+  //   //   setFirstNameError("Don't forget to tell us who you are!")
+  //   //   // setDisabled(true)
+  //   //   return
+  //   // } else {
+  //   //   setFirstNameError('')
+  //   // }
 
-    if (lastName.length < 1) {
-      setLastNameError("Don't forget to tell us your last name!")
-      setDisabled(true)
-      return
-    } else {
-      setLastNameError('')
-    }
+  //   // if (lastName.length < 1) {
+  //   //   setLastNameError("Don't forget to tell us your last name!")
+  //   //   // setDisabled(true)
+  //   //   return
+  //   // } else {
+  //   //   setLastNameError('')
+  //   // }
 
-    if (email.length < 1 || !emailValidate(email)) {
-      setEmailError("Don't forget to add a valid email!")
-      setDisabled(true)
-      return
-    } else {
-      setEmailError('')
-    }
+  //   // if (email.length < 1 || !emailValidate(email)) {
+  //   //   setEmailError("Don't forget to add a valid email!")
+  //   //   // setDisabled(true)
+  //   //   return
+  //   // } else {
+  //   //   setEmailError('')
+  //   // }
 
-    if (password.length < 1) {
-      setPasswordError('Make sure you set a password!')
-      setDisabled(true)
-    } else {
-      setPasswordError('')
-    }
+  //   // if (password.length < 1) {
+  //   //   setPasswordError('Make sure you set a password!')
+  //   //   // setDisabled(true)
+  //   // } else {
+  //   //   setPasswordError('')
+  //   // }
 
-    if (password !== confirmPassword) {
-      setConfirmPasswordError("Make sure your passwords match!")
-      setDisabled(true)
-    } else {
-      setConfirmPasswordError('')
-      setDisabled(false)
-      return
-    }
-  }, [firstName, lastName, email, password, confirmPassword, emailError])
+  //   // if (password !== confirmPassword) {
+  //   //   setConfirmPasswordError("Make sure your passwords match!")
+  //   //   // setDisabled(true)
+  //   // } else {
+  //   //   setConfirmPasswordError('')
+  //   //   // setDisabled(false)
+  //   //   return
+  //   // }
+  // }, [firstName, lastName, email, password, confirmPassword])
 
 
 	const handleSubmit = async (e) => {
     e.preventDefault()
-    if (disabled) {
-      if (firstName.length < 1) setFirstNameError("Don't forget to tell us who you are!")
-      if (lastName.length < 1) setLastNameError("Don't forget to tell us your last name!")
-      if (email.length < 1) setEmailError("Don't forget to add a valid email!")
-      if (password.length < 1) setPasswordError('Make sure you set a password!')
-      if (password !== confirmPassword) setConfirmPasswordError("Make sure your passwords match!")
+    const data = await dispatch(signUp(firstName, lastName, email, password, confirmPassword));
+
+    if (data) {
+      const errorObj = {}
+      for (let i = 0; i < data.length; i++) {
+        const ele = data[i];
+        const singleError = ele.split(" : ")
+        errorObj[singleError[0]] = singleError[1]
+      }
+
+      if (errorObj.first_name) {
+        setFirstNameError(errorObj.first_name)
+      } else {
+        setFirstNameError('')
+      }
+
+      if (errorObj.last_name) {
+        setLastNameError(errorObj.last_name)
+      } else {
+        setLastNameError('')
+      }
+
+      if (errorObj.email) {
+        setEmailError(errorObj.email)
+      } else {
+        setEmailError('')
+      }
+
+      if (errorObj.password) {
+        setPasswordError(errorObj.password)
+      } else {
+        setPasswordError('')
+      }
+
+      if (errorObj.confirm_password) {
+        setConfirmPasswordError(errorObj.confirm_password)
+      } else {
+        setConfirmPasswordError('')
+      }
       return
     }
-      const data = await dispatch(signUp(firstName, lastName, email, password, confirmPassword));
-
-      if (data) {
-        console.log(data)
-        return setEmailError(data[0].email)
-      }
-      dispatch(hideModal());
+    dispatch(hideModal());
 	};
 
 	const showLoginForm = () => {
 		dispatch(setCurrentModal(LoginForm));
 	};
 
+
+
 	return (
 		<div className={styles.parent}>
-      <img src={logo} alt="" className={styles.logo}/>
+      <div className={styles.top}>
+        <img src={logo} alt="" className={styles.logo}/>
+        <img src={cross} alt="" className={styles.cross} onClick={() => dispatch(hideModal())}/>
+      </div>
 			<div className={styles.welcome}>Welcome to Pynterest</div>
       <div className={styles.find}>Find new ideas to try</div>
 			<form className={styles.signup_form}>

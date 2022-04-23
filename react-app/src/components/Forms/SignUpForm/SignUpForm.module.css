@@ -1,5 +1,5 @@
 .parent {
-  height: 55rem;
+  height: fit-content;
   width: 48rem;
   display: flex;
   flex-direction: column;
@@ -8,8 +8,22 @@
   padding: 2rem;
 }
 
+input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  background-color: #eee;
+  border: 5px solid rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+}
+
 textarea:focus, input:focus{
   outline: none;
+  border: 5px solid rgb(158, 200, 214);
+  outline-offset: none;
+  offset: none;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -118,5 +132,34 @@ textarea:focus, input:focus{
 }
 
 .demobtn {
-  
+  margin-top: 1rem;
+  padding: .8rem 1.6rem .8rem 1.6rem;
+  background-color:#E60023;
+  color: white;
+  border-radius: 2rem;
+}
+
+.demobtn:hover {
+  cursor: pointer;
+}
+
+.switch:hover {
+  cursor: pointer;
+}
+
+
+.top {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.cross {
+  height: 3rem;
+  width: 3rem;
+  padding-left: 19.5rem;
+}
+
+.cross:hover {
+  cursor: pointer;
 }
