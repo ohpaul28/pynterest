@@ -5,6 +5,7 @@ import { pynningToBoard } from '../../../store/boards';
 import styles from './PynsForm.module.css'
 import { hideModal } from '../../../store/modal'
 import cross from '../../Icons/x.svg';
+import grayImage from '../../../images/qi4yOMV.png'
 
 
 export const PynForm = () => {
@@ -34,7 +35,7 @@ export const PynForm = () => {
 
   const [file, setFile] = useState('')
 
-  let $form = 
+  let $form =
 
 
   useEffect(() => {
@@ -176,7 +177,7 @@ export const PynForm = () => {
 
 {/* Bottom container */}
       <div className={styles.bottom_right}>
-        <img className={styles.imagePreview} id="preview" src="" alt="" />
+        <img className={styles.imagePreview} id="preview" src={grayImage} alt="" />
       </div>
 
     </div>
