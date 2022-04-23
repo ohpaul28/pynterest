@@ -33,11 +33,23 @@ export const Boards = () => {
     setSelectedBoard(id)
   }
 
+  const goToBoard = (boardId) => {
+    setSelected(<SingleBoard boardId={boardId}/>)
+    let pynTab = document?.getElementById('pynTab')
+    let boardTab = document?.getElementById('boardTab')
+
+    pynTab.style.backgroundColor = 'white';
+    pynTab.style.color = 'black';
+
+    boardTab.style.backgroundColor = 'white';
+    boardTab.style.color = 'black';
+  }
+
   return (
     <div className={styles.allBoards}>
     {boards?.map((board, i) => (
           <div key={i} className={styles.singleBoardContainer}>
-            <div className={styles.multipleImageContainer} onClick={() => setSelected(<SingleBoard boardId={board.id}/>)}>
+            <div className={styles.multipleImageContainer} onClick={() => goToBoard(board.id)}>
 
                 <div className={styles.image1}>
                   <img src={board['pyns'] ? board['pyns'][0] ? board['pyns'][0].img_url : grayBackground : grayBackground} alt="" id={styles.board_card}/>

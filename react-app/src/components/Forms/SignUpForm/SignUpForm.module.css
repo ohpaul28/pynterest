@@ -1,0 +1,165 @@
+.parent {
+  height: fit-content;
+  width: 48rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem;
+}
+
+input {
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  background-color: #eee;
+  border: 5px solid rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+}
+
+textarea:focus, input:focus{
+  outline: none;
+  border: 5px solid rgb(158, 200, 214);
+  outline-offset: none;
+  offset: none;
+  box-sizing: border-box;
+}
+
+.logo {
+  height: 4rem;
+  width: 4rem;
+  margin-bottom: 2rem;
+}
+
+.welcome {
+  font-size: 3.6rem;
+}
+
+.find {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.signup_form {
+  margin-top: 3rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.firstName {
+  padding: .8rem 1.6rem;
+  border-radius: 1rem;
+}
+
+.lastName {
+  padding: .8rem 1.6rem;
+  border-radius: 1rem;
+  margin-top: 1.5rem;
+}
+
+.email {
+  padding: .8rem 1.6rem;
+  border-radius: 1rem;
+  margin-top: 1.5rem;
+}
+
+.password {
+  padding: .8rem 1.6rem;
+  border-radius: 1rem;
+  margin-top: 1.5rem;
+}
+
+.cpassword {
+  padding: .8rem 1.6rem;
+  border-radius: 1rem;
+  margin-top: 1.5rem;
+}
+
+.signupbtn {
+  margin-top: 1.5rem;
+  width: 20.5rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+  background-color: #E60023;
+  color: white;
+  padding: 1rem 0 1rem 0;
+  border-radius: 3rem;
+}
+
+.signupbtn:hover {
+  cursor:pointer;
+}
+
+.error {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: #fc6260;
+}
+
+.privacyPolicy {
+  margin: 1rem 0 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(172, 157, 157);
+  font-weight: 500;
+}
+
+.ToS {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.PP {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.ToS:hover {
+  text-decoration: underline;
+}
+
+.PP:hover {
+  text-decoration: underline;
+}
+
+.demobtn {
+  margin-top: 1rem;
+  padding: .8rem 1.6rem .8rem 1.6rem;
+  background-color:#E60023;
+  color: white;
+  border-radius: 2rem;
+}
+
+.demobtn:hover {
+  cursor: pointer;
+}
+
+.switch:hover {
+  cursor: pointer;
+}
+
+
+.top {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.cross {
+  height: 3rem;
+  width: 3rem;
+  padding-left: 19.5rem;
+}
+
+.cross:hover {
+  cursor: pointer;
+}

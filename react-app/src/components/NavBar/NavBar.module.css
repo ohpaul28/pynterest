@@ -137,3 +137,8 @@
 .userTab:hover {
   cursor: pointer;
 }
+
+.pynActive {
+  background-color: black;
+  color: white;
+}

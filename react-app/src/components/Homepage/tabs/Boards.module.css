@@ -11,8 +11,11 @@
   flex-direction: column;
   height: 23.6rem;
   width: 26.2rem;
-  margin-right: 1rem;
-  /* border: 1px solid black; */
+  margin:5rem 5rem 5rem 5rem;
+}
+
+.multipleImageContainer:hover {
+  cursor: pointer;
 }
 
 .multipleImageContainer {
@@ -23,12 +26,8 @@
   overflow: hidden;
 }
 
-/* .multipleImageContainer > div{
-  object-fit: cover;
-} */
 
 #board_card {
-  /* position: absolute; */
   height: 15.7rem;
   width: 15.7rem;
   border-radius: 2.5rem;

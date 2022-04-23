@@ -49,11 +49,24 @@ export const SinglePyn = ({ id }) => {
 
   }
 
+  const goToPyns = () => {
+    let pynTab = document?.getElementById('pynTab')
+    let boardTab = document?.getElementById('boardTab')
+    // let userTab = document?.getElementById('userTab')
+
+    pynTab.style.backgroundColor = 'black';
+    pynTab.style.color = 'white';
+
+    boardTab.style.backgroundColor = 'white';
+    boardTab.style.color = 'black';
+    setSelected(<Pyns/>)
+  }
+
 
   return (
     <div className={styles.pageContainer}>
       <div className={styles.backButtonContainer}>
-        <div className={styles.backButton} onClick={() => setSelected(<Pyns/>)}>
+        <div className={styles.backButton} onClick={() => goToPyns()}>
           <i className="fa fa-arrow-left"></i> Back to Pyns
         </div>
       </div>

@@ -4,7 +4,7 @@ from random import randint, randrange
 fake = Faker()
 
 def seed_pyns():
-  for i in range(1, 101):
+  for i in range(1, 400):
     pyns = Pyn(
       user_id=randint(1, 50),
       # board_id=randint(1, 150),

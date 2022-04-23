@@ -31,13 +31,31 @@
 }
 
 .dropdown {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: absolute;
+	display: flex;
+	flex-direction: column;
+  right: -7%;
+  top: 20;
+	border-radius: 26px;
+	border: 3px solid rgb(236, 236, 236);
+	z-index: 109;
+  height: 15rem;
+  width: 20rem;
+  padding: 1rem;
+  margin-top: 16rem;
+  margin-right: 20rem;
+  animation: drop-down .2s ease-in-out;
+  background-color: white;
 }
 
-.dropdown:hover {
-  cursor: pointer;
+@keyframes drop-down {
+  0% {
+    transform: translateY(-20px);
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .profileIconContainer {
@@ -46,4 +64,69 @@
   align-items: center;
   width: 2.4rem;
   height: 2.4rem;
+}
+
+.openUserMenu:hover {
+  cursor: pointer;
+}
+
+.currentlyIn {
+  font-size: 1.2rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
+}
+
+.userInitial {
+  font-size: 2.5rem;
+  height: 5rem;
+  width: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.smallUserCard {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  background-color: #EFEFEF;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.smallUserCard:hover {
+  cursor: pointer;
+}
+
+.smallUserCardRight {
+  margin-right: 1rem;
+}
+
+.userName {
+  font-size: 1.6rem;
+}
+
+.personal {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.email {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.logout {
+  margin-left: 1rem;
+}
+
+.logout:hover {
+  cursor: pointer;
+}
+
+.checkmark {
+  height: 2rem;
+  width: 2rem;
+  margin-left: 4.1rem;
 }

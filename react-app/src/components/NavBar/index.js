@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 
-import LoginForm from '../auth/LoginForm';
-import SignUpForm from '../auth/SignUpForm';
+import {LoginForm} from '../Forms/LoginForm'
+import {SignUpForm} from '../Forms/SignUpForm'
 import styles from './NavBar.module.css'
 import SelectedContext from '../context/selectedContext';
 
@@ -115,8 +115,8 @@ const NavBar = () => {
             <img className={styles.logo_in} src="https://i.pinimg.com/originals/d3/d1/75/d3d175e560ae133f1ed5cd4ec173751a.png" alt=""/>
           </div>
           <div className={styles.explore}>
-              <div className={styles.pynTab} id="pynTab" onClick={() => pynsTab()}>Pyns</div>
-              <div className={styles.boardTab} id="boardTab" onClick={() => boardsTab()}>Boards</div>
+              <div activeClassName={styles.pynActive} className={styles.pynTab} id="pynTab" onClick={() => pynsTab()}>Pyns</div>
+              <div activeClassName={styles.boardActive} className={styles.boardTab} id="boardTab" onClick={() => boardsTab()}>Boards</div>
               {/* <div className={styles.userTab} id="userTab" onClick={() => usersTab()}>Users</div> */}
           </div>
         </div>

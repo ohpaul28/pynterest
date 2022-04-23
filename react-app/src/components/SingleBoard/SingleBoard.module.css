@@ -10,6 +10,7 @@
   bottom: 0;
   right: 0;
   background-color: rgba(210, 180, 140, 0.3);
+  padding-top: 10rem;
 }
 
 .parent > div {
@@ -91,4 +92,16 @@
 
 .div7 {
   grid-area: 1 / 7 / 4 / 8;
+}
+
+.backButton {
+  position: absolute;
+  width: fit-content;
+  margin-left: 4rem;
+  margin-top: 4rem;
+  font-size: 2rem;
+}
+
+.backButton:hover {
+  cursor: pointer;
 }

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 
 import NavBar from './components/NavBar';
-import ProtectedRoute from './components/auth/ProtectedRoute';
+// import ProtectedRoute from './components/auth/ProtectedRoute';
 import Modal from './components/Modal'
 import {Homepage} from './components/Homepage';
 import { Pyns } from './components/Homepage/tabs/Pyns';
@@ -41,14 +41,7 @@ function App() {
       <SelectedProvider value={{'selected': selected, 'setSelected': setSelected}}>
         <NavBar />
         <Modal />
-        <Switch>
-          <ProtectedRoute path='/' exact={true}>
-            <Homepage selected={selected}/>
-          </ProtectedRoute>
-          <Route path='/' exact={true}>
-            <h1>Splash</h1>
-          </Route>
-        </Switch>
+        <Homepage selected={selected}/>
       </SelectedProvider>
     </BrowserRouter>
   );
