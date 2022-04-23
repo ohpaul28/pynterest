@@ -23,12 +23,20 @@ export const ProfileDropdown = ({ setSelected }) => {
 	const goToProfile = () => {
     setSelected(<User />)
 		setShowBox(false);
+    let pynTab = document?.getElementById('pynTab')
+    let boardTab = document?.getElementById('boardTab')
+
+    pynTab.style.backgroundColor = 'white';
+    pynTab.style.color = 'black';
+
+    boardTab.style.backgroundColor = 'white';
+    boardTab.style.color = 'black';
 		return;
 	};
 
 	return (
-		<div className={styles.profileOuterContainer} onClick={() => goToProfile()}>
-      <div className={styles.profileOuter}>
+		<div className={styles.profileOuterContainer}>
+      <div className={styles.profileOuter} onClick={() => goToProfile()}>
         <div className={styles.profile_page_redirect}>
           {sessionUser.last_name[0].toUpperCase()}
         </div>

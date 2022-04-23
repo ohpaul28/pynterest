@@ -19,6 +19,14 @@ export const Pyns = () => {
   const onClick = async (id) => {
     dispatch(readingOnePyn(id))
     setSelected(<SinglePyn id={id}/>)
+    let pynTab = document?.getElementById('pynTab')
+    let boardTab = document?.getElementById('boardTab')
+
+    pynTab.style.backgroundColor = 'white';
+    pynTab.style.color = 'black';
+
+    boardTab.style.backgroundColor = 'white';
+    boardTab.style.color = 'black';
   }
 
 

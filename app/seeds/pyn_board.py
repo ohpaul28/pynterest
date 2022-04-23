@@ -16,10 +16,10 @@ fake = Faker()
 
 def generate_item():
     result = []
-    num_attempts = 100
+    num_attempts = 400
     while num_attempts > 0:
         num_attempts -= 1
-        candidate = {'pyn_id': randint(1,100), 'board_id': randint(1,150)}
+        candidate = {'pyn_id': randint(1,400), 'board_id': randint(1,100)}
         if candidate in result:
             continue
         else:

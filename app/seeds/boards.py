@@ -4,7 +4,7 @@ from random import randint
 fake = Faker()
 
 def seed_boards():
-  for i in range(1, 151):
+  for i in range(1, 101):
     boards = Board(
       user_id=randint(1,50),
       title=fake.sentence(3),
