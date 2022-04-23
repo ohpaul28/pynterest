@@ -15,6 +15,7 @@ import { readingAllPyns } from './store/pyns'
 import { readingBoards } from './store/boards';
 import { SelectedProvider } from './components/context/selectedContext';
 import { gettingUsers } from './store/users';
+import loadingGif from './images/loadingGif.gif'
 
 
 function App() {
@@ -22,26 +23,39 @@ function App() {
   const [selected, setSelected] = useState(<Pyns />)
   const dispatch = useDispatch();
 
+  const LoadingScreen = () => {
+
+    return (
+      <div className='loading'>
+        <img src={loadingGif} alt="" className='loadingGif'/>
+      </div>
+    )
+  }
+
   useEffect(() => {
     (async() => {
-      await dispatch(authenticate());
-      await dispatch(readingAllPyns());
-      await dispatch(readingBoards())
-      await dispatch(gettingUsers())
-      setLoaded(true);
+      setLoaded(false)
+      dispatch(authenticate()).then(() => {
+        dispatch(readingAllPyns()).then(() => {
+          dispatch(readingBoards()).then(() => {
+            dispatch(gettingUsers()).then(() => {
+              setTimeout(() => {
+                setLoaded(true);
+              }, 1500)
+            })
+          })
+        })
+      })
     })();
   }, [dispatch]);
-
-  if (!loaded) {
-    return null;
-  }
 
   return (
     <BrowserRouter>
       <SelectedProvider value={{'selected': selected, 'setSelected': setSelected}}>
         <NavBar />
         <Modal />
-        <Homepage selected={selected}/>
+        {!loaded && <LoadingScreen />}
+        {loaded && <Homepage selected={selected}/>}
       </SelectedProvider>
     </BrowserRouter>
   );

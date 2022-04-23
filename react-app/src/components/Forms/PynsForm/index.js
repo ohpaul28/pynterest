@@ -2,8 +2,9 @@ import React, {useState, useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import { creatingPyns } from '../../../store/pyns'
 import { pynningToBoard } from '../../../store/boards';
-// import styles from './PynsForm.module.css'
+import styles from './PynsForm.module.css'
 import { hideModal } from '../../../store/modal'
+import cross from '../../Icons/x.svg';
 
 
 export const PynForm = () => {
@@ -23,13 +24,18 @@ export const PynForm = () => {
   const [image, setImage] = useState(null)
   const [imageError, setImageError] = useState('')
 
-  const [boardId, setBoardId] = useState(titles[0].id)
+  const [boardId, setBoardId] = useState(titles[0]?.id)
   const [boardError, setBoardError] = useState('')
 
   const [description, setDescription] = useState('')
   const [descriptionError, setDescriptionError] = useState('')
 
   const [disabled, setDisabled] = useState(true)
+
+  const [file, setFile] = useState('')
+
+  let $form = 
+
 
   useEffect(() => {
     if (firstRender.current) {
@@ -109,47 +115,71 @@ export const PynForm = () => {
 
   const updateImage = e => {
     const file = e.target.files[0];
+    const preview = document.getElementById('preview')
+    preview.src = URL.createObjectURL(file)
     setImage(file)
   }
 
   return (
     <>
-    <select
-    value={boardId}
-    onChange={e => setBoardId(e.target.value)}>
-      {titles.map(board => (
-        <option key={board.id} value={board.id}>
-          {board.title}
-        </option>
-      ))}
-    </select>
-    <div>{boardError}</div>
+    <div className={styles.pynsFormContainer}>
+{/* left container */}
+      <div className={styles.left}>
+        <input type='file'
+                accept='image/*'
+                className={styles.upload}
+                onChange={updateImage} />
+        <div>{imageError}</div>
+      </div>
 
-    <form id="myForm">
 
-      <input type='file'
-              accept='image/*'
-              onChange={updateImage} />
-      <div>{imageError}</div>
+{/* Right container */}
+      <div className={styles.right}>
 
-      <input type='text'
-              placeholder='Title'
-              name='title'
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}/>
-      <div>{titleError}</div>
+        <div className={styles.exitContainer} onClick={handleCancel}>
+          <img className={styles.exit} src={cross} alt="" />
+        </div>
 
-      <input
-      type='textarea'
-      placeholder='Tell us about it!'
-      value={description}
-      onChange={e => setDescription(e.target.value)}/>
-      <div>{descriptionError}</div>
+        <div className={styles.top_right}>
+          <select
+          className={styles.dropselect}
+          value={boardId}
+          onChange={e => setBoardId(e.target.value)}>
+            {titles.map(board => (
+              <option key={board.id} value={board.id}>
+                {board.title}
+              </option>
+            ))}
+          </select>
+          <div className={styles.save} onClick={handleSubmit}>Save</div>
+        </div>
+      <div>{boardError}</div>
 
-      <div onClick={handleSubmit}>Submit</div>
-      <div onClick={handleCancel}>Cancel</div>
+        <input type='text'
+                placeholder='Add your title'
+                name='title'
+                className={styles.titleInput}
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}/>
+        <div>{titleError}</div>
 
-    </form>
+        <textarea
+        className={styles.descriptionArea}
+        rows="8"
+        wrap="soft"
+        placeholder='Tell everyone what your Pyn is about'
+        value={description}
+        onChange={e => setDescription(e.target.value)}/>
+        <div>{descriptionError}</div>
+
+      </div>
+
+{/* Bottom container */}
+      <div className={styles.bottom_right}>
+        <img className={styles.imagePreview} id="preview" src="" alt="" />
+      </div>
+
+    </div>
     </>
   );
 }

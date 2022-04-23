@@ -8,7 +8,7 @@
   padding: 2rem;
 }
 
-input {
+/* input {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
@@ -16,13 +16,14 @@ input {
   background-color: #eee;
   border: 5px solid rgba(0, 0, 0, 0);
   box-sizing: border-box;
-}
-
-textarea:focus, input:focus{
+} */
+.firstName:focus,
+.lastName:focus,
+.email:focus,
+.password:focus,
+.cpassword:focus {
   outline: none;
-  border: 5px solid rgb(158, 200, 214);
-  outline-offset: none;
-  offset: none;
+  border: 5px solid rgb(174, 235, 255);
   box-sizing: border-box;
 }
 
@@ -50,33 +51,21 @@ textarea:focus, input:focus{
   align-items: center;
 }
 
-.firstName {
-  padding: .8rem 1.6rem;
-  border-radius: 1rem;
-}
-
-.lastName {
-  padding: .8rem 1.6rem;
-  border-radius: 1rem;
-  margin-top: 1.5rem;
-}
-
-.email {
-  padding: .8rem 1.6rem;
-  border-radius: 1rem;
-  margin-top: 1.5rem;
-}
-
-.password {
-  padding: .8rem 1.6rem;
-  border-radius: 1rem;
-  margin-top: 1.5rem;
-}
-
+.firstName,
+.lastName,
+.email,
+.password,
 .cpassword {
   padding: .8rem 1.6rem;
   border-radius: 1rem;
   margin-top: 1.5rem;
+  border-top-style: hidden;
+  border-right-style: hidden;
+  border-left-style: hidden;
+  border-bottom-style: hidden;
+  background-color: #eee;
+  border: 5px solid rgba(0, 0, 0, 0);
+  box-sizing: border-box;
 }
 
 .signupbtn {
@@ -111,23 +100,13 @@ textarea:focus, input:focus{
   font-weight: 500;
 }
 
-.ToS {
+.ToS, .PP {
   text-decoration: none;
   color: black;
   font-weight: bold;
 }
 
-.PP {
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
-}
-
-.ToS:hover {
-  text-decoration: underline;
-}
-
-.PP:hover {
+.ToS:hover, .PP:hover {
   text-decoration: underline;
 }
 
@@ -139,11 +118,7 @@ textarea:focus, input:focus{
   border-radius: 2rem;
 }
 
-.demobtn:hover {
-  cursor: pointer;
-}
-
-.switch:hover {
+.demobtn:hover, .switch:hover {
   cursor: pointer;
 }
 
