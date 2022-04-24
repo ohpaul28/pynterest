@@ -1,7 +1,7 @@
 .container {
-  position: absolute;
+  position: fixed;
   background-color: rgb(246, 242, 242);
-  height: 6rem;
+  height: 8rem;
   width: 100%;
   bottom: 0;
   display: flex;

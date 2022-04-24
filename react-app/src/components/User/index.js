@@ -67,12 +67,16 @@ export const User = () => {
         <div className={styles.initial}>
           {sessionUser?.email[0].toUpperCase()}
         </div>
-        <div>
-          <strong>{sessionUser?.first_name}</strong>
-          <strong>{sessionUser?.last_name}</strong>
+        <div className={styles.name}>
+          <div>
+            {sessionUser?.first_name}
+          </div>
+          <div>
+            {sessionUser?.last_name}
+          </div>
         </div>
-        <div>
-          <strong>{sessionUser?.email}</strong>
+        <div className={styles.email}>
+          {sessionUser?.email}
         </div>
       </div>
       {sessionUser && (
@@ -95,14 +99,14 @@ export const User = () => {
         </div>
       </div>
       )}
-      <div className={styles.myTabs}>
+      {/* <div className={styles.myTabs}>
         <div>
           My Boards
         </div>
         <div>
           My Pyns
         </div>
-      </div>
+      </div> */}
       <div className={styles.boardsDisplay}>
         {filteredBoards?.map((board, i) => (
           <div key={i} className={styles.singleBoardContainer}>
