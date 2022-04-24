@@ -143,3 +143,9 @@ Pynterest is a clone of Pinterest (who would've known) made using a Javascript f
 ### Deleting a Board
 ![image](https://user-images.githubusercontent.com/90789014/165001075-483f77d6-1f94-4504-9422-bc5b36bfe049.png)
 
+
+## Future Developments
+
+- User follows
+- Chat between users
+- User favorites
