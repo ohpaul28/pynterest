@@ -64,7 +64,7 @@ export const BoardForm = () => {
         value={title}
         placeholder='Like "Places to go" or "Recipes to Make"'
         onChange={(e) => setTitle(e.target.value)}/>
-        <div>{titleError}</div>
+        <div className={styles.errors}>{titleError}</div>
       </form>
       <div className={styles.createContainer}>
         <div className={styles.create} onClick={() => handleSubmit()}>Create</div>

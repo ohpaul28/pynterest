@@ -27,10 +27,9 @@ export const EditBoardForm = ({props}) => {
         <input
           type='text'
           value={title}
+          className={styles.editInput}
           onChange={(e) => setTitle(e.target.value)}/>
-        <div onClick={() => handleSubmit()}>
-          <img className={styles.confirmEdit} src={checkIcon} alt=""/>
-        </div>
+          <img onClick={() => handleSubmit()} className={styles.confirmEdit} src={checkIcon} alt=""/>
       </form>
     </>
   )

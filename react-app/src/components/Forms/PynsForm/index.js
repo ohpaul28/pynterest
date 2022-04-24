@@ -140,6 +140,14 @@ export const PynForm = () => {
       setBoardError('Please pick a board to Pyn this to')
       setDisabled(true)
     } else setBoardError('')
+
+
+    if ((title.length > 1 || title.length < 50) &&
+    (description.length > 1 || description.length) < 256 &&
+    image &&
+    boardId) {
+      setDisabled(false)
+    }
     if (disabled) return;
 
     const formData = new FormData();
