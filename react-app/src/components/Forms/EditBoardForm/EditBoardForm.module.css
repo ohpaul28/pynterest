@@ -1,11 +1,24 @@
 .confirmEdit {
-  height: 2.4rem;
+  height: 3.1rem;
   width: 2.4rem;
   border: 1px solid black;
   border-left: none;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.confirmEdit:hover {
+  cursor: pointer;
+  background-color: #E60023;
 }
 
 .form {
   display: flex;
 
+}
+
+.editInput {
+  width: 10rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }

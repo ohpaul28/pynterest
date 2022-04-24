@@ -54,17 +54,21 @@ export const BoardForm = () => {
 
 
   return (
-    <div>
-      <h2>Create board</h2>
+    <div className={styles.boardForm}>
+      <div className={styles.title}>Create board</div>
       <form className={styles.form}>
+        <div className={styles.label}>Name</div>
         <input
         type='text'
+        className={styles.titleInput}
         value={title}
         placeholder='Like "Places to go" or "Recipes to Make"'
         onChange={(e) => setTitle(e.target.value)}/>
-        <div>{titleError}</div>
-        <div onClick={() => handleSubmit()}>Create</div>
+        <div className={styles.errors}>{titleError}</div>
       </form>
+      <div className={styles.createContainer}>
+        <div className={styles.create} onClick={() => handleSubmit()}>Create</div>
+      </div>
     </div>
   )
 }

@@ -33,18 +33,6 @@
   align-items: center;
 }
 
-.email {
-  padding: .8rem 1.6rem .8rem 1.6rem;
-  margin-bottom: 1.5rem;
-  border-radius: 1.6rem;
-}
-
-.password {
-  padding: .8rem 1.6rem .8rem 1.6rem;
-  margin-bottom: 2rem;
-  border-radius: 1.6rem;
-}
-
 .login {
   padding: .8rem 1.6rem .8rem 1.6rem;
   display: flex;
@@ -115,7 +103,7 @@
   cursor: pointer;
 }
 
-input {
+.email, .password {
   border-top-style: hidden;
   border-right-style: hidden;
   border-left-style: hidden;
@@ -123,8 +111,14 @@ input {
   background-color: #eee;
   border: 5px solid rgba(0, 0, 0, 0);
   box-sizing: border-box;
+  padding: .8rem 1.6rem .8rem 1.6rem;
+  margin-bottom: 2rem;
+  border-radius: 1.6rem;
 }
 
-.input:focus {
-  border: 3px solid rgb(174, 235, 255)
+.email:focus,
+.password:focus {
+  outline: none;
+  border: 5px solid rgb(174, 235, 255);
+  box-sizing: border-box;
 }

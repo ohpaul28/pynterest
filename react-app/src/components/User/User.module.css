@@ -81,7 +81,7 @@
   border-radius: 50%;
 }
 
-.pynbtn {
+.pynbtn, .boardbtn{
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -92,25 +92,9 @@
   border: 3px solid rgba(0, 0, 0, 0)
 }
 
-.boardbtn {
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  font-size: 1.4rem;
-  padding: 1.1rem 0 1.1rem .8rem;
-  border-radius: 1rem;
-  box-sizing: border-box;
-  border: 3px solid rgba(0, 0, 0, 0);
-}
-
-.pynbtn:hover {
+.pynbtn:hover, .boardbtn:hover {
   background-color: #f0ebeb;
-  border: 3px solid rgb(154, 197, 238);
-}
-
-.boardbtn:hover {
-  background-color: #f0ebeb;
-  border: 3px solid rgb(154, 197, 238);
+  border: 3px solid rgb(174, 235, 255);
 }
 
 .boxTitle {
@@ -241,7 +225,7 @@
   justify-content: space-between;
   position: absolute;
   margin-left: 19rem;
-  margin-top: 4rem;
+  margin-top: 4.3rem;
 }
 
 .deleteContainer {

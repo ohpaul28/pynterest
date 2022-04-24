@@ -1,0 +1,147 @@
+.pynsFormContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 4rem;
+  height: 65rem;
+  width: 88rem;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+  width: 50%;
+  /* background-color: lightgreen; */
+}
+
+.top_right {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 1rem 0 0;
+}
+
+.exit {
+  height: 2rem;
+  width: 2rem;
+}
+
+.save, .exitContainer {
+  display: flex;
+  align-items: center;
+}
+
+.save, .dropselect {
+  height: 4rem;
+  font-size: 1.6rem;
+
+}
+
+.exitContainer {
+  justify-content: flex-end;
+  margin-top: -1rem;
+  margin-right: -1rem;
+}
+
+.dropselect {
+  width: 17.3rem;
+  background-color: #EFEFEF;
+  border: none;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+.save {
+  width: 6.3rem;
+  justify-content: center;
+  background-color: #E60023;
+  color: white;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.save:hover {
+  cursor: pointer;
+}
+
+.titleInput {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.left_outer {
+  display: flex;
+  height: 100%;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+  width: 90%;
+  border: .5rem dashed #EFEFEF;
+  background-color: rgb(211, 183, 183);
+  border-radius: 2.5rem;
+}
+
+.titleInput {
+  height: 5rem;
+  border: none;
+  border-bottom: 1px solid black;
+  /* margin: 2rem 0 2rem 0; */
+  font-size: 4.5rem;
+}
+
+.titleInput:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid black;
+}
+
+.bottom_right {
+  width: 50%;
+  height: 50%;
+}
+
+.upload {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.descriptionArea {
+  font-family: 'Inter', sans-serif;
+  font-family: 'Roboto', sans-serif;
+  resize: none;
+  margin-top: 2rem;
+}
+
+.imagePreview {
+  height: 90%;
+  width: 100%;
+  object-fit: scale-down;
+}
+
+input[type="file"]{
+  display: none;
+}
+
+.prompt {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.errors {
+  color: #fc6260;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  height: 2rem;
+  margin-top: 5px;
+}
