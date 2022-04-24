@@ -7,7 +7,7 @@ def seed_comments():
   for i in range(1, 801):
     comments = Comment(
       user_id=randint(1, 50),
-      pyn_id=randint(1, 10),
+      pyn_id=randint(1, 400),
       content=fake.text()
     )
     db.session.add(comments)

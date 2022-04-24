@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import styles from './SinglePyn.module.css'
 import deleteIcon from '../Icons/delete.svg';
 import editIcon from '../Icons/edit.svg';
-import { deletingPyn } from '../../store/pyns';
+import { deletingComment, deletingPyn } from '../../store/pyns';
 import { pynningToBoard, removingPynFromBoards } from '../../store/boards';
 import { EditPynForm } from '../Forms/EditPynForm';
 import SelectedContext from '../context/selectedContext';
 import { Pyns } from '../Homepage/tabs/Pyns';
 import { User } from '../User';
+import comment from '../Icons/comment.svg';
+import { CommentForm } from '../Forms/CommentForm';
 
 
 
@@ -16,8 +18,10 @@ export const SinglePyn = ({ id }) => {
   const sessionUser = useSelector(state => state.session.user)
   const singlePyn = useSelector(state => state.pyns)[id]
   const filtered = Object.values(useSelector(state => state.boards)).filter(board => board.user_id === sessionUser.id)
+  const comments = useSelector(state => state.pyns[id])?.comments
   const [boardId, setBoardId] = useState('')
   const [toggle, setToggle] = useState(false)
+  const [formActive, setFormActive] = useState(false);
   const dispatch = useDispatch();
 
   const { setSelected } = useContext(SelectedContext)
@@ -46,6 +50,13 @@ export const SinglePyn = ({ id }) => {
       await dispatch(removingPynFromBoards(unpynBody)).then(() =>
         dispatch(deletingPyn(pynId)))
       setSelected(<User />)
+    }
+  }
+
+  const deleteComment = (commentId) => {
+    let result = window.confirm('Wait! Are you sure you want to delete this comment?')
+    if (result) {
+      dispatch(deletingComment(commentId))
     }
   }
 
@@ -122,9 +133,16 @@ export const SinglePyn = ({ id }) => {
                 </>}
           </div>
           <div className={styles.comments}>
-            Comments
+            <div className={styles.topOfCommentBox}>
+              <div>
+                Comments
+              </div>
+              <div className={styles.commentPost}>
+                <img src={comment} alt="" onClick={() => setFormActive(!formActive)}/>
+              </div>
+            </div>
             <div className={styles.innerComments}>
-              {singlePyn?.comments?.map((comment) => (
+              {comments ? Object.values(comments).map((comment) => (
                 <div key={comment.id} className={styles.singleComment}>
                   <div className={styles.iconAndName}>
                     <div className={styles.profileIcon}>
@@ -137,16 +155,21 @@ export const SinglePyn = ({ id }) => {
                   <div className={styles.content}>
                     {comment.content}
                   </div>
+                  {(sessionUser?.id === comment.user_id) &&
+                  <img
+                    className={styles.commentDeleteButton}
+                    src={deleteIcon}
+                    alt=""
+                    onClick={() => deleteComment(comment.id)}
+                  />}
                 </div>
-              ))}
+              )) : null}
             </div>
           </div>
         </div>
-        {/* {sessionUser.id === singlePyn?.user_id &&
-        <div className={styles.editForm}>
-          <EditPynForm pyn={singlePyn}/>
-        </div>
-        } */}
+      </div>
+      <div className={styles.commentForm}>
+        {formActive && <CommentForm props={{id, formActive, setFormActive}}/>}
       </div>
     </div>
   )
