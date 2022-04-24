@@ -26,5 +26,6 @@ class Comment(db.Model):
 
   def to_id(self):
     return {
-      'id': self.id
+      'id': self.id,
+      'pyn_id': self.pyn_id
     }
