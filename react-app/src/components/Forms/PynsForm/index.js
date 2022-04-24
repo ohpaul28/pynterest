@@ -17,7 +17,6 @@ export const PynForm = () => {
   }))
   const firstRender = useRef(true)
   const dispatch = useDispatch();
-  // const { setSelected } = useContext(SelectedContext)
 
   const [title, setTitle] = useState('')
   const [titleError, setTitleError] = useState('')
@@ -33,9 +32,6 @@ export const PynForm = () => {
 
   const [disabled, setDisabled] = useState(true)
 
-  const [file, setFile] = useState('')
-
-  let $form =
 
 
   useEffect(() => {
