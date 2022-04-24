@@ -60,20 +60,33 @@
   border-bottom-right-radius: 1rem;
 }
 
+.save:hover {
+  cursor: pointer;
+}
+
 .titleInput {
   display: flex;
   justify-content: flex-end;
 }
 
+.left_outer {
+  display: flex;
+  height: 100%;
+  width: 50%;
+  justify-content: center;
+  align-items: center;
+}
 
 .left {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 50%;
-  /* background-color: lightpink; */
+  height: 90%;
+  width: 90%;
+  border: .5rem dashed #EFEFEF;
+  background-color: rgb(211, 183, 183);
+  border-radius: 2.5rem;
 }
 
 .titleInput {
@@ -93,12 +106,13 @@
 .bottom_right {
   width: 50%;
   height: 50%;
-  /* background-color: lightblue; */
 }
 
 .upload {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  padding: 10px;
 }
 
 .descriptionArea {
@@ -111,4 +125,13 @@
   height: 100%;
   width: 100%;
   object-fit: scale-down;
+}
+
+input[type="file"]{
+  display: none;
+}
+
+.prompt {
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }

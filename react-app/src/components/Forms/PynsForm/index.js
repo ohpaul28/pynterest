@@ -7,6 +7,8 @@ import { hideModal } from '../../../store/modal'
 import cross from '../../Icons/x.svg';
 import grayImage from '../../../images/qi4yOMV.png'
 
+// import {DragAndDropFiles} from '../DragAndDropFiles'
+
 
 export const PynForm = () => {
   const sessionUser = useSelector(state => state.session?.user)
@@ -16,6 +18,8 @@ export const PynForm = () => {
     'id': board.id
   }))
   const firstRender = useRef(true)
+  const drop = useRef(null)
+
   const dispatch = useDispatch();
 
   const [title, setTitle] = useState('')
@@ -24,7 +28,7 @@ export const PynForm = () => {
   const [image, setImage] = useState(null)
   const [imageError, setImageError] = useState('')
 
-  const [boardId, setBoardId] = useState(titles[0]?.id)
+  const [boardId, setBoardId] = useState(titles[0] ? titles[0].id : '')
   const [boardError, setBoardError] = useState('')
 
   const [description, setDescription] = useState('')
@@ -79,6 +83,40 @@ export const PynForm = () => {
     }
   }, [title, image, boardId, description])
 
+  useEffect(() => {
+    let dropClean = drop.current
+    dropClean.addEventListener('dragover', handleDragOver);
+    dropClean.addEventListener('drop', handleDrop);
+    return () => {
+      dropClean.removeEventListener('dragover', handleDragOver);
+      dropClean.removeEventListener('drop', handleDrop);
+    }
+  }, [])
+
+  const updateImage = e => {
+    const file = e.target.files[0];
+    const preview = document.getElementById('preview')
+    preview.src = URL.createObjectURL(file)
+    setImage(file)
+  }
+
+  const handleDragOver = e => {
+    e.preventDefault()
+    e.stopPropagation()
+  }
+
+  const handleDrop = e => {
+    e.preventDefault()
+    e.stopPropagation()
+    const {files} = e.dataTransfer;
+
+    if (files && files.length) {
+      const preview = document.getElementById('preview')
+      preview.src = URL.createObjectURL(files[0])
+      setImage(files[0])
+    }
+  }
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -100,33 +138,33 @@ export const PynForm = () => {
         }
         dispatch(pynningToBoard(pynBody))
         dispatch(hideModal())
-        // setSelected(<Pyns />)
       }
     })
   }
 
   const handleCancel = () => {
-    // setSelected(<Pyns/>)
     dispatch(hideModal())
   }
 
-  const updateImage = e => {
-    const file = e.target.files[0];
-    const preview = document.getElementById('preview')
-    preview.src = URL.createObjectURL(file)
-    setImage(file)
-  }
 
   return (
     <>
     <div className={styles.pynsFormContainer}>
 {/* left container */}
-      <div className={styles.left}>
-        <input type='file'
-                accept='image/*'
-                className={styles.upload}
-                onChange={updateImage} />
-        <div>{imageError}</div>
+
+      <div className={styles.left_outer}>
+        <div className={styles.left} ref={drop} >
+          <div className={styles.prompt}>
+            Drag an image here to upload
+          </div>
+          {/* <label>
+            <input type='file'
+            accept='image/*'
+            className={styles.upload}
+            onChange={handleDrop} />
+            <a>Open</a>
+          </label> */}
+        </div>
       </div>
 
 
@@ -174,6 +212,7 @@ export const PynForm = () => {
 {/* Bottom container */}
       <div className={styles.bottom_right}>
         <img className={styles.imagePreview} id="preview" src={grayImage} alt="" />
+        <div>{imageError}</div>
       </div>
 
     </div>
