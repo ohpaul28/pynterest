@@ -16,7 +16,7 @@ export const SinglePyn = ({ id }) => {
   const sessionUser = useSelector(state => state.session.user)
   const singlePyn = useSelector(state => state.pyns)[id]
   const filtered = Object.values(useSelector(state => state.boards)).filter(board => board.user_id === sessionUser.id)
-  const [boardId, setBoardId] = useState(null)
+  const [boardId, setBoardId] = useState('')
   const dispatch = useDispatch();
 
   const { setSelected } = useContext(SelectedContext)
@@ -37,7 +37,7 @@ export const SinglePyn = ({ id }) => {
       const unpynBody = {
         'pynId': pynId
       }
-      await dispatch(removingPynFromBoards(unpynBody)).then(() =>
+      dispatch(removingPynFromBoards(unpynBody)).then(() =>
         dispatch(deletingPyn(pynId)))
 
 

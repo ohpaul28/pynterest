@@ -25,7 +25,7 @@ export const PynForm = () => {
   const [title, setTitle] = useState('')
   const [titleError, setTitleError] = useState('')
 
-  const [image, setImage] = useState(null)
+  const [image, setImage] = useState('')
   const [imageError, setImageError] = useState('')
 
   const [boardId, setBoardId] = useState(titles[0] ? titles[0].id : '')
