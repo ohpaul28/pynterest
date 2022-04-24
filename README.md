@@ -11,7 +11,7 @@
 
 
 
-## [Pynterest Live Site](https://aa-pynterest.herokuapp.com/login)
+## [Pynterest Live Site](https://aa-pynterest.herokuapp.com)
 
 
 
@@ -86,12 +86,60 @@ Pynterest is a clone of Pinterest (who would've known) made using a Javascript f
 ## Features
 
  - The home page will display photos of interest to the signed in user or if not signed in, random photos from the database.
- - Users can create, read, update, or delete photos.
- - Users can create, read, update, or delete comments.
- - Users can add "Pyns" to their profile to update their "home" feed.
- - Users can follow other users to see their posts.
+ - Users can create, read, update, or delete Boards(photo albums)
+ - Users can create, read, update, or delete Pyns(photos).
+ - Users can create, read, or delete comments.
+ - Users can add or remove Pyns from their Boards.
+ - Users can browse all the Pyns or Boards in the database.
 
 
 ## Screenshots
 
-<img src="https://i1.sndcdn.com/avatars-000198787410-02xwfu-t500x500.jpg" style="width: 600px;"/>
+### Login 
+![image](https://user-images.githubusercontent.com/90789014/165000791-9e6e2367-cceb-468d-bd83-2766adfb8ecc.png)
+
+### Sign Up
+![image](https://user-images.githubusercontent.com/90789014/165000799-fe166729-c386-4663-bb03-e1b2bea4ee6e.png)
+
+### Homepage(not logged in)
+![image](https://user-images.githubusercontent.com/90789014/165000783-91f4d853-a481-4c3e-8094-1d5875ac9c04.png)
+
+### Homepage/Pyns Tab(logged in)
+![image](https://user-images.githubusercontent.com/90789014/165000855-8c48b929-d444-41ae-96a6-d8c34d47bc9a.png)
+
+### Boards Tab
+![image](https://user-images.githubusercontent.com/90789014/165000838-b3d4ac86-71d4-4450-b9be-5f24feaeab44.png)
+
+### Single Pyn // Comments
+![image](https://user-images.githubusercontent.com/90789014/165000868-e5825921-0c95-4dce-9e2c-b7bbfa996a9a.png)
+
+### Posting a Comment
+![image](https://user-images.githubusercontent.com/90789014/165000942-b0689bd5-0925-477a-9e50-d9ad3cf551ca.png)
+
+### Deleting a Comment
+![image](https://user-images.githubusercontent.com/90789014/165000960-6261383d-5a03-4b75-8670-d9050dfcb752.png)
+
+### Adding to a Board
+![image](https://user-images.githubusercontent.com/90789014/165000994-4ed82af6-9716-4f14-8488-49fb57fee19a.png)
+
+### User Profile Page
+![image](https://user-images.githubusercontent.com/90789014/165001004-c7018c74-cd08-477d-97ba-ea5cb36fcb24.png)
+
+### Creating a Pyn
+![image](https://user-images.githubusercontent.com/90789014/165001034-cb91b29d-0c1a-40f3-8a1b-07e1ff817f39.png)
+
+### Editing a Pyn
+![image](https://user-images.githubusercontent.com/90789014/165001045-6a6422f2-484a-4542-b2c5-efc9aa35d340.png)
+
+### Deleting a Pyn
+![image](https://user-images.githubusercontent.com/90789014/165001054-01263e3a-be71-4ea9-8ccf-e5cc73bdb130.png)
+
+### Creating a Board
+![image](https://user-images.githubusercontent.com/90789014/165001060-d3a6809d-50f4-45f0-88c0-37108c209a01.png)
+
+### Editing a Board
+![image](https://user-images.githubusercontent.com/90789014/165001068-284fc6f1-3d6e-4aee-aafb-b25ccfd14368.png)
+
+### Deleting a Board
+![image](https://user-images.githubusercontent.com/90789014/165001075-483f77d6-1f94-4504-9422-bc5b36bfe049.png)
+
