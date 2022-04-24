@@ -17,11 +17,17 @@ export const SinglePyn = ({ id }) => {
   const singlePyn = useSelector(state => state.pyns)[id]
   const filtered = Object.values(useSelector(state => state.boards)).filter(board => board.user_id === sessionUser.id)
   const [boardId, setBoardId] = useState('')
+  const [toggle, setToggle] = useState(false)
   const dispatch = useDispatch();
 
   const { setSelected } = useContext(SelectedContext)
 
   const addToBoard = (board_id) => {
+    if (!boardId){
+      window.alert('Please select a board to add this Pyn to!')
+      return
+    }
+
     const pynBody = {
       'pynId': id,
       'boardId': board_id
@@ -39,14 +45,8 @@ export const SinglePyn = ({ id }) => {
       }
       await dispatch(removingPynFromBoards(unpynBody)).then(() =>
         dispatch(deletingPyn(pynId)))
-
-
       setSelected(<User />)
     }
-  }
-
-  const onEdit = () => {
-
   }
 
   const goToPyns = () => {
@@ -82,7 +82,7 @@ export const SinglePyn = ({ id }) => {
                 <div onClick={() => onDelete(singlePyn?.id)}>
                   <img className={styles.deletebtn} src={deleteIcon} alt=""/>
                 </div>
-                <div onClick={() => onEdit(singlePyn?.id)}>
+                <div onClick={() => setToggle(!toggle)}>
                   <img className={styles.editbtn} src={editIcon} alt=""/>
                 </div>
               </>
@@ -90,6 +90,7 @@ export const SinglePyn = ({ id }) => {
             </div>
             <div className={styles.top_right}>
               <select
+              className={styles.selectField}
               value={boardId}
               onChange={e => setBoardId(e.target.value)}>
                 <option value={null}>
@@ -106,13 +107,19 @@ export const SinglePyn = ({ id }) => {
               </div>
             </div>
           </div>
-          <div>
-            <h1>
-              {singlePyn?.title}
-            </h1>
-            <div className={styles.description}>
-              {singlePyn?.description}
-            </div>
+          <div className={styles.editSection}>
+              {toggle
+              ? <>
+                  <EditPynForm props={{singlePyn, toggle, setToggle}}/>
+                </>
+              : <>
+                  <div className={styles.title}>
+                    {singlePyn?.title}
+                  </div>
+                  <div className={styles.description}>
+                    {singlePyn?.description}
+                  </div>
+                </>}
           </div>
           <div className={styles.comments}>
             Comments
@@ -135,11 +142,11 @@ export const SinglePyn = ({ id }) => {
             </div>
           </div>
         </div>
-        {sessionUser.id === singlePyn?.user_id &&
+        {/* {sessionUser.id === singlePyn?.user_id &&
         <div className={styles.editForm}>
           <EditPynForm pyn={singlePyn}/>
         </div>
-        }
+        } */}
       </div>
     </div>
   )
