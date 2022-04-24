@@ -90,8 +90,9 @@
 .explore {
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
   width: 18rem;
-  height: 4.8rem;
+  height: 100%;
   padding-left: .7rem;
 }
 
@@ -112,13 +113,21 @@
 }
 
 .pynTab {
-  padding: 1rem;
-  border-radius: 2.2rem;
+  display: flex;
+  align-items: center;
+  height: 4.8rem;
+  font-size: 1.6rem;
+  border-radius: 2.6rem;
+  padding: 0 1.6rem;
 }
 
 .boardTab {
-  padding: 1rem;
-  border-radius: 2.2rem;
+  display: flex;
+  align-items: center;
+  height: 4.8rem;
+  font-size: 1.6rem;
+  border-radius: 2.6rem;
+  padding: 0 1.6rem;
 }
 
 .userTab{

@@ -1,4 +1,54 @@
 .editPynForm {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+  width: 25rem;
+  height: 100%;
+}
+
+.checkmark {
+  height: 100%;
+  width: 4rem;
+  border: 1px solid black;
+  border-left: none;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+}
+
+.checkmark:hover {
+  cursor: pointer;
+  background-color: #E60023;
+}
+
+.inputs {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid black;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  overflow: hidden;
+}
+
+.titleInput {
+  height: 50%;
+  border-left: none;
+  border-top: none;
+  border-right: none;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.descriptionInput {
+  border: none;
+  height: 50%;
+}
+
+.titleInput:focus {
+  outline: none;
+}
+
+.descriptionInput:focus {
+  outline: none;
 }

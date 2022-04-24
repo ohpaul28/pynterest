@@ -242,3 +242,15 @@
   display: flex;
   flex-flow: wrap;
 }
+
+.name {
+  width: 8rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.email {
+  font-size: 1.5rem;
+  
+}

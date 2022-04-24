@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {NavLink} from 'react-router-dom';
 
 import {LoginForm} from '../Forms/LoginForm'
 import {SignUpForm} from '../Forms/SignUpForm'
@@ -92,9 +91,9 @@ const NavBar = () => {
         </div>
         <div className={styles.nav_right}>
           <div className={styles.profile_links}>
-            <NavLink to='https://github.com/ohpaul28' className={styles.github}>Github</NavLink>
-            <NavLink to='https://www.linkedin.com/in/paul-oh-82824117a/' className={styles.linkedin}>Linkedin</NavLink>
-            <NavLink to='https://www.pinterest.com/' className={styles.original}>Original</NavLink>
+            <a href='https://github.com/ohpaul28' className={styles.github} target="_blank" rel="noopener noreferrer">Github</a>
+            <a href='https://www.linkedin.com/in/paul-oh-82824117a/' className={styles.linkedin} target="_blank" rel="noopener noreferrer">Linkedin</a>
+            <a href='https://www.pinterest.com/' className={styles.original} target="_blank" rel="noopener noreferrer">Original</a>
           </div>
           <div className={styles.login} onClick={showLoginForm}>
             Log in

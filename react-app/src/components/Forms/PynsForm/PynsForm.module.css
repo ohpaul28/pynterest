@@ -26,6 +26,10 @@
   width: 2rem;
 }
 
+.exit:hover {
+  cursor: pointer;
+}
+
 .save, .exitContainer {
   display: flex;
   align-items: center;
