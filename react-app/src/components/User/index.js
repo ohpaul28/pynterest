@@ -48,6 +48,10 @@ export const User = () => {
   }
 
   const showPynForm = () => {
+    if (sessionUser?.boards.length < 1) {
+      window.alert('You have no boards to add Pyns to! Please create a board first.')
+      return
+    }
     dispatch(setCurrentModal(PynForm))
     dispatch(showModal())
   }

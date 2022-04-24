@@ -17,7 +17,7 @@ export const PynForm = () => {
     'title': board.title,
     'id': board.id
   }))
-  const firstRender = useRef(true)
+  // const firstRender = useRef(true)
   const drop = useRef(null)
 
   const dispatch = useDispatch();
@@ -38,50 +38,50 @@ export const PynForm = () => {
 
 
 
-  useEffect(() => {
-    if (firstRender.current) {
-      firstRender.current = false
-      return
-    }
+  // useEffect(() => {
+  //   if (firstRender.current) {
+  //     firstRender.current = false
+  //     return
+  //   }
 
-    if (!image) {
-      setImageError("You missed a spot! Don't forget to pick an image to upload!")
-      setDisabled(true)
-      return
-    } else {
-      setImageError('')
-    }
+  //   if (!image) {
+  //     setImageError("You missed a spot! Don't forget to pick an image to upload!")
+  //     setDisabled(true)
+  //     return
+  //   } else {
+  //     setImageError('')
+  //   }
 
-    if (title.length < 1) {
-      setTitleError("You missed a spot! Don't forget to give this a title!")
-      setDisabled(true)
-      return
-    } else {
-      setTitleError('')
-    }
+  //   if (title.length < 1) {
+  //     setTitleError("You missed a spot! Don't forget to give this a title!")
+  //     setDisabled(true)
+  //     return
+  //   } else {
+  //     setTitleError('')
+  //   }
 
-    if (description.length < 1) {
-      setDescriptionError("You missed a spot! Don't forget to tell us about this Pyn!")
-      setDisabled(true)
-      return
-    } else if (description.length > 254) {
-      setDescriptionError('Character limit is 255!')
-      setDisabled(true)
-      return
-    } else {
-      setDescriptionError('')
-    }
+  //   if (description.length < 1) {
+  //     setDescriptionError("You missed a spot! Don't forget to tell us about this Pyn!")
+  //     setDisabled(true)
+  //     return
+  //   } else if (description.length > 254) {
+  //     setDescriptionError('Character limit is 255!')
+  //     setDisabled(true)
+  //     return
+  //   } else {
+  //     setDescriptionError('')
+  //   }
 
 
-    if (!boardId) {
-      setBoardError("You missed a spot! Don't forget to pick a board to Pyn this to!")
-      setDisabled(true)
-    }else {
-      setBoardError('')
-      setDisabled(false)
-      return
-    }
-  }, [title, image, boardId, description])
+  //   if (!boardId) {
+  //     setBoardError("You missed a spot! Don't forget to pick a board to Pyn this to!")
+  //     setDisabled(true)
+  //   }else {
+  //     setBoardError('')
+  //     setDisabled(false)
+  //     return
+  //   }
+  // }, [title, image, boardId, description])
 
   useEffect(() => {
     let dropClean = drop.current
@@ -93,12 +93,12 @@ export const PynForm = () => {
     }
   }, [])
 
-  const updateImage = e => {
-    const file = e.target.files[0];
-    const preview = document.getElementById('preview')
-    preview.src = URL.createObjectURL(file)
-    setImage(file)
-  }
+  // const updateImage = e => {
+  //   const file = e.target.files[0];
+  //   const preview = document.getElementById('preview')
+  //   preview.src = URL.createObjectURL(file)
+  //   setImage(file)
+  // }
 
   const handleDragOver = e => {
     e.preventDefault()
@@ -121,6 +121,25 @@ export const PynForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (title.length < 1 || title.length > 50) {
+      setTitleError('Please provide a valid title')
+      setDisabled(true)
+    } else setTitleError('')
+
+    if (description.length < 1 || description.length > 255) {
+      setDescriptionError('Please provide a valid description')
+      setDisabled(true)
+    } else setDescriptionError('')
+
+    if (!image) {
+      setImageError('Please choose an image to upload')
+      setDisabled(true)
+    } else setImageError('')
+
+    if (!boardId) {
+      setBoardError('Please pick a board to Pyn this to')
+      setDisabled(true)
+    } else setBoardError('')
     if (disabled) return;
 
     const formData = new FormData();
@@ -188,7 +207,7 @@ export const PynForm = () => {
           </select>
           <div className={styles.save} onClick={handleSubmit}>Save</div>
         </div>
-      <div>{boardError}</div>
+      <div className={styles.errors}>{boardError}</div>
 
         <input type='text'
                 placeholder='Add your title'
@@ -196,7 +215,7 @@ export const PynForm = () => {
                 className={styles.titleInput}
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}/>
-        <div>{titleError}</div>
+        <div className={styles.errors}>{titleError}</div>
 
         <textarea
         className={styles.descriptionArea}
@@ -205,14 +224,14 @@ export const PynForm = () => {
         placeholder='Tell everyone what your Pyn is about'
         value={description}
         onChange={e => setDescription(e.target.value)}/>
-        <div>{descriptionError}</div>
+        <div className={styles.errors}>{descriptionError}</div>
 
       </div>
 
 {/* Bottom container */}
       <div className={styles.bottom_right}>
         <img className={styles.imagePreview} id="preview" src={grayImage} alt="" />
-        <div>{imageError}</div>
+        <div className={styles.errors}>{imageError}</div>
       </div>
 
     </div>
