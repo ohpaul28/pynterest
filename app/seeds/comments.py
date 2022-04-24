@@ -4,7 +4,7 @@ from random import randint
 fake = Faker()
 
 def seed_comments():
-  for i in range(1, 90):
+  for i in range(1, 801):
     comments = Comment(
       user_id=randint(1, 50),
       pyn_id=randint(1, 10),
