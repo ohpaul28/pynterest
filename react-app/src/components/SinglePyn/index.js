@@ -37,7 +37,7 @@ export const SinglePyn = ({ id }) => {
       const unpynBody = {
         'pynId': pynId
       }
-      dispatch(removingPynFromBoards(unpynBody)).then(() =>
+      await dispatch(removingPynFromBoards(unpynBody)).then(() =>
         dispatch(deletingPyn(pynId)))
 
 

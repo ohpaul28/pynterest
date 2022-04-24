@@ -34,7 +34,7 @@ export const LoginForm = () => {
 
   if (user) {
     dispatch(hideModal())
-    return <Redirect to='/' />;
+    // return <Redirect to='/' />;
   }
 
   const showSignUpForm = () => {

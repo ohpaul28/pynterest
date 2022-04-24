@@ -138,6 +138,7 @@ async dispatch => {
   })
 
   const boards = await res.json();
+  // console.log(boards.boards)
   dispatch(removePynFromBoards(boards.boards))
   return boards.boards
 }
