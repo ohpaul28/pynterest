@@ -6,7 +6,7 @@ from app.models import Comment, db
 comment_routes= Blueprint('comments', __name__)
 
 
-@comment_routes.route('/<int:pynId>', methods=['GET'])
+@comment_routes.route('/<int:pynId>')
 def comments(pynId):
   comments = Comment.query.filter(Comment.pyn_id == int(pynId))
   filtered = [c.to_dict() for c in comments]
