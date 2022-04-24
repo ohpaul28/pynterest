@@ -17,7 +17,7 @@ export const PynForm = () => {
     'title': board.title,
     'id': board.id
   }))
-  // const firstRender = useRef(true)
+  const firstRender = useRef(true)
   const drop = useRef(null)
 
   const dispatch = useDispatch();
@@ -38,50 +38,49 @@ export const PynForm = () => {
 
 
 
-  // useEffect(() => {
-  //   if (firstRender.current) {
-  //     firstRender.current = false
-  //     return
-  //   }
+  useEffect(() => {
+    if (firstRender.current) {
+      firstRender.current = false
+      return
+    }
 
-  //   if (!image) {
-  //     setImageError("You missed a spot! Don't forget to pick an image to upload!")
-  //     setDisabled(true)
-  //     return
-  //   } else {
-  //     setImageError('')
-  //   }
+    if (title.length < 1) {
+      setTitleError("You missed a spot! Don't forget to give this a title!")
+      setDisabled(true)
+      return
+    } else {
+      setTitleError('')
+    }
 
-  //   if (title.length < 1) {
-  //     setTitleError("You missed a spot! Don't forget to give this a title!")
-  //     setDisabled(true)
-  //     return
-  //   } else {
-  //     setTitleError('')
-  //   }
+    if (description.length < 1) {
+      setDescriptionError("You missed a spot! Don't forget to tell us about this Pyn!")
+      setDisabled(true)
+      return
+    } else if (description.length > 254) {
+      setDescriptionError('Character limit is 255!')
+      setDisabled(true)
+      return
+    } else {
+      setDescriptionError('')
+    }
 
-  //   if (description.length < 1) {
-  //     setDescriptionError("You missed a spot! Don't forget to tell us about this Pyn!")
-  //     setDisabled(true)
-  //     return
-  //   } else if (description.length > 254) {
-  //     setDescriptionError('Character limit is 255!')
-  //     setDisabled(true)
-  //     return
-  //   } else {
-  //     setDescriptionError('')
-  //   }
+    if (!image) {
+      setImageError("You missed a spot! Don't forget to drag an image to upload!")
+      setDisabled(true)
+      return
+    } else {
+      setImageError('')
+    }
 
-
-  //   if (!boardId) {
-  //     setBoardError("You missed a spot! Don't forget to pick a board to Pyn this to!")
-  //     setDisabled(true)
-  //   }else {
-  //     setBoardError('')
-  //     setDisabled(false)
-  //     return
-  //   }
-  // }, [title, image, boardId, description])
+    if (!boardId) {
+      setBoardError("You missed a spot! Don't forget to pick a board to Pyn this to!")
+      setDisabled(true)
+    }else {
+      setBoardError('')
+      setDisabled(false)
+      return
+    }
+  }, [title, image, boardId, description])
 
   useEffect(() => {
     let dropClean = drop.current
@@ -121,34 +120,51 @@ export const PynForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (title.length < 1 || title.length > 50) {
-      setTitleError('Please provide a valid title')
-      setDisabled(true)
-    } else setTitleError('')
+    // if (title.length < 1 || title.length > 50) {
+    //   setTitleError('Please provide a valid title')
+    //   setDisabled(true)
+    // } else {
+    //   console.log('1\n\n\n\n\n', 'ENTERING ELSE BLOCK','\n\n\n\n\n')
+    //   setTitleError('')
+    //   setDisabled(false)
+    //   console.log('\n\n\n\n\n', disabled, '\n\n\n\n\n')
+    // }
+    // if (description.length < 1 || description.length > 255) {
+    //   setDescriptionError('Please provide a valid description')
+    //   setDisabled(true)
+    // } else {
+    //   setDescriptionError('')
+    //   setDisabled(false)
+    // }
+    // // console.log('2\n\n\n\n\n', disabled,'\n\n\n\n\n')
 
-    if (description.length < 1 || description.length > 255) {
-      setDescriptionError('Please provide a valid description')
-      setDisabled(true)
-    } else setDescriptionError('')
+    // if (!image) {
+    //   setImageError('Please choose an image to upload')
+    //   setDisabled(true)
+    // } else {
+    //   setImageError('')
+    //   setDisabled(false)
+    // }
+    // // console.log('3\n\n\n\n\n', disabled,'\n\n\n\n\n')
 
-    if (!image) {
-      setImageError('Please choose an image to upload')
-      setDisabled(true)
-    } else setImageError('')
-
-    if (!boardId) {
-      setBoardError('Please pick a board to Pyn this to')
-      setDisabled(true)
-    } else setBoardError('')
+    // if (!boardId) {
+    //   setBoardError('Please pick a board to Pyn this to')
+    //   setDisabled(true)
+    // } else {
+    //   setBoardError('')
+    //   setDisabled(false)
+    // }
 
 
-    if ((title.length > 1 || title.length < 50) &&
-    (description.length > 1 || description.length) < 256 &&
-    image &&
-    boardId) {
-      setDisabled(false)
-    }
+
+    // if ((title.length > 1 || title.length < 50) &&
+    // (description.length > 1 || description.length) < 256 &&
+    // image &&
+    // boardId) {
+    //   setDisabled(false)
+    // }
     if (disabled) return;
+    console.log('\n\n\n\n\n', 'PASSING DISABLED RETURN','\n\n\n\n\n')
 
     const formData = new FormData();
     formData.append('title', title)
