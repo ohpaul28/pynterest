@@ -91,9 +91,17 @@
   width: 2.4rem;
 }
 
+.deletebtn:hover {
+  cursor: pointer;
+}
+
 .editbtn {
   height: 2.4rem;
   width: 2.4rem;
+}
+
+.editbtn:hover {
+  cursor: pointer;
 }
 
 .editForm {

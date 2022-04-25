@@ -261,6 +261,7 @@ export const PynForm = () => {
 {/* Bottom container */}
       <div className={styles.bottom_right}>
         <img className={styles.imagePreview} id="preview" src={grayImage} alt="" />
+        <div className={styles.previewImageMessage}>Preview Image</div>
         <div className={styles.errors}>{imageError}</div>
       </div>
 

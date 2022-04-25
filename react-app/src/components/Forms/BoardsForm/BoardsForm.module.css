@@ -67,3 +67,8 @@
 .create:hover {
   cursor: pointer;
 }
+
+.errors {
+  color: #fc6260;
+  margin-top: 1rem;
+}

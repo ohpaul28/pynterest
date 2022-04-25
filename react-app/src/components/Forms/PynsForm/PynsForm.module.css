@@ -41,6 +41,10 @@
 
 }
 
+.dropselect:hover {
+  cursor: pointer;
+}
+
 .exitContainer {
   justify-content: flex-end;
   margin-top: -1rem;
@@ -148,4 +152,10 @@ input[type="file"]{
   align-items: center;
   height: 2rem;
   margin-top: 5px;
+}
+
+.previewImageMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
