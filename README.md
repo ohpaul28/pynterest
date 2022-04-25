@@ -80,6 +80,9 @@ Pynterest is a clone of Pinterest (who would've known) made using a Javascript f
   &nbsp;
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-plain.svg" style="width:75px;" />
   &nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" style="width:75px;"/>
+
+  &nbsp;
 </p>
 
 
