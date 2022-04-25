@@ -47,7 +47,7 @@ export const Boards = () => {
 
   return (
     <div className={styles.allBoards}>
-    {boards?.map((board, i) => (
+    {boards?.reverse().map((board, i) => (
           <div key={i} className={styles.singleBoardContainer}>
             <div className={styles.multipleImageContainer} onClick={() => goToBoard(board.id)}>
 
