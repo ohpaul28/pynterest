@@ -181,6 +181,9 @@ export const PynForm = () => {
         }
         dispatch(pynningToBoard(pynBody))
         dispatch(hideModal())
+      } else {
+        console.log(image)
+        setImageError(response)
       }
     })
   }

@@ -41,7 +41,7 @@ function App() {
             dispatch(gettingUsers()).then(() => {
               setTimeout(() => {
                 setLoaded(true);
-              }, 1500)
+              }, 3000)
             })
           })
         })
