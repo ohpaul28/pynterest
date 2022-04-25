@@ -163,8 +163,11 @@ export const PynForm = () => {
     // boardId) {
     //   setDisabled(false)
     // }
-    if (disabled) return;
-    console.log('\n\n\n\n\n', 'PASSING DISABLED RETURN','\n\n\n\n\n')
+    if (disabled) {
+      window.alert('Tell me more about this Pyn!')
+      return;
+    }
+    // console.log('\n\n\n\n\n', 'PASSING DISABLED RETURN','\n\n\n\n\n')
 
     const formData = new FormData();
     formData.append('title', title)
@@ -258,6 +261,7 @@ export const PynForm = () => {
 {/* Bottom container */}
       <div className={styles.bottom_right}>
         <img className={styles.imagePreview} id="preview" src={grayImage} alt="" />
+        <div className={styles.previewImageMessage}>Preview Image</div>
         <div className={styles.errors}>{imageError}</div>
       </div>
 

@@ -12,6 +12,10 @@ export const EditBoardForm = ({props}) => {
   const [title, setTitle] = useState(board.title);
 
   const handleSubmit = async () => {
+    if (title.length < 1 || title.length > 50) {
+      window.alert('Title cannot be left blank!')
+      return
+    }
     const formData = {
       'user_id': sessionUser.id,
       'id': board.id,
