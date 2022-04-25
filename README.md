@@ -149,3 +149,7 @@ Pynterest is a clone of Pinterest (who would've known) made using a Javascript f
 - User follows
 - Chat between users
 - User favorites
+- Infinite scrolling
+- Multiple image uploads
+- Download/share links
+- Slideshow splash page like Pinterest's
