@@ -65,7 +65,7 @@ export const User = () => {
     <div className={styles.profilePageContainer}>
       <div className={styles.userInfo}>
         <div className={styles.initial}>
-          {sessionUser?.email[0].toUpperCase()}
+          {sessionUser?.first_name[0].toUpperCase()}
         </div>
         <div className={styles.name}>
           <div>

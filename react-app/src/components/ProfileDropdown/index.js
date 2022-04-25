@@ -38,7 +38,7 @@ export const ProfileDropdown = ({ setSelected }) => {
 		<div className={styles.profileOuterContainer}>
       <div className={styles.profileOuter} onClick={() => goToProfile()}>
         <div className={styles.profile_page_redirect}>
-          {sessionUser.last_name[0].toUpperCase()}
+          {sessionUser.first_name[0].toUpperCase()}
         </div>
       </div>
 			<div className={styles.profileIconContainer} onClick={openBox}>
@@ -53,7 +53,7 @@ export const ProfileDropdown = ({ setSelected }) => {
             </div>
             <div className={styles.smallUserCard} onClick={() => goToProfile()}>
               <div className={styles.userInitial}>
-                {sessionUser.last_name[0].toUpperCase()}
+                {sessionUser.first_name[0].toUpperCase()}
               </div>
               <div className={styles.smallUserCardRight}>
                 <span className={styles.userName}>{sessionUser.first_name}{" "}{sessionUser.last_name}</span> <br />
