@@ -163,8 +163,11 @@ export const PynForm = () => {
     // boardId) {
     //   setDisabled(false)
     // }
-    if (disabled) return;
-    console.log('\n\n\n\n\n', 'PASSING DISABLED RETURN','\n\n\n\n\n')
+    if (disabled) {
+      window.alert('Tell me more about this Pyn!')
+      return;
+    }
+    // console.log('\n\n\n\n\n', 'PASSING DISABLED RETURN','\n\n\n\n\n')
 
     const formData = new FormData();
     formData.append('title', title)
