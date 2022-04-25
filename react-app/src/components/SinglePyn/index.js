@@ -146,7 +146,7 @@ export const SinglePyn = ({ id }) => {
                 <div key={comment.id} className={styles.singleComment}>
                   <div className={styles.iconAndName}>
                     <div className={styles.profileIcon}>
-                      {comment.user?.email[0].toUpperCase()}
+                      {comment.user?.first_name[0].toUpperCase()}
                     </div>
                     <div>
                       {comment.user.first_name}

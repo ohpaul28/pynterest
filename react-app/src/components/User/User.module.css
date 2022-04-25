@@ -233,9 +233,17 @@
   width: 2rem;
 }
 
+.deleteContainer:hover {
+  cursor: pointer;
+}
+
 .editContainer {
   height: 2rem;
   width: 2rem;
+}
+
+.editContainer:hover {
+  cursor: pointer;
 }
 
 .allBoards {
@@ -252,5 +260,5 @@
 
 .email {
   font-size: 1.5rem;
-  
+
 }
